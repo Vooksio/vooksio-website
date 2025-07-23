@@ -68,7 +68,6 @@ export default function LandingPageChakra() {
           <MotionBox
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
           >
             <Heading fontSize={{ base: "4xl", md: "6xl" }} fontWeight="bold">
               Let’s build together.
@@ -115,7 +114,6 @@ export default function LandingPageChakra() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
       >
         <VStack spacing={4} textAlign="center" mb={12}>
           <Heading fontSize={{ base: "2xl", md: "4xl" }}>
@@ -154,7 +152,6 @@ export default function LandingPageChakra() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
       >
         <Container maxW="4xl" textAlign="center">
           <Heading mb={4} fontSize={{ base: "2xl", md: "4xl" }} color="brand.700">
