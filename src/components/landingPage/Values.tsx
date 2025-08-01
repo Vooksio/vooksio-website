@@ -1,6 +1,7 @@
 import { Heart, BookOpen, MessageSquare, Target, Zap, CheckCircle } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "../ui/badge";
 
 export function Values() {
   const t = useTranslations("values");
@@ -66,11 +67,11 @@ export function Values() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-success-green/10 rounded-full border border-success-green/20 mb-6">
+        <div className="text-center mb-16 space-y-3.5">
+          <Badge variant="success" rounded={"full"} size={"lg"}>
             <Heart className="w-4 h-4 text-success-green mr-2" />
             <span className="text-dark-navy text-sm font-medium">{t("sectionTitle")}</span>
-          </div>
+          </Badge>
           <h2 className="text-3xl lg:text-5xl font-bold text-dark-navy mb-6">{t("mainTitle")}</h2>
           <p className="text-xl text-muted-gray max-w-3xl mx-auto leading-relaxed">{t("subtitle")}</p>
         </div>

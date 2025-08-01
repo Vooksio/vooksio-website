@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
 import { Lightbulb, Code, BookOpen, Building, Globe, ArrowRight, Users, Target, Zap } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { Badge } from "../ui/badge";
 
 export function Audience() {
   const t = useTranslations("audience");
@@ -77,11 +78,11 @@ export function Audience() {
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-warning-orange/10 rounded-full border border-warning-orange/20 mb-6">
+        <div className="text-center mb-16 space-y-3.5">
+          <Badge variant="warning" rounded={"full"} size={"lg"}>
             <Users className="w-4 h-4 text-warning-orange mr-2" />
             <span className="text-dark-navy text-sm font-medium">{t("sectionHeader.badge")}</span>
-          </div>
+          </Badge>
           <h2 className="text-3xl lg:text-5xl font-bold text-dark-navy mb-6">{t("sectionHeader.title")}</h2>
           <p className="text-xl text-muted-gray max-w-3xl mx-auto leading-relaxed">{t("sectionHeader.description")}</p>
         </div>

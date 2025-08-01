@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
 import { Code2, GraduationCap, Target, Smartphone, Globe, BookOpen, Users, Lightbulb, ArrowRight } from "lucide-react";
+import { Badge } from "../ui/badge";
 
 export function Services() {
   const t = useTranslations("services");
@@ -61,11 +62,11 @@ export function Services() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-primary-blue/10 rounded-full border border-primary-blue/20 mb-6">
+        <div className="text-center mb-16 space-y-3.5">
+          <Badge variant="primary" rounded={"full"} size={"lg"}>
             <Lightbulb className="w-4 h-4 text-primary-blue mr-2" />
             <span className="text-dark-navy text-sm font-medium">{t("sectionTitle")}</span>
-          </div>
+          </Badge>
           <h2 className="text-3xl lg:text-5xl font-bold text-dark-navy mb-6">{t("mainTitle")}</h2>
           <p className="text-xl text-muted-gray max-w-3xl mx-auto leading-relaxed">{t("subtitle")}</p>
         </div>
