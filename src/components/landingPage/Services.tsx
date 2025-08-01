@@ -3,7 +3,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
 import { Code2, GraduationCap, Target, Smartphone, Globe, BookOpen, Users, Lightbulb, ArrowRight } from "lucide-react";
 import { Badge } from "../ui/badge";
-
+type Specialty = {
+  title: string;
+  description: string;
+  features: string[];
+};
 export function Services() {
   const t = useTranslations("services");
   const servicesLocales = t.raw("services") as Array<{
@@ -37,13 +41,15 @@ export function Services() {
     },
   ];
 
-  const specialties = specialtiesLocales.map((spec: any, index: number) => ({
-    icon: [
-      <Globe className="w-6 h-6 text-primary-blue" />,
-      <Smartphone className="w-6 h-6 text-success-green" />,
-      <BookOpen className="w-6 h-6 text-warning-orange" />,
-      <Users className="w-6 h-6 text-dark-navy" />,
-    ][index],
+  const icons = [
+    <Globe key="globe" className="w-6 h-6 text-primary-blue" />,
+    <Smartphone key="smartphone" className="w-6 h-6 text-success-green" />,
+    <BookOpen key="book" className="w-6 h-6 text-warning-orange" />,
+    <Users key="users" className="w-6 h-6 text-dark-navy" />,
+  ];
+
+  const specialties = specialtiesLocales.map((spec: Specialty, index: number) => ({
+    icon: icons[index],
     ...spec,
   }));
 
@@ -74,7 +80,7 @@ export function Services() {
         <div className="grid md:grid-cols-3 gap-8 mb-20">
           {services.map((service, index) => (
             <Card
-              key={index}
+              key={index + service.title}
               className={`relative overflow-hidden bg-gradient-to-br ${service.color} border ${service.borderColor} hover:shadow-lg transition-all duration-300 hover:-translate-y-1`}
             >
               <CardHeader className="pb-4">
@@ -88,7 +94,7 @@ export function Services() {
                 <p className="text-muted-gray leading-relaxed">{service.description}</p>
                 <ul className="space-y-2">
                   {service.features.map((feature: string, featureIndex: number) => (
-                    <li key={featureIndex} className="flex items-center text-sm text-dark-navy">
+                    <li key={featureIndex + feature} className="flex items-center text-sm text-dark-navy">
                       <div className="w-1.5 h-1.5 bg-primary-blue rounded-full mr-3 flex-shrink-0" />
                       {feature}
                     </li>
@@ -115,7 +121,10 @@ export function Services() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {specialties.map((spec, index) => (
-              <div key={index + spec} className="bg-white rounded-xl p-6 text-center hover:shadow-md transition-shadow">
+              <div
+                key={spec.title + index}
+                className="bg-white rounded-xl p-6 text-center hover:shadow-md transition-shadow"
+              >
                 <div className="inline-flex items-center justify-center w-12 h-12 bg-input-bg rounded-lg mb-4">
                   {spec.icon}
                 </div>

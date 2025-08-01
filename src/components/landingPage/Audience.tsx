@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
-import { Lightbulb, Code, BookOpen, Building, Globe, ArrowRight, Users, Target, Zap } from "lucide-react";
+import { Lightbulb, Code, BookOpen, Building, Globe, ArrowRight, Users } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Badge } from "../ui/badge";
 

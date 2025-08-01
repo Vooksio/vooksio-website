@@ -1,7 +1,6 @@
 import { useTranslations } from "next-intl";
 import { Button } from "../ui/button";
 import { Mail, Github, Twitter, Linkedin, ArrowRight, Code2, BookOpen, Users } from "lucide-react";
-import vooksioLogo from "figma:asset/b98ebef96426aacd7fba9feff2f4b3c2974d29f7.png";
 import Image from "next/image";
 
 export function Footer() {

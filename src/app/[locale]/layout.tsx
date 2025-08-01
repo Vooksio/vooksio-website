@@ -90,7 +90,7 @@ export default async function RootLayout({
       <body dir={direction}>
         <NextIntlClientProvider>
           <div className="min-h-screen bg-gradient-to-br from-input-bg via-white to-input-bg">
-            <Header params={params} />
+            <Header />
             <main>{children}</main>
             <Footer />
           </div>

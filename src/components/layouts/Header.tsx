@@ -7,7 +7,7 @@ import Image from "next/image";
 import LocaleSwitcher from "./LocaleSwitcher";
 import { Button } from "../ui/button";
 
-export function Header({ params }: { params: Promise<{ locale: string }> }) {
+export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const t = useTranslations("header");

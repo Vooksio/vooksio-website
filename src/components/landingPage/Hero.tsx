@@ -39,10 +39,10 @@ export function Hero() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="btn-vooksio-primary px-8 py-4 text-lg vooksio-hover-shadow"  >
+              <Button size="lg" className="btn-vooksio-primary px-8 py-4 text-lg vooksio-hover-shadow">
                 {t("ctaPrimary")} <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button size="lg" className="btn-vooksio-secondary px-8 py-4 text-lg vooksio-hover-shadow" >
+              <Button size="lg" className="btn-vooksio-secondary px-8 py-4 text-lg vooksio-hover-shadow">
                 <Play className="mr-2 h-5 w-5" /> {t("ctaSecondary")}
               </Button>
             </div>
@@ -69,7 +69,7 @@ export function Hero() {
           {/* Right Column */}
           <div className="relative">
             <div className="relative z-10 vooksio-card rounded-2xl vooksio-shadow p-8">
-              <div className="bg-dark-navy rounded-lg p-4 font-mono text-sm">
+              <div className="bg-dark-navy rounded-lg p-4 font-mono text-sm" dir="ltr">
                 <div className="flex items-center mb-3">
                   <div className="flex space-x-2">
                     <div className="w-3 h-3 rounded-full" style={{ backgroundColor: "var(--vooksio-pink)" }}></div>
@@ -92,7 +92,7 @@ export function Hero() {
                 </div>
                 <div className="text-muted-gray ml-8">
                   <span style={{ color: "var(--vooksio-lime)" }}>speed</span>=
-                  <span style={{ color: "var(--vooksio-yellow)" }}>"lightning"</span>
+                  <span style={{ color: "var(--vooksio-yellow)" }}>&quot;lightning&quot;</span>
                 </div>
                 <div className="text-muted-gray ml-4">
                   <span style={{ color: "var(--vooksio-purple)" }}>/&gt;</span>
