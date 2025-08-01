@@ -4,6 +4,7 @@ import { setRequestLocale } from "next-intl/server";
 import { Hero } from "@/components/landingPage/Hero";
 import { Services } from "@/components/landingPage/Services";
 import { Values } from "@/components/landingPage/Values";
+import { Audience } from "@/components/landingPage/Audience";
 
 export default function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = use(params);
@@ -16,6 +17,7 @@ export default function HomePage({ params }: { params: Promise<{ locale: string 
       <Hero />
       <Services />
       <Values />
+      <Audience />
     </>
   );
 }

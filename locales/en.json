@@ -148,5 +148,92 @@
         "description": "Action-oriented with strategic thinking"
       }
     ]
+  },
+  "audience": {
+    "sectionHeader": {
+      "badge": "Who We Help",
+      "title": "Built for Every Stage",
+      "description": "Whether you're starting your journey or scaling your business, we have the expertise to help you succeed."
+    },
+    "stats": [
+      {
+        "number": "500+",
+        "label": "Developers Helped",
+        "description": "From junior to senior level"
+      },
+      {
+        "number": "50+",
+        "label": "Products Launched",
+        "description": "From MVP to production"
+      },
+      {
+        "number": "98%",
+        "label": "Success Rate",
+        "description": "Projects delivered on time"
+      }
+    ],
+    "audiences": [
+      {
+        "title": "Creators & Founders",
+        "description": "Turn your vision into reality with expert technical partnership",
+        "needs": [
+          "MVP development and validation",
+          "Technical co-founder support",
+          "Product strategy and roadmapping",
+          "Execution partnership"
+        ],
+        "ctaText": "Build Your MVP"
+      },
+      {
+        "title": "Junior Developers",
+        "description": "Accelerate your career with real-world project experience",
+        "needs": [
+          "Hands-on project experience",
+          "Code review and mentorship",
+          "Industry best practices",
+          "Portfolio development"
+        ],
+        "ctaText": "Get Mentored"
+      },
+      {
+        "title": "Tech Learners",
+        "description": "Master app development through structured, hands-on learning",
+        "needs": [
+          "Structured learning paths",
+          "Project-based curriculum",
+          "Live coding sessions",
+          "Community support"
+        ],
+        "ctaText": "Start Learning"
+      },
+      {
+        "title": "Startups & Small Teams",
+        "description": "Scale your product with expert engineering and consulting",
+        "needs": [
+          "Technical architecture review",
+          "Team building and hiring",
+          "Product scaling strategies",
+          "Development partnerships"
+        ],
+        "ctaText": "Scale Up"
+      },
+      {
+        "title": "Outsourcing Companies",
+        "description": "Partner with us for premium development and educational services",
+        "needs": [
+          "White-label development",
+          "Technical consulting",
+          "Training programs",
+          "Quality partnerships"
+        ],
+        "ctaText": "Partner With Us"
+      }
+    ],
+    "cta": {
+      "title": "Ready to Start Building?",
+      "description": "No matter where you are in your journey, we're here to help you build something amazing. Let's turn your ideas into reality.",
+      "primary": "Get Started Today",
+      "secondary": "Schedule a Call"
+    }
   }
 }
