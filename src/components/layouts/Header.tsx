@@ -48,7 +48,6 @@ export function Header({ params }: { params: Promise<{ locale: string }> }) {
           <div className="hidden md:flex items-center gap-4">
             {/* Language Switcher */}
             <LocaleSwitcher />
-
             <Button
               variant="outline"
               className="border-[#007BFF] text-[#007BFF] hover:bg-[#007BFF] hover:text-white"
@@ -63,7 +62,6 @@ export function Header({ params }: { params: Promise<{ locale: string }> }) {
           <div className="md:hidden flex items-center gap-2">
             {/* Mobile Language Switcher */}
             <LocaleSwitcher />
-
             <button className="p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? <X className="h-6 w-6 text-dark-navy" /> : <Menu className="h-6 w-6 text-dark-navy" />}
             </button>
