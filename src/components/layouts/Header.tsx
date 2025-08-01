@@ -13,7 +13,7 @@ export function Header() {
   const t = useTranslations("header");
 
   return (
-    <header className="sticky top-0 z-50 bg-gradient-to-r from-white/95 via-input-bg/95 to-white/95 backdrop-blur-sm border-b border-[#007BFF]/10">
+    <header className="sticky top-0 z-50 bg-gradient-to-r from-white/95 via-input-bg/95 to-white/95 backdrop-blur-sm border-b border-primary-blue/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
@@ -30,16 +30,16 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            <a href="#services" className="text-dark-navy hover:text-[#007BFF] transition-colors">
+            <a href="#services" className="text-dark-navy hover:text-primary-blue transition-colors">
               {t("services")}
             </a>
-            <a href="#about" className="text-dark-navy hover:text-[#007BFF] transition-colors">
+            <a href="#about" className="text-dark-navy hover:text-primary-blue transition-colors">
               {t("about")}
             </a>
-            <a href="#audience" className="text-dark-navy hover:text-[#007BFF] transition-colors">
+            <a href="#audience" className="text-dark-navy hover:text-primary-blue transition-colors">
               {t("whoWeHelp")}
             </a>
-            <a href="#contact" className="text-dark-navy hover:text-[#007BFF] transition-colors">
+            <a href="#contact" className="text-dark-navy hover:text-primary-blue transition-colors">
               {t("contact")}
             </a>
           </nav>
@@ -50,7 +50,7 @@ export function Header() {
             <LocaleSwitcher />
             <Button
               variant="outline"
-              className="border-[#007BFF] text-[#007BFF] hover:bg-[#007BFF] hover:text-white"
+              className="border-primary-blue text-primary-blue hover:bg-primary-blue hover:text-white"
               outlineColor="primary"
               rounded="full"
             >
@@ -74,28 +74,28 @@ export function Header() {
             <div className="px-2 pt-2 pb-3 space-y-1">
               <a
                 href="#services"
-                className="block px-3 py-2 text-dark-navy hover:text-[#007BFF] transition-colors"
+                className="block px-3 py-2 text-dark-navy hover:text-primary-blue transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t("services")}
               </a>
               <a
                 href="#about"
-                className="block px-3 py-2 text-dark-navy hover:text-[#007BFF] transition-colors"
+                className="block px-3 py-2 text-dark-navy hover:text-primary-blue transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t("about")}
               </a>
               <a
                 href="#audience"
-                className="block px-3 py-2 text-dark-navy hover:text-[#007BFF] transition-colors"
+                className="block px-3 py-2 text-dark-navy hover:text-primary-blue transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t("whoWeHelp")}
               </a>
               <a
                 href="#contact"
-                className="block px-3 py-2 text-dark-navy hover:text-[#007BFF] transition-colors"
+                className="block px-3 py-2 text-dark-navy hover:text-primary-blue transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t("contact")}
@@ -103,7 +103,7 @@ export function Header() {
               <div className="px-3 py-4 space-y-2">
                 <Button
                   variant="outline"
-                  className="w-full border-[#007BFF] text-[#007BFF] hover:bg-[#007BFF] hover:text-white"
+                  className="w-full border-primary-blue text-primary-blue hover:bg-primary-blue hover:text-white"
                   outlineColor="primary"
                   rounded="full"
                 >
