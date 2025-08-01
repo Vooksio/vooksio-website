@@ -6,6 +6,7 @@ import { routing } from "@/i18n/routing";
 import { Header } from "@/components/layouts/Header";
 import { Hero } from "@/components/landingPage/Hero";
 import "../globals.css";
+import { Footer } from "@/components/layouts/Footer";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const cairo = Cairo({ subsets: ["arabic"], variable: "--font-cairo" });
@@ -33,6 +34,7 @@ export default async function RootLayout({
           <div className="min-h-screen bg-gradient-to-br from-[#F5F7FA] via-white to-[#F5F7FA]">
             <Header params={params} />
             <main>{children}</main>
+            <Footer />
           </div>
         </NextIntlClientProvider>
       </body>

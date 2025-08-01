@@ -205,5 +205,62 @@
       "primary": "ابدأ اليوم",
       "secondary": "حدد مكالمة"
     }
+  },
+  "footer": {
+    "description": "استوديو حديث يقوده المؤسسون يمزج بين هندسة البرمجيات والتعليم التقني واستشارات المنتجات لمساعدة تحويل الأفكار إلى تطبيقات حقيقية.",
+    "features": {
+      "buildFirst": {
+        "title": "منهج البناء أولاً",
+        "description": "منتجات حقيقية بدلاً من النظرية"
+      },
+      "learnByDoing": {
+        "title": "التعلم بالممارسة",
+        "description": "تعليم عملي"
+      },
+      "expertMentorship": {
+        "title": "إرشاد الخبراء",
+        "description": "توجيه في كل خطوة"
+      }
+    },
+    "newsletter": {
+      "title": "ابق على اطلاع",
+      "description": "احصل على رؤى حول تطوير التطبيقات وموارد التعلم واتجاهات الصناعة.",
+      "placeholder": "أدخل بريدك الإلكتروني"
+    },
+    "links": {
+      "services": {
+        "title": "الخدمات",
+        "softwareEngineering": "هندسة البرمجيات",
+        "technicalEducation": "التعليم التقني",
+        "productConsulting": "استشارات المنتجات",
+        "mvpDevelopment": "تطوير النموذج الأولي"
+      },
+      "company": {
+        "title": "الشركة",
+        "aboutUs": "معلومات عنا",
+        "ourValues": "قيمنا",
+        "caseStudies": "دراسات الحالة",
+        "blog": "المدونة"
+      },
+      "resources": {
+        "title": "الموارد",
+        "learningPaths": "مسارات التعلم",
+        "codeExamples": "أمثلة الكود",
+        "documentation": "الوثائق",
+        "community": "المجتمع"
+      }
+    },
+    "contact": {
+      "title": "مستعد لبناء شيء مذهل؟",
+      "description": "دعنا نناقش مشروعك أو أهداف التعلم أو كيف يمكننا مساعدتك في التوسع. نحن هنا لتحويل أفكارك إلى واقع.",
+      "button": "تواصل معنا"
+    },
+    "copyright": "جميع الحقوق محفوظة. مبني بهدف، مُرسل بعناية.",
+    "ariaLabels": {
+      "github": "جيت هاب",
+      "twitter": "تويتر",
+      "linkedin": "لينكد إن",
+      "email": "البريد الإلكتروني"
+    }
   }
 }

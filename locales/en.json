@@ -198,12 +198,7 @@
       {
         "title": "Tech Learners",
         "description": "Master app development through structured, hands-on learning",
-        "needs": [
-          "Structured learning paths",
-          "Project-based curriculum",
-          "Live coding sessions",
-          "Community support"
-        ],
+        "needs": ["Structured learning paths", "Project-based curriculum", "Live coding sessions", "Community support"],
         "ctaText": "Start Learning"
       },
       {
@@ -220,12 +215,7 @@
       {
         "title": "Outsourcing Companies",
         "description": "Partner with us for premium development and educational services",
-        "needs": [
-          "White-label development",
-          "Technical consulting",
-          "Training programs",
-          "Quality partnerships"
-        ],
+        "needs": ["White-label development", "Technical consulting", "Training programs", "Quality partnerships"],
         "ctaText": "Partner With Us"
       }
     ],
@@ -234,6 +224,63 @@
       "description": "No matter where you are in your journey, we're here to help you build something amazing. Let's turn your ideas into reality.",
       "primary": "Get Started Today",
       "secondary": "Schedule a Call"
+    }
+  },
+  "footer": {
+    "description": "A modern, founder-led studio blending software engineering, technical education, and product consulting to help turn ideas into real apps.",
+    "features": {
+      "buildFirst": {
+        "title": "Build-First Approach",
+        "description": "Real products over theory"
+      },
+      "learnByDoing": {
+        "title": "Learn by Doing",
+        "description": "Hands-on education"
+      },
+      "expertMentorship": {
+        "title": "Expert Mentorship",
+        "description": "Guidance at every step"
+      }
+    },
+    "newsletter": {
+      "title": "Stay Updated",
+      "description": "Get insights on app development, learning resources, and industry trends.",
+      "placeholder": "Enter your email"
+    },
+    "links": {
+      "services": {
+        "title": "Services",
+        "softwareEngineering": "Software Engineering",
+        "technicalEducation": "Technical Education",
+        "productConsulting": "Product Consulting",
+        "mvpDevelopment": "MVP Development"
+      },
+      "company": {
+        "title": "Company",
+        "aboutUs": "About Us",
+        "ourValues": "Our Values",
+        "caseStudies": "Case Studies",
+        "blog": "Blog"
+      },
+      "resources": {
+        "title": "Resources",
+        "learningPaths": "Learning Paths",
+        "codeExamples": "Code Examples",
+        "documentation": "Documentation",
+        "community": "Community"
+      }
+    },
+    "contact": {
+      "title": "Ready to Build Something Amazing?",
+      "description": "Let's discuss your project, learning goals, or how we can help you scale. We're here to turn your ideas into reality.",
+      "button": "Get in Touch"
+    },
+    "copyright": "All rights reserved. Built with purpose, shipped with care.",
+    "ariaLabels": {
+      "github": "GitHub",
+      "twitter": "Twitter",
+      "linkedin": "LinkedIn",
+      "email": "Email"
     }
   }
 }
