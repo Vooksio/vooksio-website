@@ -1,0 +1,152 @@
+{
+  "home": {
+    "title": "Welcome to our website",
+    "welcomeMessage": "We're glad to have you here.",
+    "aboutLink": "About Us",
+    "contactLink": "Contact Us",
+    "homeLink": "Home",
+    "signInLink": "Sign In"
+  },
+  "header": {
+    "services": "Services",
+    "about": "About",
+    "whoWeHelp": "Who We Help",
+    "contact": "Contact",
+    "getStarted": "Get Started"
+  },
+  "hero": {
+    "badge": "Empowering Developers",
+    "headline": "Build Future-Ready",
+    "headlineAccent": "Web Experiences",
+    "description": "Vooksio helps developers create powerful, scalable web applications with ease.",
+    "point1": "Modern tools",
+    "point2": "Community support",
+    "point3": "Fast deployment",
+    "ctaPrimary": "Get Started",
+    "ctaSecondary": "Watch Demo",
+    "socialProof": "Trusted by developers worldwide",
+    "appsBuilt": "Apps Built",
+    "devsMentored": "Devs Mentored",
+    "successRate": "Success Rate",
+    "buildStatus": "Build Status",
+    "deployment": "Deployment",
+    "label1": "Build Status",
+    "value1": "✓ Success",
+    "label2": "Deployment",
+    "value2": "⚡ Live"
+  },
+  "services": {
+    "sectionTitle": "Our Services",
+    "mainTitle": "From Idea to Production",
+    "subtitle": "We offer a complete ecosystem of services designed to help you build, learn, and scale with confidence.",
+    "services": [
+      {
+        "title": "Software Engineering",
+        "description": "Full-stack web and mobile app development with modern technologies and best practices.",
+        "features": [
+          "React & React Native Development",
+          "Node.js & Python Backend",
+          "Cloud Architecture & DevOps",
+          "API Design & Integration"
+        ]
+      },
+      {
+        "title": "Technical Education",
+        "description": "Hands-on learning experiences that teach real-world development skills through building.",
+        "features": [
+          "Structured Learning Paths",
+          "Live Coding Sessions",
+          "Project-Based Curriculum",
+          "1-on-1 Mentorship"
+        ]
+      },
+      {
+        "title": "Product Consulting",
+        "description": "Strategic guidance to help you validate ideas, plan features, and execute with confidence.",
+        "features": [
+          "MVP Strategy & Planning",
+          "Technical Architecture Review",
+          "Go-to-Market Planning",
+          "Team Building & Hiring"
+        ]
+      }
+    ],
+    "specialtiesTitle": "What We Build",
+    "specialtiesDescription": "Our expertise spans across various types of applications and platforms",
+    "specialties": [
+      {
+        "title": "Web Applications",
+        "description": "Responsive, fast, and scalable web apps"
+      },
+      {
+        "title": "Mobile Apps",
+        "description": "Native and cross-platform mobile solutions"
+      },
+      {
+        "title": "Learning Platforms",
+        "description": "Educational tools and interactive learning experiences"
+      },
+      {
+        "title": "Team Collaboration",
+        "description": "Tools that bring teams together and boost productivity"
+      }
+    ],
+    "learnMore": "Learn More",
+    "startProject": "Start Your Project"
+  },
+  "values": {
+    "sectionTitle": "Our Values",
+    "mainTitle": "What Drives Us",
+    "subtitle": "Our values shape how we work, learn, and build together. They guide every decision and project we take on.",
+    "items": [
+      {
+        "title": "Build with Purpose",
+        "description": "We focus on real-world outcomes that matter to your users and business goals."
+      },
+      {
+        "title": "Teach by Doing",
+        "description": "Learning happens best through hands-on building and real project experience."
+      },
+      {
+        "title": "Communicate Clearly",
+        "description": "Transparency and clarity in everything we do, from code to client relationships."
+      },
+      {
+        "title": "Collaborate with Empathy",
+        "description": "Respectful, inclusive teamwork that values diverse perspectives and experiences."
+      },
+      {
+        "title": "Ship Smart & Lean",
+        "description": "Fast, focused execution with continuous improvement and iterative development."
+      }
+    ],
+    "principles": [
+      "Real products over theoretical concepts",
+      "Code fluency combined with clear communication",
+      "Fast iteration with strategic thinking",
+      "Collaborative growth and shared success",
+      "Practical learning through building"
+    ],
+    "approachTitle": "Our Approach",
+    "approachP1": "Vooksio is a modern, founder-led studio that blends software engineering, technical education, and product consulting. We believe in a build-first mindset where real products matter more than theory.",
+    "approachP2": "We're fluent in both code and communication, helping startups and learners turn ideas into functional web and mobile applications with speed, clarity, and purpose.",
+    "traits": [
+      {
+        "title": "Professional",
+        "description": "Confident, reliable, and results-driven"
+      },
+      {
+        "title": "Collaborative",
+        "description": "Team-focused with empathetic communication"
+      },
+      {
+        "title": "Approachable",
+        "description": "Human, clear, and jargon-free"
+      },
+      {
+        "title": "Build-First",
+        "description": "Action-oriented with strategic thinking"
+      }
+    ]
+  }
+}
