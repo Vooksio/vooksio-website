@@ -6,11 +6,11 @@ import { Badge } from "../ui/badge";
 
 export function Audience() {
   const t = useTranslations("audience");
-  const statsLocales = t.raw("stats") as Array<{
-    number: string;
-    label: string;
-    description: string;
-  }>;
+//   const statsLocales = t.raw("stats") as Array<{
+//     number: string;
+//     label: string;
+//     description: string;
+//   }>;
 
   const audiencesLocales = t.raw("audiences") as Array<{
     title: string;
@@ -18,20 +18,20 @@ export function Audience() {
     needs: string[];
     ctaText: string;
   }>;
-  const stats = [
-    {
-      icon: <Users className="w-6 h-6 text-primary-blue" />,
-      ...statsLocales[0],
-    },
-    {
-      icon: <Target className="w-6 h-6 text-success-green" />,
-      ...statsLocales[1],
-    },
-    {
-      icon: <Zap className="w-6 h-6 text-warning-orange" />,
-      ...statsLocales[2],
-    },
-  ];
+//   const stats = [
+//     {
+//       icon: <Users className="w-6 h-6 text-primary-blue" />,
+//       ...statsLocales[0],
+//     },
+//     {
+//       icon: <Target className="w-6 h-6 text-success-green" />,
+//       ...statsLocales[1],
+//     },
+//     {
+//       icon: <Zap className="w-6 h-6 text-warning-orange" />,
+//       ...statsLocales[2],
+//     },
+//   ];
 
   const audiences = [
     {
@@ -88,7 +88,7 @@ export function Audience() {
         </div>
 
         {/* Stats Section */}
-        <div className="grid sm:grid-cols-3 gap-8 mb-20">
+        {/* <div className="grid sm:grid-cols-3 gap-8 mb-20">
           {stats.map((stat, index) => (
             <div key={index} className="text-center">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-input-bg rounded-xl mb-4">
@@ -99,7 +99,7 @@ export function Audience() {
               <div className="text-sm text-muted-gray">{stat.description}</div>
             </div>
           ))}
-        </div>
+        </div> */}
 
         {/* Audience Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
