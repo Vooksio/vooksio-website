@@ -45,7 +45,7 @@ export function Header({ params }: { params: Promise<{ locale: string }> }) {
           </nav>
 
           {/* Desktop CTA & Language Switcher */}
-          <div className="hidden md:flex items-center space-x-4 rtl:space-x-reverse">
+          <div className="hidden md:flex items-center gap-4">
             {/* Language Switcher */}
             <LocaleSwitcher />
 
@@ -60,7 +60,7 @@ export function Header({ params }: { params: Promise<{ locale: string }> }) {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-2 rtl:space-x-reverse">
+          <div className="md:hidden flex items-center gap-2">
             {/* Mobile Language Switcher */}
             <LocaleSwitcher />
 
