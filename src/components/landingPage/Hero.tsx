@@ -1,9 +1,10 @@
+import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { ArrowRight, Play, Code, Users, Zap } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 export function Hero() {
   const t = useTranslations("hero");
-
+  const locale = useLocale();
   return (
     <section className="relative overflow-hidden vooksio-animated-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
@@ -40,10 +41,10 @@ export function Hero() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="btn-vooksio-primary px-8 py-4 text-lg vooksio-hover-shadow">
-                <ArrowRight className="ml-2 h-5 w-5" /> {t("ctaPrimary")}
+                {t("ctaPrimary")} <ArrowRight className={cn("h-5 w-5", locale === "ar" ? "rotate-180" : "")} />
               </Button>
               <Button size="lg" className="btn-vooksio-secondary px-8 py-4 text-lg vooksio-hover-shadow">
-                <Play className="mr-2 h-5 w-5" /> {t("ctaSecondary")}
+                {t("ctaSecondary")} <Play className={cn("h-5 w-5", locale === "ar" ? "rotate-180" : "")} />
               </Button>
             </div>
 
@@ -69,7 +70,7 @@ export function Hero() {
           {/* Right Column */}
           <div className="relative">
             <div className="relative z-10 vooksio-card rounded-2xl vooksio-shadow p-8">
-              <div className="bg-dark-navy rounded-lg p-4 font-mono text-sm text-left" dir="ltr">
+              <div className="bg-dark-navy rounded-lg p-4 font-mono text-sm !text-left" dir="ltr">
                 <div className="flex items-center mb-3">
                   <div className="flex space-x-2">
                     <div className="w-3 h-3 rounded-full" style={{ backgroundColor: "var(--vooksio-pink)" }}></div>

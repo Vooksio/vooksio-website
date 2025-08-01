@@ -1,7 +1,9 @@
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Button } from "../ui/button";
 import { Mail, Github, Twitter, Linkedin, ArrowRight, Code2, BookOpen, Users } from "lucide-react";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
+import { Input } from "../ui/input";
 
 export function Footer() {
   const t = useTranslations("footer");
@@ -44,7 +46,7 @@ export function Footer() {
       description: t("features.expertMentorship.description"),
     },
   ];
-
+  const locale = useLocale();
   return (
     <footer id="contact" className="relative overflow-hidden">
       {/* Light Background with Subtle Brand Color Accents */}
@@ -110,14 +112,14 @@ export function Footer() {
                 <div className="vooksio-card rounded-lg p-6 backdrop-blur-sm border border-[#E5E7EB] bg-white/80">
                   <h3 className="font-semibold text-dark-navy mb-2">{t("newsletter.title")}</h3>
                   <p className="text-muted-gray text-sm mb-4">{t("newsletter.description")}</p>
-                  <div className="flex gap-2">
-                    <input
+                  <div className="flex items-center gap-2">
+                    <Input
                       type="email"
                       placeholder={t("newsletter.placeholder")}
                       className="flex-1 px-4 py-2 bg-input-bg border border-[#E5E7EB] rounded-lg text-dark-navy placeholder-muted-gray focus:outline-none focus:border-[var(--vooksio-cyan)] focus:ring-2 focus:ring-[var(--vooksio-cyan)]/20 transition-all"
                     />
-                    <Button size="sm" className="btn-vooksio-primary px-4">
-                      <ArrowRight className="h-4 w-4" />
+                    <Button size="icon" className="size-9 btn-vooksio-primary">
+                      <ArrowRight className={cn("h-4 w-4", locale === "ar" ? "rotate-180" : "")} />
                     </Button>
                   </div>
                 </div>

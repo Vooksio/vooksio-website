@@ -1,8 +1,9 @@
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
 import { Code2, GraduationCap, Target, Smartphone, Globe, BookOpen, Users, Lightbulb, ArrowRight } from "lucide-react";
 import { Badge } from "../ui/badge";
+import { cn } from "@/lib/utils";
 type Specialty = {
   title: string;
   description: string;
@@ -52,6 +53,7 @@ export function Services() {
     icon: icons[index],
     ...spec,
   }));
+  const locale = useLocale();
 
   return (
     <section id="services" className="py-20 vooksio-animated-bg relative overflow-hidden">
@@ -137,7 +139,7 @@ export function Services() {
           <div className="text-center mt-12">
             <Button size="lg" variant="primary">
               {t("startProject")}
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className={cn("h-5 w-5", locale === "ar" ? "mr-2 rotate-180" : "ml-2")} />
             </Button>
           </div>
         </div>
