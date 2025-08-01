@@ -19,48 +19,48 @@ export function Audience() {
   }>;
   const stats = [
     {
-      icon: <Users className="w-6 h-6 text-[#007BFF]" />,
+      icon: <Users className="w-6 h-6 text-primary-blue" />,
       ...statsLocales[0],
     },
     {
-      icon: <Target className="w-6 h-6 text-[#32D6A0]" />,
+      icon: <Target className="w-6 h-6 text-success-green" />,
       ...statsLocales[1],
     },
     {
-      icon: <Zap className="w-6 h-6 text-[#FF715B]" />,
+      icon: <Zap className="w-6 h-6 text-warning-orange" />,
       ...statsLocales[2],
     },
   ];
 
   const audiences = [
     {
-      icon: <Lightbulb className="w-8 h-8 text-[#FF715B]" />,
-      color: "from-[#FF715B]/10 to-[#FF715B]/5",
-      borderColor: "border-[#FF715B]/20",
+      icon: <Lightbulb className="w-8 h-8 text-warning-orange" />,
+      color: "from-warning-orange/10 to-warning-orange/5",
+      borderColor: "border-warning-orange/20",
       ...audiencesLocales[0],
     },
     {
-      icon: <Code className="w-8 h-8 text-[#007BFF]" />,
-      color: "from-[#007BFF]/10 to-[#007BFF]/5",
-      borderColor: "border-[#007BFF]/20",
+      icon: <Code className="w-8 h-8 text-primary-blue" />,
+      color: "from-primary-blue/10 to-primary-blue/5",
+      borderColor: "border-primary-blue/20",
       ...audiencesLocales[1],
     },
     {
-      icon: <BookOpen className="w-8 h-8 text-[#32D6A0]" />,
-      color: "from-[#32D6A0]/10 to-[#32D6A0]/5",
-      borderColor: "border-[#32D6A0]/20",
+      icon: <BookOpen className="w-8 h-8 text-success-green" />,
+      color: "from-success-green/10 to-success-green/5",
+      borderColor: "border-success-green/20",
       ...audiencesLocales[2],
     },
     {
-      icon: <Building className="w-8 h-8 text-[#1E2A38]" />,
-      color: "from-[#1E2A38]/10 to-[#1E2A38]/5",
-      borderColor: "border-[#1E2A38]/20",
+      icon: <Building className="w-8 h-8 text-dark-navy" />,
+      color: "from-dark-navy/10 to-dark-navy/5",
+      borderColor: "border-dark-navy/20",
       ...audiencesLocales[3],
     },
     {
-      icon: <Globe className="w-8 h-8 text-[#007BFF]" />,
-      color: "from-[#007BFF]/10 to-[#007BFF]/5",
-      borderColor: "border-[#007BFF]/20",
+      icon: <Globe className="w-8 h-8 text-primary-blue" />,
+      color: "from-primary-blue/10 to-primary-blue/5",
+      borderColor: "border-primary-blue/20",
       ...audiencesLocales[4],
     },
   ];
@@ -68,34 +68,34 @@ export function Audience() {
   return (
     <section
       id="audience"
-      className="py-20 bg-gradient-to-br from-white via-[#F5F7FA]/30 to-white relative overflow-hidden"
+      className="py-20 bg-gradient-to-br from-white via-input-bg/30 to-white relative overflow-hidden"
     >
       {/* Background Elements */}
-      <div className="absolute inset-0 opacity-10 bg-[rgba(53,10,10,0)]">
-        <div className="absolute top-10 right-10 w-40 h-40 bg-gradient-to-br from-[#32D6A0] to-[#007BFF] rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 left-10 w-32 h-32 bg-gradient-to-br from-[#FF715B] to-[#32D6A0] rounded-full blur-3xl"></div>
+      <div className="absolute inset-0 opacity-10 bg-invisible-red">
+        <div className="absolute top-10 right-10 w-40 h-40 bg-gradient-to-br from-success-green to-primary-blue rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 left-10 w-32 h-32 bg-gradient-to-br from-warning-orange to-success-green rounded-full blur-3xl"></div>
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-[#FF715B]/10 rounded-full border border-[#FF715B]/20 mb-6">
-            <Users className="w-4 h-4 text-[#FF715B] mr-2" />
-            <span className="text-[#1E2A38] text-sm font-medium">{t("sectionHeader.badge")}</span>
+          <div className="inline-flex items-center px-4 py-2 bg-warning-orange/10 rounded-full border border-warning-orange/20 mb-6">
+            <Users className="w-4 h-4 text-warning-orange mr-2" />
+            <span className="text-dark-navy text-sm font-medium">{t("sectionHeader.badge")}</span>
           </div>
-          <h2 className="text-3xl lg:text-5xl font-bold text-[#1E2A38] mb-6">{t("sectionHeader.title")}</h2>
-          <p className="text-xl text-[#6B7280] max-w-3xl mx-auto leading-relaxed">{t("sectionHeader.description")}</p>
+          <h2 className="text-3xl lg:text-5xl font-bold text-dark-navy mb-6">{t("sectionHeader.title")}</h2>
+          <p className="text-xl text-muted-gray max-w-3xl mx-auto leading-relaxed">{t("sectionHeader.description")}</p>
         </div>
 
         {/* Stats Section */}
         <div className="grid sm:grid-cols-3 gap-8 mb-20">
           {stats.map((stat, index) => (
             <div key={index} className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-[#F5F7FA] rounded-xl mb-4">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-input-bg rounded-xl mb-4">
                 {stat.icon}
               </div>
-              <div className="text-3xl font-bold text-[#1E2A38] mb-2">{stat.number}</div>
-              <div className="font-semibold text-[#1E2A38] mb-1">{stat.label}</div>
-              <div className="text-sm text-[#6B7280]">{stat.description}</div>
+              <div className="text-3xl font-bold text-dark-navy mb-2">{stat.number}</div>
+              <div className="font-semibold text-dark-navy mb-1">{stat.label}</div>
+              <div className="text-sm text-muted-gray">{stat.description}</div>
             </div>
           ))}
         </div>
@@ -110,17 +110,17 @@ export function Audience() {
               <CardHeader className="pb-4">
                 <div className="flex items-center justify-between mb-4">
                   {audience.icon}
-                  <ArrowRight className="w-5 h-5 text-[#6B7280] opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <ArrowRight className="w-5 h-5 text-muted-gray opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
-                <CardTitle className="text-xl text-[#1E2A38]">{audience.title}</CardTitle>
+                <CardTitle className="text-xl text-dark-navy">{audience.title}</CardTitle>
               </CardHeader>
               <CardContent className="flex flex-col justify-between flex-1">
                 <div className="space-y-4 mb-6">
-                  <p className="text-[#6B7280] leading-relaxed">{audience.description}</p>
+                  <p className="text-muted-gray leading-relaxed">{audience.description}</p>
                   <ul className="space-y-2">
                     {audience.needs.map((need, needIndex) => (
-                      <li key={needIndex} className="flex items-center text-sm text-[#1E2A38]">
-                        <div className="w-1.5 h-1.5 bg-[#007BFF] rounded-full mr-3 flex-shrink-0"></div>
+                      <li key={needIndex} className="flex items-center text-sm text-dark-navy">
+                        <div className="w-1.5 h-1.5 bg-primary-blue rounded-full mr-3 flex-shrink-0"></div>
                         {need}
                       </li>
                     ))}
@@ -129,7 +129,7 @@ export function Audience() {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="w-full border-[#1E2A38]/20 text-[#1E2A38] hover:bg-[#1E2A38] hover:text-white"
+                  className="w-full border-dark-navy/20 text-dark-navy hover:bg-dark-navy hover:text-white"
                 >
                   {audience.ctaText}
                 </Button>
@@ -139,11 +139,11 @@ export function Audience() {
         </div>
 
         {/* CTA Section */}
-        <div className="mt-20 bg-gradient-to-r from-[#1E2A38] to-[#007BFF] rounded-2xl p-8 lg:p-12 text-center">
+        <div className="mt-20 bg-gradient-to-r from-dark-navy to-primary-blue rounded-2xl p-8 lg:p-12 text-center">
           <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4">{t("cta.title")}</h3>
-          <p className="text-[#F5F7FA] text-lg mb-8 max-w-2xl mx-auto">{t("cta.description")}</p>
+          <p className="text-input-bg text-lg mb-8 max-w-2xl mx-auto">{t("cta.description")}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-[#1E2A38] hover:bg-[#F5F7FA] px-8 py-4">
+            <Button size="lg" className="bg-white text-dark-navy hover:bg-input-bg px-8 py-4">
               {t("cta.primary")}
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>

@@ -13,7 +13,7 @@ export function Header({ params }: { params: Promise<{ locale: string }> }) {
   const t = useTranslations("header");
 
   return (
-    <header className="sticky top-0 z-50 bg-gradient-to-r from-white/95 via-[#F5F7FA]/95 to-white/95 backdrop-blur-sm border-b border-[#007BFF]/10">
+    <header className="sticky top-0 z-50 bg-gradient-to-r from-white/95 via-input-bg/95 to-white/95 backdrop-blur-sm border-b border-[#007BFF]/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
@@ -30,16 +30,16 @@ export function Header({ params }: { params: Promise<{ locale: string }> }) {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
-            <a href="#services" className="text-[#1E2A38] hover:text-[#007BFF] transition-colors">
+            <a href="#services" className="text-dark-navy hover:text-[#007BFF] transition-colors">
               {t("services")}
             </a>
-            <a href="#about" className="text-[#1E2A38] hover:text-[#007BFF] transition-colors">
+            <a href="#about" className="text-dark-navy hover:text-[#007BFF] transition-colors">
               {t("about")}
             </a>
-            <a href="#audience" className="text-[#1E2A38] hover:text-[#007BFF] transition-colors">
+            <a href="#audience" className="text-dark-navy hover:text-[#007BFF] transition-colors">
               {t("whoWeHelp")}
             </a>
-            <a href="#contact" className="text-[#1E2A38] hover:text-[#007BFF] transition-colors">
+            <a href="#contact" className="text-dark-navy hover:text-[#007BFF] transition-colors">
               {t("contact")}
             </a>
           </nav>
@@ -49,7 +49,12 @@ export function Header({ params }: { params: Promise<{ locale: string }> }) {
             {/* Language Switcher */}
             <LocaleSwitcher />
 
-            <Button variant="outline" className="border-[#007BFF] text-[#007BFF] hover:bg-[#007BFF] hover:text-white">
+            <Button
+              variant="outline"
+              className="border-[#007BFF] text-[#007BFF] hover:bg-[#007BFF] hover:text-white"
+              outlineColor="primary"
+              rounded="full"
+            >
               {t("getStarted")}
             </Button>
           </div>
@@ -60,7 +65,7 @@ export function Header({ params }: { params: Promise<{ locale: string }> }) {
             <LocaleSwitcher />
 
             <button className="p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? <X className="h-6 w-6 text-[#1E2A38]" /> : <Menu className="h-6 w-6 text-[#1E2A38]" />}
+              {isMenuOpen ? <X className="h-6 w-6 text-dark-navy" /> : <Menu className="h-6 w-6 text-dark-navy" />}
             </button>
           </div>
         </div>
@@ -71,28 +76,28 @@ export function Header({ params }: { params: Promise<{ locale: string }> }) {
             <div className="px-2 pt-2 pb-3 space-y-1">
               <a
                 href="#services"
-                className="block px-3 py-2 text-[#1E2A38] hover:text-[#007BFF] transition-colors"
+                className="block px-3 py-2 text-dark-navy hover:text-[#007BFF] transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t("services")}
               </a>
               <a
                 href="#about"
-                className="block px-3 py-2 text-[#1E2A38] hover:text-[#007BFF] transition-colors"
+                className="block px-3 py-2 text-dark-navy hover:text-[#007BFF] transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t("about")}
               </a>
               <a
                 href="#audience"
-                className="block px-3 py-2 text-[#1E2A38] hover:text-[#007BFF] transition-colors"
+                className="block px-3 py-2 text-dark-navy hover:text-[#007BFF] transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t("whoWeHelp")}
               </a>
               <a
                 href="#contact"
-                className="block px-3 py-2 text-[#1E2A38] hover:text-[#007BFF] transition-colors"
+                className="block px-3 py-2 text-dark-navy hover:text-[#007BFF] transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t("contact")}
@@ -101,6 +106,8 @@ export function Header({ params }: { params: Promise<{ locale: string }> }) {
                 <Button
                   variant="outline"
                   className="w-full border-[#007BFF] text-[#007BFF] hover:bg-[#007BFF] hover:text-white"
+                  outlineColor="primary"
+                  rounded="full"
                 >
                   {t("getStarted")}
                 </Button>

@@ -18,29 +18,29 @@ export function Values() {
   const values = valuesLocales.map((item, index) => {
     const base = [
       {
-        icon: <Target className="w-8 h-8 text-[#007BFF]" />,
-        color: "from-[#007BFF]/10 to-[#007BFF]/5",
-        borderColor: "border-[#007BFF]/20",
+        icon: <Target className="w-8 h-8 text-primary-blue" />,
+        color: "from-primary-blue/10 to-primary-blue/5",
+        borderColor: "border-primary-blue/20",
       },
       {
-        icon: <BookOpen className="w-8 h-8 text-[#32D6A0]" />,
-        color: "from-[#32D6A0]/10 to-[#32D6A0]/5",
-        borderColor: "border-[#32D6A0]/20",
+        icon: <BookOpen className="w-8 h-8 text-success-green" />,
+        color: "from-success-green/10 to-success-green/5",
+        borderColor: "border-success-green/20",
       },
       {
-        icon: <MessageSquare className="w-8 h-8 text-[#FF715B]" />,
-        color: "from-[#FF715B]/10 to-[#FF715B]/5",
-        borderColor: "border-[#FF715B]/20",
+        icon: <MessageSquare className="w-8 h-8 text-warning-orange" />,
+        color: "from-warning-orange/10 to-warning-orange/5",
+        borderColor: "border-warning-orange/20",
       },
       {
-        icon: <Heart className="w-8 h-8 text-[#1E2A38]" />,
-        color: "from-[#1E2A38]/10 to-[#1E2A38]/5",
-        borderColor: "border-[#1E2A38]/20",
+        icon: <Heart className="w-8 h-8 text-dark-navy" />,
+        color: "from-dark-navy/10 to-dark-navy/5",
+        borderColor: "border-dark-navy/20",
       },
       {
-        icon: <Zap className="w-8 h-8 text-[#007BFF]" />,
-        color: "from-[#007BFF]/10 to-[#007BFF]/5",
-        borderColor: "border-[#007BFF]/20",
+        icon: <Zap className="w-8 h-8 text-primary-blue" />,
+        color: "from-primary-blue/10 to-primary-blue/5",
+        borderColor: "border-primary-blue/20",
       },
     ];
 
@@ -55,24 +55,24 @@ export function Values() {
   return (
     <section
       id="about"
-      className="py-20 bg-gradient-to-br from-[#F5F7FA] via-[#F5F7FA]/50 to-white relative overflow-hidden"
+      className="py-20 bg-gradient-to-br from-input-bg via-input-bg/50 to-white relative overflow-hidden"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-20 w-64 h-64 bg-[#007BFF] rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-48 h-48 bg-[#32D6A0] rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-[#FF715B] rounded-full blur-3xl"></div>
+        <div className="absolute top-20 left-20 w-64 h-64 bg-primary-blue rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-20 w-48 h-48 bg-success-green rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-warning-orange rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-[#32D6A0]/10 rounded-full border border-[#32D6A0]/20 mb-6">
-            <Heart className="w-4 h-4 text-[#32D6A0] mr-2" />
-            <span className="text-[#1E2A38] text-sm font-medium">{t("sectionTitle")}</span>
+          <div className="inline-flex items-center px-4 py-2 bg-success-green/10 rounded-full border border-success-green/20 mb-6">
+            <Heart className="w-4 h-4 text-success-green mr-2" />
+            <span className="text-dark-navy text-sm font-medium">{t("sectionTitle")}</span>
           </div>
-          <h2 className="text-3xl lg:text-5xl font-bold text-[#1E2A38] mb-6">{t("mainTitle")}</h2>
-          <p className="text-xl text-[#6B7280] max-w-3xl mx-auto leading-relaxed">{t("subtitle")}</p>
+          <h2 className="text-3xl lg:text-5xl font-bold text-dark-navy mb-6">{t("mainTitle")}</h2>
+          <p className="text-xl text-muted-gray max-w-3xl mx-auto leading-relaxed">{t("subtitle")}</p>
         </div>
 
         {/* Values Grid */}
@@ -84,8 +84,8 @@ export function Values() {
             >
               <CardContent className="p-8">
                 <div className="mb-6">{value.icon}</div>
-                <h3 className="text-xl font-semibold text-[#1E2A38] mb-4">{value.title}</h3>
-                <p className="text-[#6B7280] leading-relaxed">{value.description}</p>
+                <h3 className="text-xl font-semibold text-dark-navy mb-4">{value.title}</h3>
+                <p className="text-muted-gray leading-relaxed">{value.description}</p>
               </CardContent>
             </Card>
           ))}
@@ -95,15 +95,15 @@ export function Values() {
         <div className="bg-white rounded-2xl p-8 lg:p-12 shadow-sm border border-[#E5E7EB]">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="text-2xl lg:text-3xl font-bold text-[#1E2A38] mb-6">{t("approachTitle")}</h3>
-              <p className="text-[#6B7280] leading-relaxed mb-6">{t("approachP1")}</p>
-              <p className="text-[#6B7280] leading-relaxed mb-8">{t("approachP2")}</p>
+              <h3 className="text-2xl lg:text-3xl font-bold text-dark-navy mb-6">{t("approachTitle")}</h3>
+              <p className="text-muted-gray leading-relaxed mb-6">{t("approachP1")}</p>
+              <p className="text-muted-gray leading-relaxed mb-8">{t("approachP2")}</p>
 
               <div className="space-y-3">
                 {principles.map((principle, index) => (
                   <div key={index} className="flex items-center">
-                    <CheckCircle className="w-5 h-5 text-[#32D6A0] mr-3 flex-shrink-0" />
-                    <span className="text-[#1E2A38]">{principle}</span>
+                    <CheckCircle className="w-5 h-5 text-success-green mr-3 flex-shrink-0" />
+                    <span className="text-dark-navy">{principle}</span>
                   </div>
                 ))}
               </div>
@@ -125,15 +125,15 @@ export function Values() {
                       key={index}
                       className={`bg-[${color.bg}]/10 rounded-lg p-6 border border-[${color.border}]/20`}
                     >
-                      <h4 className="font-semibold text-[#1E2A38] mb-2">{trait.title}</h4>
-                      <p className="text-sm text-[#6B7280]">{trait.description}</p>
+                      <h4 className="font-semibold text-dark-navy mb-2">{trait.title}</h4>
+                      <p className="text-sm text-muted-gray">{trait.description}</p>
                     </div>
                   );
                 })}
               </div>
 
               {/* Background Decoration */}
-              <div className="absolute -top-4 -right-4 w-32 h-32 bg-gradient-to-br from-[#007BFF]/20 to-[#32D6A0]/20 rounded-full blur-2xl -z-10"></div>
+              <div className="absolute -top-4 -right-4 w-32 h-32 bg-gradient-to-br from-primary-blue/20 to-success-green/20 rounded-full blur-2xl -z-10"></div>
             </div>
           </div>
         </div>

@@ -49,7 +49,7 @@ export function Footer() {
   return (
     <footer id="contact" className="relative overflow-hidden">
       {/* Light Background with Subtle Brand Color Accents */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#F5F7FA] via-white to-[#F8F9FA]"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-input-bg via-white to-[#F8F9FA]"></div>
       <div className="absolute inset-0 vooksio-animated-bg opacity-30"></div>
 
       {/* Subtle Background Elements with Brand Colors */}
@@ -72,7 +72,7 @@ export function Footer() {
         ></div>
       </div>
 
-      <div className="relative z-10 text-[#1E2A38]">
+      <div className="relative z-10 text-dark-navy">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Main Footer Content */}
           <div className="py-16">
@@ -91,7 +91,7 @@ export function Footer() {
                       className="h-[50px] object-cover"
                     />
                   </div>
-                  <p className="text-[#6B7280] text-lg leading-relaxed max-w-md">{t("description")}</p>
+                  <p className="text-muted-gray text-lg leading-relaxed max-w-md">{t("description")}</p>
                 </div>
 
                 {/* Features */}
@@ -100,8 +100,8 @@ export function Footer() {
                     <div key={index} className="flex items-center space-x-3">
                       {feature.icon}
                       <div>
-                        <span className="font-medium text-[#1E2A38]">{feature.title}</span>
-                        <span className="text-[#6B7280] ml-2">- {feature.description}</span>
+                        <span className="font-medium text-dark-navy">{feature.title}</span>
+                        <span className="text-muted-gray ml-2">- {feature.description}</span>
                       </div>
                     </div>
                   ))}
@@ -109,13 +109,13 @@ export function Footer() {
 
                 {/* Newsletter Signup with Light Theme */}
                 <div className="vooksio-card rounded-lg p-6 backdrop-blur-sm border border-[#E5E7EB] bg-white/80">
-                  <h3 className="font-semibold text-[#1E2A38] mb-2">{t("newsletter.title")}</h3>
-                  <p className="text-[#6B7280] text-sm mb-4">{t("newsletter.description")}</p>
+                  <h3 className="font-semibold text-dark-navy mb-2">{t("newsletter.title")}</h3>
+                  <p className="text-muted-gray text-sm mb-4">{t("newsletter.description")}</p>
                   <div className="flex gap-2">
                     <input
                       type="email"
                       placeholder={t("newsletter.placeholder")}
-                      className="flex-1 px-4 py-2 bg-[#F5F7FA] border border-[#E5E7EB] rounded-lg text-[#1E2A38] placeholder-[#6B7280] focus:outline-none focus:border-[var(--vooksio-cyan)] focus:ring-2 focus:ring-[var(--vooksio-cyan)]/20 transition-all"
+                      className="flex-1 px-4 py-2 bg-input-bg border border-[#E5E7EB] rounded-lg text-dark-navy placeholder-muted-gray focus:outline-none focus:border-[var(--vooksio-cyan)] focus:ring-2 focus:ring-[var(--vooksio-cyan)]/20 transition-all"
                     />
                     <Button size="sm" className="btn-vooksio-primary px-4">
                       <ArrowRight className="h-4 w-4" />
@@ -128,13 +128,13 @@ export function Footer() {
               <div className="grid sm:grid-cols-3 gap-8">
                 {/* Services */}
                 <div>
-                  <h3 className="font-semibold text-[#1E2A38] mb-4">{t("links.services.title")}</h3>
+                  <h3 className="font-semibold text-dark-navy mb-4">{t("links.services.title")}</h3>
                   <ul className="space-y-3">
                     {links.services.map((link, index) => (
                       <li key={index}>
                         <a
                           href={link.href}
-                          className="text-[#6B7280] hover:text-[var(--vooksio-cyan)] transition-colors text-sm"
+                          className="text-muted-gray hover:text-[var(--vooksio-cyan)] transition-colors text-sm"
                         >
                           {link.name}
                         </a>
@@ -145,13 +145,13 @@ export function Footer() {
 
                 {/* Company */}
                 <div>
-                  <h3 className="font-semibold text-[#1E2A38] mb-4">{t("links.company.title")}</h3>
+                  <h3 className="font-semibold text-dark-navy mb-4">{t("links.company.title")}</h3>
                   <ul className="space-y-3">
                     {links.company.map((link, index) => (
                       <li key={index}>
                         <a
                           href={link.href}
-                          className="text-[#6B7280] hover:text-[var(--vooksio-emerald)] transition-colors text-sm"
+                          className="text-muted-gray hover:text-[var(--vooksio-emerald)] transition-colors text-sm"
                         >
                           {link.name}
                         </a>
@@ -162,13 +162,13 @@ export function Footer() {
 
                 {/* Resources */}
                 <div>
-                  <h3 className="font-semibold text-[#1E2A38] mb-4">{t("links.resources.title")}</h3>
+                  <h3 className="font-semibold text-dark-navy mb-4">{t("links.resources.title")}</h3>
                   <ul className="space-y-3">
                     {links.resources.map((link, index) => (
                       <li key={index}>
                         <a
                           href={link.href}
-                          className="text-[#6B7280] hover:text-[var(--vooksio-orange)] transition-colors text-sm"
+                          className="text-muted-gray hover:text-[var(--vooksio-orange)] transition-colors text-sm"
                         >
                           {link.name}
                         </a>
@@ -184,8 +184,8 @@ export function Footer() {
           <div className="border-t border-[#E5E7EB] py-12">
             <div className="text-center space-y-8">
               <div>
-                <h3 className="text-2xl font-bold text-[#1E2A38] mb-4">{t("contact.title")}</h3>
-                <p className="text-[#6B7280] max-w-2xl mx-auto">{t("contact.description")}</p>
+                <h3 className="text-2xl font-bold text-dark-navy mb-4">{t("contact.title")}</h3>
+                <p className="text-muted-gray max-w-2xl mx-auto">{t("contact.description")}</p>
               </div>
 
               <div className="flex justify-center">
@@ -201,34 +201,34 @@ export function Footer() {
           <div className="border-t border-[#E5E7EB] py-8">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               {/* Copyright */}
-              <div className="text-[#6B7280] text-sm">© 2025 Vooksio. {t("copyright")}</div>
+              <div className="text-muted-gray text-sm">© 2025 Vooksio. {t("copyright")}</div>
 
               {/* Social Links */}
               <div className="flex items-center space-x-4">
                 <a
                   href="#"
-                  className="text-[#6B7280] hover:text-[var(--vooksio-purple)] transition-colors"
+                  className="text-muted-gray hover:text-[var(--vooksio-purple)] transition-colors"
                   aria-label={t("ariaLabels.github")}
                 >
                   <Github className="h-5 w-5" />
                 </a>
                 <a
                   href="#"
-                  className="text-[#6B7280] hover:text-[var(--vooksio-cyan)] transition-colors"
+                  className="text-muted-gray hover:text-[var(--vooksio-cyan)] transition-colors"
                   aria-label={t("ariaLabels.twitter")}
                 >
                   <Twitter className="h-5 w-5" />
                 </a>
                 <a
                   href="#"
-                  className="text-[#6B7280] hover:text-[var(--vooksio-emerald)] transition-colors"
+                  className="text-muted-gray hover:text-[var(--vooksio-emerald)] transition-colors"
                   aria-label={t("ariaLabels.linkedin")}
                 >
                   <Linkedin className="h-5 w-5" />
                 </a>
                 <a
                   href="mailto:hello@vooksio.com"
-                  className="text-[#6B7280] hover:text-[var(--vooksio-orange)] transition-colors"
+                  className="text-muted-gray hover:text-[var(--vooksio-orange)] transition-colors"
                   aria-label={t("ariaLabels.email")}
                 >
                   <Mail className="h-5 w-5" />

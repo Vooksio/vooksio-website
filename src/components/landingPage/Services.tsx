@@ -17,31 +17,31 @@ export function Services() {
   }>;
   const services = [
     {
-      icon: <Code2 className="w-8 h-8 text-[#007BFF]" />,
+      icon: <Code2 className="w-8 h-8 text-primary-blue" />,
       ...servicesLocales[0],
-      color: "from-[#007BFF]/10 to-[#007BFF]/5",
-      borderColor: "border-[#007BFF]/20",
+      color: "from-primary-blue/10 to-primary-blue/5",
+      borderColor: "border-primary-blue/20",
     },
     {
-      icon: <GraduationCap className="w-8 h-8 text-[#32D6A0]" />,
+      icon: <GraduationCap className="w-8 h-8 text-success-green" />,
       ...servicesLocales[1],
-      color: "from-[#32D6A0]/10 to-[#32D6A0]/5",
-      borderColor: "border-[#32D6A0]/20",
+      color: "from-success-green/10 to-success-green/5",
+      borderColor: "border-success-green/20",
     },
     {
-      icon: <Target className="w-8 h-8 text-[#FF715B]" />,
+      icon: <Target className="w-8 h-8 text-warning-orange" />,
       ...servicesLocales[2],
-      color: "from-[#FF715B]/10 to-[#FF715B]/5",
-      borderColor: "border-[#FF715B]/20",
+      color: "from-warning-orange/10 to-warning-orange/5",
+      borderColor: "border-warning-orange/20",
     },
   ];
 
   const specialties = specialtiesLocales.map((spec: any, index: number) => ({
     icon: [
-      <Globe className="w-6 h-6 text-[#007BFF]" />,
-      <Smartphone className="w-6 h-6 text-[#32D6A0]" />,
-      <BookOpen className="w-6 h-6 text-[#FF715B]" />,
-      <Users className="w-6 h-6 text-[#1E2A38]" />,
+      <Globe className="w-6 h-6 text-primary-blue" />,
+      <Smartphone className="w-6 h-6 text-success-green" />,
+      <BookOpen className="w-6 h-6 text-warning-orange" />,
+      <Users className="w-6 h-6 text-dark-navy" />,
     ][index],
     ...spec,
   }));
@@ -62,12 +62,12 @@ export function Services() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-[#007BFF]/10 rounded-full border border-[#007BFF]/20 mb-6">
-            <Lightbulb className="w-4 h-4 text-[#007BFF] mr-2" />
-            <span className="text-[#1E2A38] text-sm font-medium">{t("sectionTitle")}</span>
+          <div className="inline-flex items-center px-4 py-2 bg-primary-blue/10 rounded-full border border-primary-blue/20 mb-6">
+            <Lightbulb className="w-4 h-4 text-primary-blue mr-2" />
+            <span className="text-dark-navy text-sm font-medium">{t("sectionTitle")}</span>
           </div>
-          <h2 className="text-3xl lg:text-5xl font-bold text-[#1E2A38] mb-6">{t("mainTitle")}</h2>
-          <p className="text-xl text-[#6B7280] max-w-3xl mx-auto leading-relaxed">{t("subtitle")}</p>
+          <h2 className="text-3xl lg:text-5xl font-bold text-dark-navy mb-6">{t("mainTitle")}</h2>
+          <p className="text-xl text-muted-gray max-w-3xl mx-auto leading-relaxed">{t("subtitle")}</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 mb-20">
@@ -79,16 +79,16 @@ export function Services() {
               <CardHeader className="pb-4">
                 <div className="flex items-center justify-between mb-4">
                   {service.icon}
-                  <ArrowRight className="w-5 h-5 text-[#6B7280] opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <ArrowRight className="w-5 h-5 text-muted-gray opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
-                <CardTitle className="text-xl text-[#1E2A38]">{service.title}</CardTitle>
+                <CardTitle className="text-xl text-dark-navy">{service.title}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <p className="text-[#6B7280] leading-relaxed">{service.description}</p>
+                <p className="text-muted-gray leading-relaxed">{service.description}</p>
                 <ul className="space-y-2">
                   {service.features.map((feature: string, featureIndex: number) => (
-                    <li key={featureIndex} className="flex items-center text-sm text-[#1E2A38]">
-                      <div className="w-1.5 h-1.5 bg-[#007BFF] rounded-full mr-3 flex-shrink-0" />
+                    <li key={featureIndex} className="flex items-center text-sm text-dark-navy">
+                      <div className="w-1.5 h-1.5 bg-primary-blue rounded-full mr-3 flex-shrink-0" />
                       {feature}
                     </li>
                   ))}
@@ -96,7 +96,7 @@ export function Services() {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="w-full mt-4 border-[#1E2A38]/20 text-[#1E2A38] hover:bg-[#1E2A38] hover:text-white"
+                  className="w-full mt-4 border-dark-navy/20 text-dark-navy hover:bg-dark-navy hover:text-white"
                 >
                   {t("learnMore")}
                 </Button>
@@ -106,26 +106,26 @@ export function Services() {
         </div>
 
         {/* Specialties */}
-        <div className="bg-[#F5F7FA] rounded-2xl p-8 lg:p-12">
+        <div className="bg-input-bg rounded-2xl p-8 lg:p-12">
           <div className="text-center mb-12">
-            <h3 className="text-2xl lg:text-3xl font-bold text-[#1E2A38] mb-4">{t("specialtiesTitle")}</h3>
-            <p className="text-[#6B7280] max-w-2xl mx-auto">{t("specialtiesDescription")}</p>
+            <h3 className="text-2xl lg:text-3xl font-bold text-dark-navy mb-4">{t("specialtiesTitle")}</h3>
+            <p className="text-muted-gray max-w-2xl mx-auto">{t("specialtiesDescription")}</p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {specialties.map((spec, index) => (
               <div key={index + spec} className="bg-white rounded-xl p-6 text-center hover:shadow-md transition-shadow">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-[#F5F7FA] rounded-lg mb-4">
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-input-bg rounded-lg mb-4">
                   {spec.icon}
                 </div>
-                <h4 className="font-semibold text-[#1E2A38] mb-2">{spec.title}</h4>
-                <p className="text-sm text-[#6B7280]">{spec.description}</p>
+                <h4 className="font-semibold text-dark-navy mb-2">{spec.title}</h4>
+                <p className="text-sm text-muted-gray">{spec.description}</p>
               </div>
             ))}
           </div>
 
           <div className="text-center mt-12">
-            <Button size="lg" className="bg-[#007BFF] hover:bg-[#1E2A38] text-white px-8 py-4">
+            <Button size="lg" variant="primary">
               {t("startProject")}
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>

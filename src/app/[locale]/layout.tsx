@@ -31,7 +31,7 @@ export default async function RootLayout({
     <html lang={locale} className={`${inter.variable} ${cairo.variable}`}>
       <body>
         <NextIntlClientProvider>
-          <div className="min-h-screen bg-gradient-to-br from-[#F5F7FA] via-white to-[#F5F7FA]">
+          <div className="min-h-screen bg-gradient-to-br from-input-bg via-white to-input-bg">
             <Header params={params} />
             <main>{children}</main>
             <Footer />

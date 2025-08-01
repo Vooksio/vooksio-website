@@ -3,6 +3,7 @@
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { useLocale } from "next-intl";
 import { Globe } from "lucide-react";
+import { Button } from "../ui/button";
 
 export default function LocaleSwitcher() {
   const locale = useLocale();
@@ -16,13 +17,15 @@ export default function LocaleSwitcher() {
   };
 
   return (
-    <button
+    <Button
       onClick={toggleLanguage}
-      className="flex items-center space-x-2 rtl:space-x-reverse px-3 py-2 text-[#1E2A38] hover:text-[#007BFF] transition-colors border border-[#E5E7EB] rounded-lg hover:border-[#007BFF]"
+      className="hover:text-[#007BFF] transition-colors hover:border-[#007BFF]"
       title={locale === "en" ? "Switch to Arabic" : "التبديل إلى الإنجليزية"}
+      variant="outline"
+      rounded="full"
     >
       <Globe className="h-4 w-4" />
       <span className="uppercase">{locale === "en" ? "عربي" : "EN"}</span>
-    </button>
+    </Button>
   );
 }
