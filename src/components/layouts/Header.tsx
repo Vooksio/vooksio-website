@@ -29,7 +29,7 @@ export function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
+          <nav className="hidden md:flex items-center gap-8">
             <a href="#services" className="text-dark-navy hover:text-[#007BFF] transition-colors">
               {t("services")}
             </a>

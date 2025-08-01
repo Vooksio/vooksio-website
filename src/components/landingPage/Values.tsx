@@ -69,7 +69,7 @@ export function Values() {
         {/* Section Header */}
         <div className="text-center mb-16 space-y-3.5">
           <Badge variant="success" rounded={"full"} size={"lg"}>
-            <Heart className="w-4 h-4 text-success-green mr-2" />
+            <Heart className="w-4 h-4 text-success-green" />
             <span className="text-dark-navy text-sm font-medium">{t("sectionTitle")}</span>
           </Badge>
           <h2 className="text-3xl lg:text-5xl font-bold text-dark-navy mb-6">{t("mainTitle")}</h2>
@@ -102,8 +102,8 @@ export function Values() {
 
               <div className="space-y-3">
                 {principles.map((principle, index) => (
-                  <div key={index} className="flex items-center">
-                    <CheckCircle className="w-5 h-5 text-success-green mr-3 flex-shrink-0" />
+                  <div key={index} className="flex items-center gap-3">
+                    <CheckCircle className="w-5 h-5 text-success-green flex-shrink-0" />
                     <span className="text-dark-navy">{principle}</span>
                   </div>
                 ))}

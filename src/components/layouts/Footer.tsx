@@ -189,7 +189,7 @@ export function Footer() {
 
               <div className="flex justify-center">
                 <Button size="lg" className="btn-vooksio-primary px-8 py-4 vooksio-hover-shadow">
-                  <Mail className="mr-2 h-5 w-5" />
+                  <Mail className="h-5 w-5" />
                   {t("contact.button")}
                 </Button>
               </div>

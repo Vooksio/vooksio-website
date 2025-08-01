@@ -70,7 +70,7 @@ export function Services() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 space-y-3.5">
           <Badge variant="primary" rounded={"full"} size={"lg"}>
-            <Lightbulb className="w-4 h-4 text-primary-blue mr-2" />
+            <Lightbulb className="w-4 h-4 text-primary-blue" />
             <span className="text-dark-navy text-sm font-medium">{t("sectionTitle")}</span>
           </Badge>
           <h2 className="text-3xl lg:text-5xl font-bold text-dark-navy mb-6">{t("mainTitle")}</h2>
@@ -94,8 +94,8 @@ export function Services() {
                 <p className="text-muted-gray leading-relaxed">{service.description}</p>
                 <ul className="space-y-2">
                   {service.features.map((feature: string, featureIndex: number) => (
-                    <li key={featureIndex + feature} className="flex items-center text-sm text-dark-navy">
-                      <div className="w-1.5 h-1.5 bg-primary-blue rounded-full mr-3 flex-shrink-0" />
+                    <li key={featureIndex + feature} className="flex items-center text-sm text-dark-navy gap-2">
+                      <div className="w-1.5 h-1.5 bg-primary-blue rounded-full flex-shrink-0" />
                       {feature}
                     </li>
                   ))}
