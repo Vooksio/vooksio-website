@@ -1,8 +1,9 @@
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
 import { Lightbulb, Code, BookOpen, Building, Globe, ArrowRight, Users } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Badge } from "../ui/badge";
+import { cn } from "@/lib/utils";
 
 export function Audience() {
   const t = useTranslations("audience");
@@ -65,7 +66,7 @@ export function Audience() {
       ...audiencesLocales[4],
     },
   ];
-
+  const locale = useLocale();
   return (
     <section
       id="audience"
@@ -146,7 +147,7 @@ export function Audience() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-white text-dark-navy hover:bg-input-bg px-8 py-4">
               {t("cta.primary")}
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className={cn("h-5 w-5", locale === "ar" ? "rotate-180" : "")} />
             </Button>
           </div>
         </div>
