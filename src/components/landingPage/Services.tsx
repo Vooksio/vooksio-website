@@ -4,6 +4,7 @@ import { Button } from "../ui/button";
 import { Code2, GraduationCap, Target, Smartphone, Globe, BookOpen, Users, Lightbulb, ArrowRight } from "lucide-react";
 import { Badge } from "../ui/badge";
 import { cn } from "@/lib/utils";
+import RedirectButton from "../services/RedirectButton";
 type Specialty = {
   title: string;
   description: string;
@@ -27,18 +28,21 @@ export function Services() {
       ...servicesLocales[0],
       color: "from-primary-blue/10 to-primary-blue/5",
       borderColor: "border-primary-blue/20",
+      id: "software-engineering",
     },
     {
       icon: <GraduationCap className="w-8 h-8 text-success-green" />,
       ...servicesLocales[1],
       color: "from-success-green/10 to-success-green/5",
       borderColor: "border-success-green/20",
+      id: "technical-education",
     },
     {
       icon: <Target className="w-8 h-8 text-warning-orange" />,
       ...servicesLocales[2],
       color: "from-warning-orange/10 to-warning-orange/5",
       borderColor: "border-warning-orange/20",
+      id: "product-consulting",
     },
   ];
 
@@ -102,13 +106,7 @@ export function Services() {
                     </li>
                   ))}
                 </ul>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="w-full mt-4 border-dark-navy/20 text-dark-navy hover:bg-dark-navy hover:text-white"
-                >
-                  {t("learnMore")}
-                </Button>
+                <RedirectButton redirectTo={`/${locale}/services/${service.id}`} />
               </CardContent>
             </Card>
           ))}

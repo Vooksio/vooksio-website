@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import LocaleSwitcher from "./LocaleSwitcher";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,14 +19,16 @@ export function Header() {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex items-center">
-            <Image
-              src="/Vooksio-Logo.png"
-              alt="Vooksio Logo"
-              width={140}
-              height={50}
-              priority
-              className="h-[50px] object-cover"
-            />
+            <Link href="/">
+              <Image
+                src="/Vooksio-Logo.png"
+                alt="Vooksio Logo"
+                width={140}
+                height={50}
+                priority
+                className="h-[50px] object-cover"
+              />
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
