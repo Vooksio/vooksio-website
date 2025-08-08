@@ -1,9 +1,11 @@
-import { ArrowLeft, Check, Code, Users, BookOpen, Lightbulb, Target, Zap, Clock, Award } from "lucide-react";
+import { ArrowLeft, Check } from "lucide-react";
 import Image from "next/image";
 import { Button } from "../ui/button";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { servicesData } from "@/lib/services-data";
-import { LinkButton } from "../LinkButton";
+import { ServerActionLink } from "../ui-actions/ServerActionLink";
+import { RefreshLink } from "../ui-actions/RefreshLink";
+import { cn } from "@/lib/utils";
 interface ServicePageProps {
   currentService?: string;
   language: "ar" | "en";
@@ -17,10 +19,10 @@ export const ServicePage: React.FC<ServicePageProps> = ({ currentService, langua
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-[#1E2A38] mb-4">Service not found</h1>
-          <LinkButton href={`/${language}`} className="text-blue-500 hover:underline">
+          <ServerActionLink href={`/${language}`} className="text-blue-500 hover:underline">
             <ArrowLeft className="h-4 w-4" />
             {t("backToHome")}
-          </LinkButton>
+          </ServerActionLink>
         </div>
       </div>
     );
@@ -35,23 +37,25 @@ export const ServicePage: React.FC<ServicePageProps> = ({ currentService, langua
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center">
-              <Image
-                src="/Vooksio-Logo.png"
-                alt="Vooksio Logo"
-                width={140}
-                height={50}
-                priority
-                className="h-[50px] object-cover"
-              />
+              <RefreshLink href={`/${language}`}>
+                <Image
+                  src="/Vooksio-Logo.png"
+                  alt="Vooksio Logo"
+                  width={140}
+                  height={50}
+                  priority
+                  className="h-[50px] object-cover"
+                />
+              </RefreshLink>
             </div>
-            <LinkButton
-              href={`/${language}`}
-              variant="outline"
-              className="flex items-center space-x-2 rtl:space-x-reverse"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              <span>{t("backToHome")}</span>
-            </LinkButton>
+            <ServerActionLink variant="outline" className="text-card-forground" href={`/${language}`}>
+              {t("backToHome")}
+              <ArrowLeft
+                className={cn("h-4 w-4", {
+                  "rotate-180": language === "en",
+                })}
+              />
+            </ServerActionLink>
           </div>
         </div>
       </header>
@@ -199,9 +203,9 @@ export const ServicePage: React.FC<ServicePageProps> = ({ currentService, langua
               {language === "en" ? "Get in Touch" : "تواصل معنا"}
             </Button>
 
-            <LinkButton variant="outline" className="px-8 py-4" href={`/${language}`}>
+            <ServerActionLink variant="outline" className="px-8 py-4 text-card-forground" href={`/${language}`}>
               {language === "en" ? "Explore Other Services" : "استكشف خدمات أخرى"}
-            </LinkButton>
+            </ServerActionLink>
           </div>
         </div>
       </section>

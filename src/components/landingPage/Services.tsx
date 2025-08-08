@@ -4,7 +4,9 @@ import { Button } from "../ui/button";
 import { Code2, GraduationCap, Target, Smartphone, Globe, BookOpen, Users, Lightbulb, ArrowRight } from "lucide-react";
 import { Badge } from "../ui/badge";
 import { cn } from "@/lib/utils";
-import RedirectButton from "../services/RedirectButton";
+import RedirectButton from "../ui-actions/RedirectButton";
+import { LinkButton } from "../ui-actions/LinkButton";
+import { ServerActionLink } from "../ui-actions/ServerActionLink";
 type Specialty = {
   title: string;
   description: string;
@@ -106,7 +108,13 @@ export function Services() {
                     </li>
                   ))}
                 </ul>
-                <RedirectButton redirectTo={`/${locale}/services/${service.id}`} />
+                <ServerActionLink
+                  variant="outline"
+                  className="w-full mt-4 border-dark-navy/20 text-dark-navy hover:bg-dark-navy hover:text-white"
+                  href={`/${locale}/services/${service.id}`}
+                >
+                  {t("learnMore")}
+                </ServerActionLink>
               </CardContent>
             </Card>
           ))}

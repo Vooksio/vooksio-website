@@ -9,6 +9,7 @@ import type { Metadata } from "next";
 
 import "../globals.css";
 import { headers } from "next/headers";
+import { getLayoutConfig } from "@/lib/layout-utils";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const cairo = Cairo({ subsets: ["arabic"], variable: "--font-cairo" });
@@ -84,20 +85,22 @@ export default async function RootLayout({
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
+
   const isRTL = locale === "ar";
   const direction = isRTL ? "rtl" : "ltr";
-  const headersList = await headers();
-  const pathname = headersList.get("x-current-path");
-  const isServicePage = pathname?.includes("/services/");
-  console.log(pathname, isServicePage);
+
+  // Get layout configuration using our helper
+  const layoutConfig = await getLayoutConfig();
   return (
     <html lang={locale} className={`${inter.variable} ${cairo.variable}`}>
       <body dir={direction}>
         <NextIntlClientProvider>
           <div className="min-h-screen bg-gradient-to-br from-input-bg via-white to-input-bg">
-            {!isServicePage && <Header />}
-            <main>{children}</main>
-            {!isServicePage && <Footer />}
+            {layoutConfig.showHeader && <Header />}
+            <main className={!layoutConfig.showHeader && !layoutConfig.showFooter ? "min-h-screen" : ""}>
+              {children}
+            </main>
+            {layoutConfig.showFooter && <Footer />}
           </div>
         </NextIntlClientProvider>
       </body>

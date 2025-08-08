@@ -2,24 +2,25 @@
 
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import LocaleSwitcher from "./LocaleSwitcher";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { RefreshLink } from "../ui-actions/RefreshLink";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const t = useTranslations("header");
-
+  const locale=useLocale();
   return (
     <header className="sticky top-0 z-50 bg-gradient-to-r from-white/95 via-input-bg/95 to-white/95 backdrop-blur-sm border-b border-primary-blue/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/">
+            <RefreshLink href={`/${locale}`}>
               <Image
                 src="/Vooksio-Logo.png"
                 alt="Vooksio Logo"
@@ -28,7 +29,7 @@ export function Header() {
                 priority
                 className="h-[50px] object-cover"
               />
-            </Link>
+            </RefreshLink>
           </div>
 
           {/* Desktop Navigation */}
