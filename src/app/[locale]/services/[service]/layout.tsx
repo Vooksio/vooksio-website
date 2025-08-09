@@ -1,15 +1,9 @@
-import { Inter } from "next/font/google";
-import { Cairo } from "next/font/google";
-import { NextIntlClientProvider, hasLocale } from "next-intl";
+
+import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import type { Metadata } from "next";
 import { servicesData } from "@/lib/services-data";
-
-import "../../../globals.css";
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const cairo = Cairo({ subsets: ["arabic"], variable: "--font-cairo" });
 
 // Get available services from the servicesData
 const availableServices = Object.keys(servicesData);
@@ -128,9 +122,6 @@ export default async function ServiceLayout({
   if (!availableServices.includes(service)) {
     notFound();
   }
-
-  const isRTL = locale === "ar";
-  const direction = isRTL ? "rtl" : "ltr";
 
   return <>{children}</>;
 }

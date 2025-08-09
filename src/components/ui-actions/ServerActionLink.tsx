@@ -8,7 +8,6 @@ type ServerActionLinkProps = {
   className?: string;
 };
 
-// Server action to handle navigation with fresh server-side rendering
 async function navigateAction(href: string) {
   "use server";
   redirect(href);
