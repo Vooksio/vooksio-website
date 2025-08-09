@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
-
+import { Spinner } from "@/components/ui/shadcn-io/spinner";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
@@ -54,10 +54,13 @@ function Button({
   rounded,
   outlineColor,
   asChild = false,
+  isLoading = false,
+  children,
   ...props
 }: React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean;
+    isLoading?: boolean;
   }) {
   const Comp = asChild ? Slot : "button";
 
@@ -65,8 +68,18 @@ function Button({
     <Comp
       data-slot="button"
       className={cn(buttonVariants({ variant, size, rounded, outlineColor, className }))}
+      disabled={isLoading || props.disabled}
       {...props}
-    />
+    >
+      {isLoading ? (
+        <>
+          <Spinner variant="ring" className="size-4" />
+          {children && <span className="opacity-70">{children}</span>}
+        </>
+      ) : (
+        children
+      )}
+    </Comp>
   );
 }
 
