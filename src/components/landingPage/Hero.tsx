@@ -25,16 +25,16 @@ export function Hero() {
             </div>
 
             <div className="flex flex-wrap gap-6">
-              <div className="flex items-center">
-                <Code className="w-5 h-5 mr-2" style={{ color: "var(--vooksio-purple)" }} />
+              <div className="flex items-center gap-2">
+                <Code className="w-5 h-5" style={{ color: "var(--vooksio-purple)" }} />
                 <span className="text-dark-navy">{t("point1")}</span>
               </div>
-              <div className="flex items-center">
-                <Users className="w-5 h-5 mr-2" style={{ color: "var(--vooksio-cyan)" }} />
+              <div className="flex items-center gap-2">
+                <Users className="w-5 h-5" style={{ color: "var(--vooksio-cyan)" }} />
                 <span className="text-dark-navy">{t("point2")}</span>
               </div>
-              <div className="flex items-center">
-                <Zap className="w-5 h-5 mr-2" style={{ color: "var(--vooksio-orange)" }} />
+              <div className="flex items-center gap-2">
+                <Zap className="w-5 h-5" style={{ color: "var(--vooksio-orange)" }} />
                 <span className="text-dark-navy">{t("point3")}</span>
               </div>
             </div>

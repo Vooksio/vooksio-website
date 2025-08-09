@@ -92,7 +92,8 @@
       }
     ],
     "learnMore": "Learn More",
-    "startProject": "Start Your Project"
+    "startProject": "Start Your Project",
+    "backToHome": "Back to Home"
   },
   "values": {
     "sectionTitle": "Our Values",

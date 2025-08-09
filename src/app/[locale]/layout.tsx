@@ -6,6 +6,7 @@ import { routing } from "@/i18n/routing";
 import { Header } from "@/components/layouts/Header";
 import { Footer } from "@/components/layouts/Footer";
 import type { Metadata } from "next";
+import { getLayoutConfig } from "@/lib/layout-utils";
 
 import "../globals.css";
 
@@ -83,16 +84,22 @@ export default async function RootLayout({
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
+
   const isRTL = locale === "ar";
   const direction = isRTL ? "rtl" : "ltr";
+
+  // Get layout configuration using our helper
+  const layoutConfig = await getLayoutConfig();
   return (
     <html lang={locale} className={`${inter.variable} ${cairo.variable}`}>
       <body dir={direction}>
         <NextIntlClientProvider>
           <div className="min-h-screen bg-gradient-to-br from-input-bg via-white to-input-bg">
-            <Header />
-            <main>{children}</main>
-            <Footer />
+            {layoutConfig.showHeader && <Header />}
+            <main className={!layoutConfig.showHeader && !layoutConfig.showFooter ? "min-h-screen" : ""}>
+              {children}
+            </main>
+            {layoutConfig.showFooter && <Footer />}
           </div>
         </NextIntlClientProvider>
       </body>
