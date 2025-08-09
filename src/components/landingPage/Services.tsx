@@ -4,8 +4,6 @@ import { Button } from "../ui/button";
 import { Code2, GraduationCap, Target, Smartphone, Globe, BookOpen, Users, Lightbulb, ArrowRight } from "lucide-react";
 import { Badge } from "../ui/badge";
 import { cn } from "@/lib/utils";
-import RedirectButton from "../ui-actions/RedirectButton";
-import { LinkButton } from "../ui-actions/LinkButton";
 import { ServerActionLink } from "../ui-actions/ServerActionLink";
 type Specialty = {
   title: string;

@@ -6,7 +6,6 @@ import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import LocaleSwitcher from "./LocaleSwitcher";
 import { Button } from "../ui/button";
-import Link from "next/link";
 import { RefreshLink } from "../ui-actions/RefreshLink";
 
 export function Header() {

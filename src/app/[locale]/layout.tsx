@@ -6,10 +6,9 @@ import { routing } from "@/i18n/routing";
 import { Header } from "@/components/layouts/Header";
 import { Footer } from "@/components/layouts/Footer";
 import type { Metadata } from "next";
+import { getLayoutConfig } from "@/lib/layout-utils";
 
 import "../globals.css";
-import { headers } from "next/headers";
-import { getLayoutConfig } from "@/lib/layout-utils";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const cairo = Cairo({ subsets: ["arabic"], variable: "--font-cairo" });
