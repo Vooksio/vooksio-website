@@ -19,7 +19,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ currentService, langua
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-[#1E2A38] mb-4">Service not found</h1>
+          <h1 className="text-2xl font-bold text-dark-navy mb-4">Service not found</h1>
           <ServerActionLink href={`/${language}`} className="text-blue-500 hover:underline">
             <ArrowLeft className="h-4 w-4" />
             {t("backToHome")}
@@ -32,9 +32,9 @@ export const ServicePage: React.FC<ServicePageProps> = ({ currentService, langua
   const service = servicesData[currentService];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#F5F7FA] via-white to-[#F5F7FA]">
+    <div className="min-h-screen bg-gradient-to-br from-input-background via-white to-input-background">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-gradient-to-r from-white/95 via-[#F5F7FA]/95 to-white/95 backdrop-blur-sm border-b border-[#007BFF]/10">
+      <header className="sticky top-0 z-50 bg-gradient-to-r from-white/95 via-input-background/95 to-white/95 backdrop-blur-sm border-b border-[#007BFF]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center">
@@ -71,10 +71,10 @@ export const ServicePage: React.FC<ServicePageProps> = ({ currentService, langua
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-8">
             <div className="space-y-4">
-              <h1 className="text-4xl lg:text-6xl font-bold text-[#1E2A38]">{service.title[language]}</h1>
-              <p className="text-xl lg:text-2xl text-[#6B7280] max-w-3xl mx-auto">{service.subtitle[language]}</p>
+              <h1 className="text-4xl lg:text-6xl font-bold text-dark-navy">{service.title[language]}</h1>
+              <p className="text-xl lg:text-2xl text-muted-gray max-w-3xl mx-auto">{service.subtitle[language]}</p>
             </div>
-            <p className="text-lg text-[#6B7280] max-w-4xl mx-auto leading-relaxed">{service.hero[language]}</p>
+            <p className="text-lg text-muted-gray max-w-4xl mx-auto leading-relaxed">{service.hero[language]}</p>
             <Button size="lg" className="btn-vooksio-primary px-8 py-4 vooksio-hover-shadow">
               {switchData("ابدأ الآن", "Get Started")}
             </Button>
@@ -86,14 +86,14 @@ export const ServicePage: React.FC<ServicePageProps> = ({ currentService, langua
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-[#1E2A38] mb-4">{switchData("الميزات الرئيسية", "Key Features")}</h2>
+            <h2 className="text-3xl font-bold text-dark-navy mb-4">{switchData("الميزات الرئيسية", "Key Features")}</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {service.features.map((feature, index) => (
               <div key={index} className="vooksio-card p-8 rounded-xl text-center">
                 <div className="flex justify-center mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-semibold text-[#1E2A38] mb-4">{feature.title[language]}</h3>
-                <p className="text-[#6B7280] leading-relaxed">{feature.description[language]}</p>
+                <h3 className="text-xl font-semibold text-dark-navy mb-4">{feature.title[language]}</h3>
+                <p className="text-muted-gray leading-relaxed">{feature.description[language]}</p>
               </div>
             ))}
           </div>
@@ -101,10 +101,10 @@ export const ServicePage: React.FC<ServicePageProps> = ({ currentService, langua
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 bg-[#F5F7FA]/50">
+      <section className="py-20 bg-input-background/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-[#1E2A38] mb-4">{switchData("الفوائد", "Benefits")}</h2>
+            <h2 className="text-3xl font-bold text-dark-navy mb-4">{switchData("الفوائد", "Benefits")}</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {service.benefits.map((benefit, index) => (
@@ -112,8 +112,8 @@ export const ServicePage: React.FC<ServicePageProps> = ({ currentService, langua
                 <div className="w-12 h-12 bg-gradient-to-r from-[var(--vooksio-purple)] to-[var(--vooksio-cyan)] rounded-full flex items-center justify-center mx-auto mb-4">
                   <Check className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold text-[#1E2A38] mb-4">{benefit.title[language]}</h3>
-                <p className="text-[#6B7280] leading-relaxed">{benefit.description[language]}</p>
+                <h3 className="text-xl font-semibold text-dark-navy mb-4">{benefit.title[language]}</h3>
+                <p className="text-muted-gray leading-relaxed">{benefit.description[language]}</p>
               </div>
             ))}
           </div>
@@ -124,7 +124,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ currentService, langua
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-[#1E2A38] mb-4">{switchData("عمليتنا", "Our Process")}</h2>
+            <h2 className="text-3xl font-bold text-dark-navy mb-4">{switchData("عمليتنا", "Our Process")}</h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {service.process.map((step, index) => (
@@ -132,8 +132,8 @@ export const ServicePage: React.FC<ServicePageProps> = ({ currentService, langua
                 <div className="w-16 h-16 bg-gradient-to-r from-[var(--vooksio-emerald)] to-[var(--vooksio-cyan)] rounded-full flex items-center justify-center mx-auto mb-6">
                   <span className="text-2xl font-bold text-white">{step.step}</span>
                 </div>
-                <h3 className="text-lg font-semibold text-[#1E2A38] mb-4">{step.title[language]}</h3>
-                <p className="text-[#6B7280] text-sm leading-relaxed">{step.description[language]}</p>
+                <h3 className="text-lg font-semibold text-dark-navy mb-4">{step.title[language]}</h3>
+                <p className="text-muted-gray text-sm leading-relaxed">{step.description[language]}</p>
               </div>
             ))}
           </div>
@@ -142,10 +142,10 @@ export const ServicePage: React.FC<ServicePageProps> = ({ currentService, langua
 
       {/* Technologies Section (if available) */}
       {service.technologies && (
-        <section className="py-20 bg-[#F5F7FA]/50">
+        <section className="py-20 bg-input-background/50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-[#1E2A38] mb-4">
+              <h2 className="text-3xl font-bold text-dark-navy mb-4">
                 {switchData("التقنيات التي نستخدمها", "Technologies We Use")}
               </h2>
             </div>
@@ -153,7 +153,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ currentService, langua
               {service.technologies.map((tech, index) => (
                 <span
                   key={index}
-                  className="px-4 py-2 bg-white border border-[var(--vooksio-purple)]/20 rounded-full text-[#1E2A38] font-medium"
+                  className="px-4 py-2 bg-white border border-[var(--vooksio-purple)]/20 rounded-full text-dark-navy font-medium"
                 >
                   {tech}
                 </span>
@@ -167,13 +167,13 @@ export const ServicePage: React.FC<ServicePageProps> = ({ currentService, langua
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-[#1E2A38] mb-4">{switchData("ما ستحصل عليه", "What You Get")}</h2>
+            <h2 className="text-3xl font-bold text-dark-navy mb-4">{switchData("ما ستحصل عليه", "What You Get")}</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {service.deliverables.map((deliverable, index) => (
               <div key={index} className="flex items-center gap-3">
                 <Check className="w-5 h-5 text-[var(--vooksio-emerald)] flex-shrink-0" />
-                <span className="text-[#6B7280]">{deliverable[language]}</span>
+                <span className="text-muted-gray">{deliverable[language]}</span>
               </div>
             ))}
           </div>
@@ -183,7 +183,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ currentService, langua
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-[var(--vooksio-purple)]/5 to-[var(--vooksio-cyan)]/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-[#1E2A38] mb-8">
+          <h2 className="text-3xl font-bold text-dark-navy mb-8">
             {switchData("مستعد للبدء؟", "Ready to Get Started?")}
           </h2>
           {service.pricing && (
@@ -192,7 +192,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ currentService, langua
                 {switchData("يبدأ من ", "Starting at ")}
                 {service.pricing.starting}
               </p>
-              <p className="text-[#6B7280]">{service.pricing.description[language]}</p>
+              <p className="text-muted-gray">{service.pricing.description[language]}</p>
             </div>
           )}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
