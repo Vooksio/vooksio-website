@@ -1,6 +1,7 @@
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState } from "react";
+import { useFormStatus } from "react-dom";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { ArrowLeft, Send, Mail, Phone, User, MessageSquare, CheckCircle, MapPin, Clock } from "lucide-react";
@@ -34,18 +35,10 @@ function SubmitButton() {
       size="lg"
       disabled={pending}
       className="w-full btn-vooksio-primary px-8 py-4 vooksio-hover-shadow"
+      isLoading={pending}
+      icon={<Send className="h-5 w-5" />}
     >
-      {pending ? (
-        <div className="flex items-center space-x-2 rtl:space-x-reverse">
-          <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-          <span>{switchData("جارٍ الإرسال...", "Sending...")}</span>
-        </div>
-      ) : (
-        <div className="flex items-center space-x-2 rtl:space-x-reverse">
-          <Send className="w-5 h-5" />
-          <span>{switchData("إرسال الرسالة", "Send Message")}</span>
-        </div>
-      )}
+      {switchData("إرسال الرسالة", "Send Message")}
     </Button>
   );
 }
@@ -59,7 +52,7 @@ export const ContactPage = () => {
     errors: {},
   };
 
-  const [state, formAction] = useFormState(submitContactForm, initialState);
+  const [state, formAction] = useActionState(submitContactForm, initialState);
 
   const contactInfo = [
     {
@@ -146,7 +139,7 @@ export const ContactPage = () => {
       </section>
 
       {/* Contact Info Cards */}
-      <section className="py-12 -mt-12 relative z-10">
+      <section className="py-12 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-6">
             {contactInfo.map((info, index) => (
@@ -298,11 +291,11 @@ export const ContactPage = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
-              size="lg"
+              size="sm"
               className="btn-vooksio-secondary px-8 py-4 vooksio-hover-shadow"
               onClick={() => (window.location.href = "mailto:hello@vooksio.com")}
             >
-              <Mail className="mr-2 h-5 w-5 rtl:mr-0 rtl:ml-2" />
+              <Mail className="h-5 w-5" />
               hello@vooksio.com
             </Button>
             <RefreshLink variant="outline" className="px-8 py-4 text-card-forground" href={`/${language}`}>

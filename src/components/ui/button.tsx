@@ -55,12 +55,14 @@ function Button({
   outlineColor,
   asChild = false,
   isLoading = false,
+  icon,
   children,
   ...props
 }: React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean;
     isLoading?: boolean;
+    icon?: React.ReactNode;
   }) {
   const Comp = asChild ? Slot : "button";
 
@@ -77,7 +79,10 @@ function Button({
           {children && <span className="opacity-70">{children}</span>}
         </>
       ) : (
-        children
+        <>
+          {icon && <span className="flex-shrink-0">{icon}</span>}
+          {children}
+        </>
       )}
     </Comp>
   );

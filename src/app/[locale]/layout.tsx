@@ -7,7 +7,7 @@ import { Header } from "@/components/layouts/Header";
 import { Footer } from "@/components/layouts/Footer";
 import type { Metadata } from "next";
 import { getLayoutConfig } from "@/lib/layout-utils";
-
+import { Toaster } from "sonner";
 import "../globals.css";
 import { getBaseUrl } from "@/lib/config";
 
@@ -111,6 +111,7 @@ export default async function RootLayout({
             {layoutConfig.isHomePage && <Footer />}
           </div>
         </NextIntlClientProvider>
+        <Toaster position="top-right" richColors closeButton expand={false} visibleToasts={3} />
       </body>
     </html>
   );
