@@ -5,6 +5,7 @@ import { Code2, GraduationCap, Target, Smartphone, Globe, BookOpen, Users, Light
 import { Badge } from "../ui/badge";
 import { cn } from "@/lib/utils";
 import { ServerActionLink } from "../ui-actions/ServerActionLink";
+import { RefreshLink } from "../ui-actions/RefreshLink";
 type Specialty = {
   title: string;
   description: string;
@@ -119,7 +120,7 @@ export function Services() {
         </div>
 
         {/* Specialties */}
-        <div className="bg-input-bg rounded-2xl p-8 lg:p-12">
+        <div className="bg-input-bg rounded-2xl p-8 lg:p-12 relative">
           <div className="text-center mb-12">
             <h3 className="text-2xl lg:text-3xl font-bold text-dark-navy mb-4">{t("specialtiesTitle")}</h3>
             <p className="text-muted-gray max-w-2xl mx-auto">{t("specialtiesDescription")}</p>
@@ -141,10 +142,10 @@ export function Services() {
           </div>
 
           <div className="text-center mt-12">
-            <Button size="lg" variant="primary">
+            <RefreshLink href={`/${locale}/contact-us`} variant="primary">
               {t("startProject")}
               <ArrowRight className={cn("h-5 w-5", locale === "ar" ? "mr-2 rotate-180" : "ml-2")} />
-            </Button>
+            </RefreshLink>
           </div>
         </div>
       </div>

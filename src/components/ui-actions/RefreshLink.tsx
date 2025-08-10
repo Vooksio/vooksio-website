@@ -7,7 +7,7 @@ import { buttonVariants } from "@/components/ui/button";
 type RefreshLinkProps = {
   href: string;
   children: React.ReactNode;
-  variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | "none";
+  variant?: "default" | "primary" | "destructive" | "outline" | "secondary" | "ghost" | "link" | "none";
   className?: string;
 };
 

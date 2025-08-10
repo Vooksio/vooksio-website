@@ -7,8 +7,9 @@ import { Header } from "@/components/layouts/Header";
 import { Footer } from "@/components/layouts/Footer";
 import type { Metadata } from "next";
 import { getLayoutConfig } from "@/lib/layout-utils";
-
+import { Toaster } from "sonner";
 import "../globals.css";
+import { getBaseUrl } from "@/lib/config";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const cairo = Cairo({ subsets: ["arabic"], variable: "--font-cairo" });
@@ -16,6 +17,7 @@ const cairo = Cairo({ subsets: ["arabic"], variable: "--font-cairo" });
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
+const baseUrl = getBaseUrl();
 
 export const metadata: Metadata = {
   title: {
@@ -33,7 +35,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://vooksio.com"),
+  metadataBase: new URL(baseUrl),
   alternates: {
     canonical: "/",
   },
@@ -104,13 +106,12 @@ export default async function RootLayout({
       <body dir={direction}>
         <NextIntlClientProvider>
           <div className="min-h-screen bg-gradient-to-br from-input-bg via-white to-input-bg">
-            {layoutConfig.showHeader && <Header />}
-            <main className={!layoutConfig.showHeader && !layoutConfig.showFooter ? "min-h-screen" : ""}>
-              {children}
-            </main>
-            {layoutConfig.showFooter && <Footer />}
+            {layoutConfig.isHomePage && <Header />}
+            <main className={layoutConfig.isHomePage ? "min-h-screen" : ""}>{children}</main>
+            {layoutConfig.isHomePage && <Footer />}
           </div>
         </NextIntlClientProvider>
+        <Toaster position="top-right" richColors closeButton expand={false} visibleToasts={3} />
       </body>
     </html>
   );
