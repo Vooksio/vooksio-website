@@ -90,7 +90,7 @@ export const ContactPage = () => {
               "Thank you for reaching out! We'll get back to you within 24 hours."
             )}
           </p>
-          <RefreshLink href={`/${language}`} className="text-blue-500 hover:underline">
+          <RefreshLink href={`/${language}`} className="text-blue-500 hover:underline" variant="outline">
             <ArrowLeft
               className={cn("h-4 w-4", {
                 "rotate-180": language === "en",

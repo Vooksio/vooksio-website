@@ -4,6 +4,7 @@ import { Mail, Github, Twitter, Linkedin, ArrowRight, Code2, BookOpen, Users } f
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Input } from "../ui/input";
+import { RefreshLink } from "../ui-actions/RefreshLink";
 
 export function Footer() {
   const t = useTranslations("footer");
@@ -190,10 +191,13 @@ export function Footer() {
               </div>
 
               <div className="flex justify-center">
-                <Button size="lg" className="btn-vooksio-primary px-8 py-4 vooksio-hover-shadow">
+                <RefreshLink
+                  href={`/${locale}/contact-us`}
+                  className="btn-vooksio-primary px-8 py-4 vooksio-hover-shadow"
+                >
                   <Mail className="h-5 w-5" />
                   {t("contact.button")}
-                </Button>
+                </RefreshLink>
               </div>
             </div>
           </div>

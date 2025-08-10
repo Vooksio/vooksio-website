@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 type ServerActionLinkProps = {
   href: string;
   children: React.ReactNode;
-  variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link";
+  variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | "none";
   className?: string;
 };
 
