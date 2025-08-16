@@ -1,4 +1,4 @@
-export const getBaseUrl = () => {
+export function getBaseUrl() {
   if (typeof window === "undefined") {
     if (process.env.VERCEL_URL && process.env.NODE_ENV === "production") {
       return process.env.VERCEL_PROJECT_PRODUCTION_URL
@@ -19,7 +19,7 @@ export const getBaseUrl = () => {
   }
 
   return window.location.origin;
-};
+}
 
 export const config = {
   baseUrl: getBaseUrl(),

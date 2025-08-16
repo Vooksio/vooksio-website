@@ -15,12 +15,8 @@ export default function middleware(request: NextRequest) {
   const isServicePage = pathname.includes("/services/") && pathname.split("/").filter(Boolean).length >= 3;
   const isHomePage =
     pathname === "/" || pathname.match(/^\/[a-z]{2}$/) || pathname.match(/^\/[a-z]{2}\/$/) || pathname === "";
-
-  console.log("Middleware - Path:", pathname, "IsService:", isServicePage, "IsHome:", isHomePage);
-
   // Create response
   const modifiedResponse = response || NextResponse.next();
-
   // Set headers that force server-side re-evaluation
   modifiedResponse.headers.set("x-is-service-page", isServicePage.toString());
   modifiedResponse.headers.set("x-is-home-page", isHomePage.toString());

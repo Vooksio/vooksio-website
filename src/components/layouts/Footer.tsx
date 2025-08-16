@@ -110,14 +110,14 @@ export function Footer() {
                 </div>
 
                 {/* Newsletter Signup with Light Theme */}
-                <div className="vooksio-card rounded-lg p-6 backdrop-blur-sm border border-[#E5E7EB] bg-white/80">
+                <div className="vooksio-card rounded-lg p-6 backdrop-blur-sm border border-switch-background bg-white/80">
                   <h3 className="font-semibold text-dark-navy mb-2">{t("newsletter.title")}</h3>
                   <p className="text-muted-gray text-sm mb-4">{t("newsletter.description")}</p>
                   <div className="flex items-center gap-2">
                     <Input
                       type="email"
                       placeholder={t("newsletter.placeholder")}
-                      className="flex-1 px-4 py-2 bg-input-bg border border-[#E5E7EB] rounded-lg text-dark-navy placeholder-muted-gray focus:outline-none focus:border-[var(--vooksio-cyan)] focus:ring-2 focus:ring-[var(--vooksio-cyan)]/20 transition-all"
+                      className="flex-1 px-4 py-2 bg-input-bg border border-switch-background rounded-lg text-dark-navy placeholder-muted-gray focus:outline-none focus:border-[var(--vooksio-cyan)] focus:ring-2 focus:ring-[var(--vooksio-cyan)]/20 transition-all"
                     />
                     <Button size="icon" className="size-9 btn-vooksio-primary">
                       <ArrowRight className={cn("h-4 w-4", locale === "ar" ? "rotate-180" : "")} />
@@ -183,7 +183,7 @@ export function Footer() {
           </div>
 
           {/* Contact Section */}
-          <div className="border-t border-[#E5E7EB] py-12">
+          <div className="border-t border-switch-background py-12">
             <div className="text-center space-y-8">
               <div>
                 <h3 className="text-2xl font-bold text-dark-navy mb-4">{t("contact.title")}</h3>
@@ -203,7 +203,7 @@ export function Footer() {
           </div>
 
           {/* Bottom Bar */}
-          <div className="border-t border-[#E5E7EB] py-8">
+          <div className="border-t border-switch-background py-8">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               {/* Copyright */}
               <div className="text-muted-gray text-sm">© 2025 Vooksio. {t("copyright")}</div>

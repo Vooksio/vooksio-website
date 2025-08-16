@@ -1,0 +1,448 @@
+// lib/metadata-configs.ts
+import { Metadata } from "next";
+import { getBaseUrl } from "@/lib/config";
+import { servicesData } from "./services-data";
+
+const baseUrl = getBaseUrl();
+
+// Homepage Metadata
+export async function generateHomeMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isArabic = locale === "ar";
+
+  return {
+    title: isArabic
+      ? "فوكسيو - هندسة البرمجيات والتعليم التقني | استشارات المنتجات"
+      : "Software Engineering & Technical Education | Product Consulting - Vooksio",
+    description: isArabic
+      ? "خدمات هندسة البرمجيات المتخصصة، والتعليم التقني الشامل، والاستشارات الاستراتيجية للمنتجات للشركات الناشئة. بناء تطبيقات حقيقية مهمة مع خبرة فوكسيو في هندسة البرمجيات وبرامج التعليم التقني."
+      : "Expert software engineering services, comprehensive technical education, and strategic product consulting for startups. Build real apps that matter with Vooksio's software engineering expertise and technical education programs.",
+    keywords: [
+      "software engineering",
+      "technical education",
+      "product consulting",
+      "هندسة البرمجيات",
+      "التعليم التقني",
+      "استشارات المنتجات",
+      "MVP development",
+      "startup consulting",
+      "web development",
+      "mobile development",
+      "software engineering services",
+      "technical education programs",
+      "product consulting startups",
+    ],
+    authors: [{ name: "Vooksio Team" }],
+    creator: "Vooksio",
+    publisher: "Vooksio",
+    openGraph: {
+      type: "website",
+      locale: isArabic ? "ar_EG" : "en_US",
+      title: isArabic
+        ? "فوكسيو - هندسة البرمجيات والتعليم التقني"
+        : "Software Engineering & Technical Education - Vooksio",
+      description: isArabic
+        ? "خدمات هندسة البرمجيات والتعليم التقني واستشارات المنتجات للشركات الناشئة"
+        : "Expert software engineering services, technical education, and product consulting for startups",
+      url: `${baseUrl}/${locale}`,
+      siteName: "Vooksio",
+      images: [
+        {
+          url: "/og-home.jpg",
+          width: 1200,
+          height: 630,
+          alt: isArabic ? "فوكسيو - بناء تطبيقات حقيقية مهمة" : "Vooksio - Build Real Apps That Matter",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: isArabic
+        ? "فوكسيو - هندسة البرمجيات والتعليم التقني"
+        : "Software Engineering & Technical Education - Vooksio",
+      description: isArabic
+        ? "بناء تطبيقات حقيقية مهمة مع خبرتنا في هندسة البرمجيات"
+        : "Build real apps that matter with our software engineering expertise",
+      creator: "@vooksio",
+      images: ["/twitter-home.jpg"],
+    },
+    alternates: {
+      canonical: `${baseUrl}/${locale}`,
+      languages: {
+        en: `${baseUrl}/en`,
+        ar: `${baseUrl}/ar`,
+      },
+    },
+  };
+}
+
+// Services Index Page Metadata
+
+export async function generateServicesMetadata({
+  params,
+}: {
+  params: Promise<{ locale: "ar" | "en"; service: string }>;
+}): Promise<Metadata> {
+  const { locale, service } = await params;
+  const isArabic = locale === "ar";
+  type ServiceType = keyof typeof servicesData;
+  const serviceData = servicesData[service as ServiceType];
+  const keywords = [
+    "vooksio",
+    "software engineering",
+    "technical education",
+    "consulting",
+    ...(serviceData.technologies || []),
+  ];
+  const serviceUrl = `${baseUrl}/${locale}/services/${service}`;
+  return {
+    title: isArabic ? `${serviceData.title.ar} | فوكسيو` : `${serviceData.title.en} | Vooksio`,
+    description: isArabic
+      ? `اكتشف مجموعة شاملة من خدمات هندسة البرمجيات، وبرامج التعليم التقني، واستشارات تطوير المنتجات. خدمات تطوير الويب، والتطبيقات المحمولة، وتطوير MVP للشركات الناشئة والمطورين.`
+      : `Discover our comprehensive range of software engineering services, technical education programs, and product development consulting. Web development, mobile apps, and MVP development for startups and developers.`,
+    keywords: [
+      ...keywords,
+    ],
+    openGraph: {
+      type: "website",
+      locale: locale === "ar" ? "ar_SA" : "en_US",
+      url: serviceUrl,
+      title: `${serviceData.title[locale]} | Vooksio`,
+      description: serviceData.description[locale],
+      siteName: "Vooksio",
+      images: [
+        {
+          url: `/og-services-${service}.jpg`,
+          width: 1200,
+          height: 630,
+          alt: `${serviceData.title[locale]} - Vooksio`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${serviceData.title[locale]} | Vooksio`,
+      description: serviceData.description[locale],
+      creator: "@vooksio",
+      images: [`/twitter-services-${service}.jpg`],
+    },
+    alternates: {
+      canonical: `${baseUrl}/${locale}/services`,
+      languages: {
+        en: `${baseUrl}/en/services`,
+        ar: `${baseUrl}/ar/services`,
+      },
+    },
+  };
+}
+
+// Individual Service Page Metadata
+export async function generateServiceMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; service: string }>;
+}): Promise<Metadata> {
+  const { locale, service } = await params;
+  const isArabic = locale === "ar";
+  const serviceData = getServiceData(service, isArabic);
+
+  if (!serviceData) {
+    // Fallback metadata for unknown services
+    return {
+      title: isArabic ? `خدمة ${service} | فوكسيو` : `${service} Service | Vooksio`,
+      description: isArabic ? `خدمات متخصصة في ${service} من فوكسيو` : `Professional ${service} services from Vooksio`,
+    };
+  }
+
+  return {
+    title: serviceData.title,
+    description: serviceData.description,
+    keywords: serviceData.keywords,
+    openGraph: {
+      title: serviceData.title,
+      description: serviceData.description,
+      url: `${baseUrl}/${locale}/services/${service}`,
+      images: [
+        {
+          url: `/og-${service}.jpg`,
+          width: 1200,
+          height: 630,
+          alt: serviceData.title,
+        },
+      ],
+    },
+    twitter: {
+      title: serviceData.title,
+      description: serviceData.shortDescription || serviceData.description,
+      images: [`/twitter-${service}.jpg`],
+    },
+    alternates: {
+      canonical: `${baseUrl}/${locale}/services/${service}`,
+      languages: {
+        en: `${baseUrl}/en/services/${service}`,
+        ar: `${baseUrl}/ar/services/${service}`,
+      },
+    },
+  };
+}
+
+// Contact Page Metadata
+export async function generateContactMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isArabic = locale === "ar";
+
+  return {
+    title: isArabic ? "اتصل بنا | احصل على استشارة مجانية - فوكسيو" : "Contact Us | Get Free Consultation - Vooksio",
+    description: isArabic
+      ? "تواصل مع فريق خبراء هندسة البرمجيات والتعليم التقني لدينا. احصل على استشارة مجانية لمشروعك التقني، أو خدمات التطوير، أو برامج التدريب. نحن هنا لمساعدتك في تحقيق أهدافك التقنية وتطوير حلول برمجية مبتكرة."
+      : "Get in touch with our expert software engineering and technical education team. Schedule a free consultation for your technical project, development services, or training programs. We're here to help you achieve your technical goals and build innovative software solutions.",
+    keywords: [
+      "contact software engineering",
+      "technical consultation",
+      "free consultation",
+      "software engineering consultation",
+      "technical education consultation",
+      "product consulting contact",
+      "MVP development consultation",
+      "تواصل معنا",
+      "استشارة تقنية مجانية",
+      "خدمات البرمجة",
+      "استشارة هندسة البرمجيات",
+      "استشارة التعليم التقني",
+    ],
+    openGraph: {
+      title: isArabic ? "اتصل بنا - فوكسيو" : "Contact Us - Vooksio",
+      description: isArabic
+        ? "تواصل معنا للحصول على استشارة تقنية مجانية"
+        : "Get in touch for a free technical consultation",
+      url: `${baseUrl}/${locale}/contact-us`,
+      images: [
+        {
+          url: "/og-contact.jpg",
+          width: 1200,
+          height: 630,
+          alt: isArabic ? "تواصل مع فوكسيو" : "Contact Vooksio",
+        },
+      ],
+    },
+    twitter: {
+      title: isArabic ? "اتصل بنا - فوكسيو" : "Contact Us - Vooksio",
+      description: isArabic ? "احصل على استشارة تقنية مجانية" : "Get your free technical consultation",
+      images: ["/twitter-contact.jpg"],
+    },
+    alternates: {
+      canonical: `${baseUrl}/${locale}/contact-us`,
+      languages: {
+        en: `${baseUrl}/en/contact-us`,
+        ar: `${baseUrl}/ar/contact-us`,
+      },
+    },
+  };
+}
+
+// Service data configuration
+function getServiceData(service: string, isArabic: boolean) {
+  const services = {
+    "software-engineering": {
+      en: {
+        title: "Custom Software Engineering Services | Expert Development - Vooksio",
+        description:
+          "Professional custom software engineering services for startups and enterprises. Expert software development, architecture design, and technical consulting to build scalable, robust applications that drive business growth and innovation.",
+        shortDescription: "Professional custom software engineering services for startups and enterprises",
+        keywords: [
+          "custom software engineering",
+          "software development services",
+          "enterprise software",
+          "software architecture",
+          "technical consulting",
+          "scalable applications",
+          "custom software development",
+          "enterprise development",
+          "software engineering consulting",
+        ],
+      },
+      ar: {
+        title: "خدمات هندسة البرمجيات المخصصة | التطوير المتخصص - فوكسيو",
+        description:
+          "خدمات هندسة البرمجيات المخصصة المهنية للشركات الناشئة والمؤسسات. تطوير البرمجيات المتخصص، وتصميم الهندسة المعمارية، والاستشارات التقنية لبناء تطبيقات قابلة للتوسع وقوية تدفع نمو الأعمال والابتكار.",
+        shortDescription: "خدمات هندسة البرمجيات المخصصة المهنية للشركات الناشئة والمؤسسات",
+        keywords: [
+          "هندسة البرمجيات المخصصة",
+          "خدمات تطوير البرمجيات",
+          "برمجيات المؤسسات",
+          "هندسة البرمجيات",
+          "الاستشارات التقنية",
+          "التطبيقات القابلة للتوسع",
+        ],
+      },
+    },
+    "technical-education": {
+      en: {
+        title: "Technical Education Programs | Software Engineering Training - Vooksio",
+        description:
+          "Comprehensive technical education programs for developers and teams. Learn software engineering best practices, modern development frameworks, and cutting-edge technologies through hands-on training, expert instruction, and real-world projects.",
+        shortDescription: "Comprehensive technical education programs for developers and teams",
+        keywords: [
+          "technical education",
+          "software engineering training",
+          "developer education",
+          "programming courses",
+          "technical training programs",
+          "coding bootcamp",
+          "software development training",
+          "technical skills training",
+          "developer bootcamp",
+        ],
+      },
+      ar: {
+        title: "برامج التعليم التقني | تدريب هندسة البرمجيات - فوكسيو",
+        description:
+          "برامج تعليم تقني شاملة للمطورين والفرق. تعلم أفضل ممارسات هندسة البرمجيات وأطر التطوير الحديثة والتقنيات المتطورة من خلال التدريب العملي والتعليم المتخصص والمشاريع الحقيقية.",
+        shortDescription: "برامج تعليم تقني شاملة للمطورين والفرق",
+        keywords: [
+          "التعليم التقني",
+          "تدريب هندسة البرمجيات",
+          "تعليم المطورين",
+          "دورات البرمجة",
+          "برامج التدريب التقني",
+          "معسكر البرمجة",
+        ],
+      },
+    },
+    "product-consulting": {
+      en: {
+        title: "Strategic Product Consulting | Startup Technical Advisory - Vooksio",
+        description:
+          "Strategic product consulting and technical advisory services for startups and growing companies. Get expert guidance on product strategy, technical architecture, development roadmaps, and scaling solutions to accelerate your business growth and market success.",
+        shortDescription: "Strategic product consulting and technical advisory services for startups",
+        keywords: [
+          "product consulting",
+          "startup consulting",
+          "technical advisory",
+          "product strategy",
+          "technical architecture",
+          "development roadmap",
+          "startup technical advisory",
+          "product development consulting",
+          "business growth consulting",
+        ],
+      },
+      ar: {
+        title: "استشارات المنتجات الاستراتيجية | الاستشارات التقنية للشركات الناشئة - فوكسيو",
+        description:
+          "استشارات المنتجات الاستراتيجية وخدمات الاستشارات التقنية للشركات الناشئة والشركات النامية. احصل على إرشادات الخبراء حول استراتيجية المنتج والهندسة المعمارية التقنية وخرائط طريق التطوير لتسريع نمو أعمالك ونجاحك في السوق.",
+        shortDescription: "استشارات المنتجات الاستراتيجية وخدمات الاستشارات التقنية للشركات الناشئة",
+        keywords: [
+          "استشارات المنتجات",
+          "استشارات الشركات الناشئة",
+          "الاستشارات التقنية",
+          "استراتيجية المنتج",
+          "الهندسة المعمارية التقنية",
+          "خريطة طريق التطوير",
+        ],
+      },
+    },
+    "mvp-development": {
+      en: {
+        title: "MVP Development Services | Minimum Viable Product Creation - Vooksio",
+        description:
+          "Fast-track your startup success with our MVP development services. Build and launch your minimum viable product quickly with expert software engineering, user-focused design, agile development methodologies, and rapid market validation strategies.",
+        shortDescription: "Fast-track your startup success with our MVP development services",
+        keywords: [
+          "MVP development",
+          "minimum viable product",
+          "startup development",
+          "rapid prototyping",
+          "agile development",
+          "product launch",
+          "MVP development services",
+          "startup MVP",
+          "rapid product development",
+        ],
+      },
+      ar: {
+        title: "خدمات تطوير MVP | إنشاء المنتج الأدنى القابل للتطبيق - فوكسيو",
+        description:
+          "سرّع نجاح شركتك الناشئة مع خدمات تطوير MVP. ابنِ وأطلق منتجك الأدنى القابل للتطبيق بسرعة مع هندسة البرمجيات المتخصصة والتصميم المركز على المستخدم ومنهجيات التطوير السريع واستراتيجيات التحقق من السوق.",
+        shortDescription: "سرّع نجاح شركتك الناشئة مع خدمات تطوير MVP",
+        keywords: [
+          "تطوير MVP",
+          "المنتج الأدنى القابل للتطبيق",
+          "تطوير الشركات الناشئة",
+          "النمذجة السريعة",
+          "التطوير السريع",
+          "إطلاق المنتج",
+        ],
+      },
+    },
+    "web-development": {
+      en: {
+        title: "Professional Web Development Services | Modern Web Applications - Vooksio",
+        description:
+          "Professional web development services for businesses and startups. Build modern, responsive, and scalable web applications with cutting-edge technologies, exceptional user experience, and robust backend systems that drive business growth.",
+        shortDescription: "Professional web development services for businesses and startups",
+        keywords: [
+          "web development",
+          "web application development",
+          "responsive web design",
+          "modern web development",
+          "full-stack development",
+          "web development services",
+          "custom web development",
+          "enterprise web development",
+          "startup web development",
+        ],
+      },
+      ar: {
+        title: "خدمات تطوير المواقع المهنية | تطبيقات الويب الحديثة - فوكسيو",
+        description:
+          "خدمات تطوير المواقع المهنية للشركات والشركات الناشئة. ابنِ تطبيقات ويب حديثة ومتجاوبة وقابلة للتوسع بتقنيات متطورة وتجربة مستخدم استثنائية وأنظمة خلفية قوية تدفع نمو الأعمال.",
+        shortDescription: "خدمات تطوير المواقع المهنية للشركات والشركات الناشئة",
+        keywords: [
+          "تطوير المواقع",
+          "تطوير تطبيقات الويب",
+          "تصميم الويب المتجاوب",
+          "تطوير الويب الحديث",
+          "التطوير الشامل",
+          "خدمات تطوير المواقع",
+        ],
+      },
+    },
+    "mobile-development": {
+      en: {
+        title: "Mobile App Development Services | iOS & Android Development - Vooksio",
+        description:
+          "Professional mobile app development services for iOS and Android platforms. Build native and cross-platform mobile applications with exceptional user experience, robust performance, and seamless integration with modern backend systems.",
+        shortDescription: "Professional mobile app development services for iOS and Android platforms",
+        keywords: [
+          "mobile app development",
+          "iOS development",
+          "Android development",
+          "mobile application development",
+          "cross-platform development",
+          "native app development",
+          "mobile development services",
+          "app development company",
+          "custom mobile apps",
+        ],
+      },
+      ar: {
+        title: "خدمات تطوير التطبيقات المحمولة | تطوير iOS و Android - فوكسيو",
+        description:
+          "خدمات تطوير التطبيقات المحمولة المهنية لمنصات iOS و Android. ابنِ تطبيقات محمولة أصلية ومتعددة المنصات بتجربة مستخدم استثنائية وأداء قوي وتكامل سلس مع الأنظمة الخلفية الحديثة.",
+        shortDescription: "خدمات تطوير التطبيقات المحمولة المهنية لمنصات iOS و Android",
+        keywords: [
+          "تطوير التطبيقات المحمولة",
+          "تطوير iOS",
+          "تطوير Android",
+          "تطوير تطبيقات الهاتف",
+          "التطوير متعدد المنصات",
+          "تطوير التطبيقات الأصلية",
+        ],
+      },
+    },
+  };
+
+  const serviceConfig = services[service as keyof typeof services];
+  return isArabic ? serviceConfig?.ar : serviceConfig?.en;
+}
