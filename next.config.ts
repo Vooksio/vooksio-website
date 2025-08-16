@@ -1,21 +1,29 @@
 import { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
+const withNextIntl = createNextIntlPlugin();
+
 const nextConfig: NextConfig = {
   // 9. FIXED: Remove X-Powered-By header
   poweredByHeader: false,
 
-  // Enable internationalization
-  i18n: {
-    locales: ["en", "ar"],
-    defaultLocale: "en",
-  },
+  // NOTE: Don't use i18n config with next-intl App Router
+  // next-intl handles internationalization in App Router differently
 
   // Optimize images
   images: {
     formats: ["image/webp", "image/avif"],
     minimumCacheTTL: 31536000,
-    domains: ["vooksio.com"], // Add your domain
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "vooksio.com",
+      },
+      {
+        protocol: "https",
+        hostname: "**.vooksio.com",
+      },
+    ],
   },
 
   // Enable compression
@@ -24,7 +32,7 @@ const nextConfig: NextConfig = {
   // 11. FIXED: Performance optimizations
   experimental: {
     optimizeCss: true,
-    optimizePackageImports: ["lucide-react"],
+    optimizePackageImports: ["lucide-react", "@radix-ui/react-icons"],
   },
 
   // Headers for better SEO and security
@@ -49,6 +57,26 @@ const nextConfig: NextConfig = {
             key: "Referrer-Policy",
             value: "strict-origin-when-cross-origin",
           },
+          // More selective caching - don't cache HTML pages for too long
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      // Specific caching for static assets
+      {
+        source: "/favicon.ico",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/(.*\\.(?:jpg|jpeg|png|webp|avif|gif|svg)$)",
+        headers: [
           {
             key: "Cache-Control",
             value: "public, max-age=31536000, immutable",
@@ -71,6 +99,19 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+
+  // Webpack optimizations
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      // Reduce bundle size on client
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+      };
+    }
+    return config;
+  },
 };
-const withNextIntl = createNextIntlPlugin();
+
+// Export using next-intl plugin wrapper
 export default withNextIntl(nextConfig);

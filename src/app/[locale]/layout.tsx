@@ -7,11 +7,12 @@ import { Header } from "@/components/layouts/Header";
 import { Footer } from "@/components/layouts/Footer";
 import { getLayoutConfig } from "@/lib/layout-utils";
 import { Toaster } from "sonner";
-import { generateHomeMetadata } from "@/lib/metadata-configs";
+import { generateHomeMetadata, generateHomeViewport } from "@/lib/metadata-configs";
 import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const cairo = Cairo({ subsets: ["arabic"], variable: "--font-cairo" });
+export const generateViewport = generateHomeViewport;
 export const generateMetadata = generateHomeMetadata;
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

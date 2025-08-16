@@ -1,16 +1,29 @@
 // lib/metadata-configs.ts
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 import { getBaseUrl } from "@/lib/config";
 import { servicesData } from "./services-data";
 
 const baseUrl = getBaseUrl();
 
 // Homepage Metadata
+// Separate viewport configuration
+export async function generateHomeViewport({ params }: { params: Promise<{ locale: string }> }): Promise<Viewport> {
+  return {
+    themeColor: "#ffffff",
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+  };
+}
+
 export async function generateHomeMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const isArabic = locale === "ar";
 
   return {
+    // Add metadataBase to resolve social images properly
+    metadataBase: new URL(baseUrl),
+
     // 1. FIXED: Shortened titles to under 580 pixels (~60 characters)
     title: isArabic ? "فوكسيو - هندسة البرمجيات والتعليم التقني" : "Vooksio - Software Engineering & Tech Education",
 
@@ -59,8 +72,7 @@ export async function generateHomeMetadata({ params }: { params: Promise<{ local
     // Web app manifest
     manifest: "/site.webmanifest",
 
-    // Theme color for mobile browsers
-    themeColor: "#ffffff",
+    // NOTE: themeColor moved to viewport export
 
     openGraph: {
       type: "website",
@@ -203,7 +215,11 @@ export async function generateServicesMetadata({
   };
 }
 
-// Individual Service Page Metadata
+// =============================================
+// SERVICE PAGE METADATA & VIEWPORT
+// =============================================
+
+// Individual Service Page Metadata - FIXED
 export async function generateServiceMetadata({
   params,
 }: {
@@ -216,13 +232,19 @@ export async function generateServiceMetadata({
   if (!serviceData) {
     // Fallback metadata for unknown services
     return {
+      metadataBase: new URL(baseUrl), // FIXED: Added metadataBase
       title: isArabic ? `خدمة ${service} | فوكسيو` : `${service} Service | Vooksio`,
       description: isArabic ? `خدمات متخصصة في ${service} من فوكسيو` : `Professional ${service} services from Vooksio`,
+      alternates: {
+        canonical: `${baseUrl}/${locale}/services/${service}`,
+      },
     };
   }
 
   return {
-    title: serviceData.title,
+    metadataBase: new URL(baseUrl), // FIXED: Added metadataBase
+    title: isArabic ? `${serviceData.title} | فوكسيو` : `${serviceData.title} | Vooksio`,
+   
     description: serviceData.description,
     keywords: serviceData.keywords,
     openGraph: {
@@ -231,7 +253,7 @@ export async function generateServiceMetadata({
       url: `${baseUrl}/${locale}/services/${service}`,
       images: [
         {
-          url: `/og-${service}.jpg`,
+          url: `/og-${service}.jpg`, // Will be resolved with metadataBase
           width: 1200,
           height: 630,
           alt: serviceData.title,
@@ -241,7 +263,7 @@ export async function generateServiceMetadata({
     twitter: {
       title: serviceData.title,
       description: serviceData.shortDescription || serviceData.description,
-      images: [`/twitter-${service}.jpg`],
+      images: [`/twitter-${service}.jpg`], // Will be resolved with metadataBase
     },
     alternates: {
       canonical: `${baseUrl}/${locale}/services/${service}`,
@@ -253,12 +275,32 @@ export async function generateServiceMetadata({
   };
 }
 
-// Contact Page Metadata
+// Service Page Viewport - NEW
+export async function generateServiceViewport({
+  params,
+}: {
+  params: Promise<{ locale: string; service: string }>;
+}): Promise<Viewport> {
+  return {
+    themeColor: "#ffffff",
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+  };
+}
+
+// =============================================
+// CONTACT PAGE METADATA & VIEWPORT
+// =============================================
+
+// Contact Page Metadata - FIXED
 export async function generateContactMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const isArabic = locale === "ar";
 
   return {
+    metadataBase: new URL(baseUrl), // FIXED: Added metadataBase
     title: isArabic ? "اتصل بنا | احصل على استشارة مجانية - فوكسيو" : "Contact Us | Get Free Consultation - Vooksio",
     description: isArabic
       ? "تواصل مع فريق خبراء هندسة البرمجيات والتعليم التقني لدينا. احصل على استشارة مجانية لمشروعك التقني، أو خدمات التطوير، أو برامج التدريب. نحن هنا لمساعدتك في تحقيق أهدافك التقنية وتطوير حلول برمجية مبتكرة."
@@ -285,7 +327,7 @@ export async function generateContactMetadata({ params }: { params: Promise<{ lo
       url: `${baseUrl}/${locale}/contact-us`,
       images: [
         {
-          url: "/og-contact.jpg",
+          url: "/og-contact.jpg", // Will be resolved with metadataBase
           width: 1200,
           height: 630,
           alt: isArabic ? "تواصل مع فوكسيو" : "Contact Vooksio",
@@ -295,7 +337,7 @@ export async function generateContactMetadata({ params }: { params: Promise<{ lo
     twitter: {
       title: isArabic ? "اتصل بنا - فوكسيو" : "Contact Us - Vooksio",
       description: isArabic ? "احصل على استشارة تقنية مجانية" : "Get your free technical consultation",
-      images: ["/twitter-contact.jpg"],
+      images: ["/twitter-contact.jpg"], // Will be resolved with metadataBase
     },
     alternates: {
       canonical: `${baseUrl}/${locale}/contact-us`,
@@ -304,6 +346,17 @@ export async function generateContactMetadata({ params }: { params: Promise<{ lo
         ar: `${baseUrl}/ar/contact-us`,
       },
     },
+  };
+}
+
+// Contact Page Viewport - NEW
+export async function generateContactViewport({ params }: { params: Promise<{ locale: string }> }): Promise<Viewport> {
+  return {
+    themeColor: "#ffffff",
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
   };
 }
 
