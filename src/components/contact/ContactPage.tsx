@@ -59,10 +59,6 @@ function SubmitButton() {
   );
 }
 
-function LoadingSpinner() {
-  return <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-current"></div>;
-}
-
 function ErrorAlert({ message }: { message: string }) {
   const { switchData } = useSwitchData();
 
@@ -280,7 +276,6 @@ export const ContactPage = () => {
               {switchData("اختر الطريقة الأنسب للتواصل معنا", "Choose the most convenient way to reach us")}
             </p>
           </div>
-
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {contactInfo.map((info, index) => (
               <div
