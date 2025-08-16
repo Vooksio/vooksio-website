@@ -1,6 +1,6 @@
 import { ServicePage } from "@/components/services/ServicePage";
 import { routing } from "@/i18n/routing";
-import { generateServicesMetadata } from "@/lib/metadata-configs";
+import { generateServiceMetadata, generateServiceViewport } from "@/lib/metadata-configs";
 import { servicesData } from "@/lib/services-data";
 import React from "react";
 
@@ -18,7 +18,8 @@ export function generateStaticParams() {
   return locales.flatMap(({ locale }) => services.map(({ service }) => ({ locale, service })));
 }
 
-export const generateMetadata = generateServicesMetadata;
+export const generateMetadata = generateServiceMetadata;
+export const generateViewport = generateServiceViewport;
 
 export default async function Page({ params }: PageParams) {
   const { service, locale } = await params;

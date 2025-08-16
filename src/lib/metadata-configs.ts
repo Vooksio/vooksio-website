@@ -1,22 +1,37 @@
 // lib/metadata-configs.ts
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 import { getBaseUrl } from "@/lib/config";
 import { servicesData } from "./services-data";
 
 const baseUrl = getBaseUrl();
 
 // Homepage Metadata
+// Separate viewport configuration
+export async function generateHomeViewport({ params }: { params: Promise<{ locale: string }> }): Promise<Viewport> {
+  return {
+    themeColor: "#ffffff",
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+  };
+}
+
 export async function generateHomeMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const isArabic = locale === "ar";
 
   return {
-    title: isArabic
-      ? "فوكسيو - هندسة البرمجيات والتعليم التقني | استشارات المنتجات"
-      : "Software Engineering & Technical Education | Product Consulting - Vooksio",
+    // Add metadataBase to resolve social images properly
+    metadataBase: new URL(baseUrl),
+
+    // 1. FIXED: Shortened titles to under 580 pixels (~60 characters)
+    title: isArabic ? "فوكسيو - هندسة البرمجيات والتعليم التقني" : "Vooksio - Software Engineering & Tech Education",
+
+    // 2. FIXED: Shortened meta description to under 1000 pixels (~155 characters)
     description: isArabic
-      ? "خدمات هندسة البرمجيات المتخصصة، والتعليم التقني الشامل، والاستشارات الاستراتيجية للمنتجات للشركات الناشئة. بناء تطبيقات حقيقية مهمة مع خبرة فوكسيو في هندسة البرمجيات وبرامج التعليم التقني."
-      : "Expert software engineering services, comprehensive technical education, and strategic product consulting for startups. Build real apps that matter with Vooksio's software engineering expertise and technical education programs.",
+      ? "خدمات هندسة البرمجيات المتخصصة والتعليم التقني الشامل. بناء تطبيقات حقيقية مهمة مع فريق فوكسيو المتخصص في التطوير والاستشارات."
+      : "Expert software engineering services and comprehensive technical education. Build real apps that matter with Vooksio's specialized development and consulting team.",
+
     keywords: [
       "software engineering",
       "technical education",
@@ -28,50 +43,116 @@ export async function generateHomeMetadata({ params }: { params: Promise<{ local
       "startup consulting",
       "web development",
       "mobile development",
-      "software engineering services",
-      "technical education programs",
-      "product consulting startups",
+      "vooksio",
+      "tech training",
+      "software services",
     ],
+
     authors: [{ name: "Vooksio Team" }],
     creator: "Vooksio",
     publisher: "Vooksio",
+
+    // 3. FIXED: Added favicon and Apple touch icons
+    icons: {
+      icon: [
+        { url: "/favicon.ico", sizes: "16x16 32x32", type: "image/x-icon" },
+        { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+        { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      ],
+      // 5. FIXED: Apple touch icons
+      apple: [
+        { url: "/apple-touch-icon.png", sizes: "180x180" },
+        { url: "/apple-touch-icon-152x152.png", sizes: "152x152" },
+        { url: "/apple-touch-icon-120x120.png", sizes: "120x120" },
+        { url: "/apple-touch-icon-76x76.png", sizes: "76x76" },
+      ],
+      other: [{ rel: "mask-icon", url: "/safari-pinned-tab.svg", color: "#5bbad5" }],
+    },
+
+    // Web app manifest
+    manifest: "/site.webmanifest",
+
+    // NOTE: themeColor moved to viewport export
+
     openGraph: {
       type: "website",
       locale: isArabic ? "ar_EG" : "en_US",
-      title: isArabic
-        ? "فوكسيو - هندسة البرمجيات والتعليم التقني"
-        : "Software Engineering & Technical Education - Vooksio",
+      title: isArabic ? "فوكسيو - هندسة البرمجيات والتعليم التقني" : "Vooksio - Software Engineering & Tech Education",
       description: isArabic
-        ? "خدمات هندسة البرمجيات والتعليم التقني واستشارات المنتجات للشركات الناشئة"
-        : "Expert software engineering services, technical education, and product consulting for startups",
+        ? "خدمات هندسة البرمجيات المتخصصة والتعليم التقني الشامل"
+        : "Expert software engineering services and comprehensive technical education",
       url: `${baseUrl}/${locale}`,
       siteName: "Vooksio",
       images: [
         {
-          url: "/og-home.jpg",
+          url: `${baseUrl}/og-home.jpg`,
           width: 1200,
           height: 630,
           alt: isArabic ? "فوكسيو - بناء تطبيقات حقيقية مهمة" : "Vooksio - Build Real Apps That Matter",
         },
       ],
     },
+
     twitter: {
       card: "summary_large_image",
-      title: isArabic
-        ? "فوكسيو - هندسة البرمجيات والتعليم التقني"
-        : "Software Engineering & Technical Education - Vooksio",
+      site: "@vooksio",
+      creator: "@vooksio",
+      title: isArabic ? "فوكسيو - هندسة البرمجيات والتعليم التقني" : "Vooksio - Software Engineering & Tech Education",
       description: isArabic
         ? "بناء تطبيقات حقيقية مهمة مع خبرتنا في هندسة البرمجيات"
         : "Build real apps that matter with our software engineering expertise",
-      creator: "@vooksio",
-      images: ["/twitter-home.jpg"],
+      images: [`${baseUrl}/twitter-home.jpg`],
     },
+
     alternates: {
       canonical: `${baseUrl}/${locale}`,
       languages: {
         en: `${baseUrl}/en`,
         ar: `${baseUrl}/ar`,
       },
+    },
+
+    // 10 & 13. FIXED: Combined other properties
+    other: {
+      "X-Robots-Tag": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "application/ld+json": JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: "Vooksio",
+        url: baseUrl,
+        logo: `${baseUrl}/logo.png`,
+        description: isArabic
+          ? "خدمات هندسة البرمجيات المتخصصة والتعليم التقني الشامل"
+          : "Expert software engineering services and comprehensive technical education",
+        sameAs: ["https://twitter.com/vooksio", "https://linkedin.com/company/vooksio", "https://github.com/vooksio"],
+        contactPoint: {
+          "@type": "ContactPoint",
+          contactType: "customer service",
+          availableLanguage: ["English", "Arabic"],
+        },
+        areaServed: "Worldwide",
+        serviceType: ["Software Engineering", "Technical Education", "Product Consulting", "MVP Development"],
+      }),
+    },
+
+    // Additional SEO optimizations
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+
+    // Verification tags for search engines
+    verification: {
+      google: "your-google-verification-code",
+      yandex: "your-yandex-verification-code",
+      yahoo: "your-yahoo-verification-code",
     },
   };
 }
@@ -100,9 +181,7 @@ export async function generateServicesMetadata({
     description: isArabic
       ? `اكتشف مجموعة شاملة من خدمات هندسة البرمجيات، وبرامج التعليم التقني، واستشارات تطوير المنتجات. خدمات تطوير الويب، والتطبيقات المحمولة، وتطوير MVP للشركات الناشئة والمطورين.`
       : `Discover our comprehensive range of software engineering services, technical education programs, and product development consulting. Web development, mobile apps, and MVP development for startups and developers.`,
-    keywords: [
-      ...keywords,
-    ],
+    keywords,
     openGraph: {
       type: "website",
       locale: locale === "ar" ? "ar_SA" : "en_US",
@@ -136,7 +215,11 @@ export async function generateServicesMetadata({
   };
 }
 
-// Individual Service Page Metadata
+// =============================================
+// SERVICE PAGE METADATA & VIEWPORT
+// =============================================
+
+// Individual Service Page Metadata - FIXED
 export async function generateServiceMetadata({
   params,
 }: {
@@ -149,13 +232,19 @@ export async function generateServiceMetadata({
   if (!serviceData) {
     // Fallback metadata for unknown services
     return {
+      metadataBase: new URL(baseUrl), // FIXED: Added metadataBase
       title: isArabic ? `خدمة ${service} | فوكسيو` : `${service} Service | Vooksio`,
       description: isArabic ? `خدمات متخصصة في ${service} من فوكسيو` : `Professional ${service} services from Vooksio`,
+      alternates: {
+        canonical: `${baseUrl}/${locale}/services/${service}`,
+      },
     };
   }
 
   return {
-    title: serviceData.title,
+    metadataBase: new URL(baseUrl), // FIXED: Added metadataBase
+    title: isArabic ? `${serviceData.title} | فوكسيو` : `${serviceData.title} | Vooksio`,
+   
     description: serviceData.description,
     keywords: serviceData.keywords,
     openGraph: {
@@ -164,7 +253,7 @@ export async function generateServiceMetadata({
       url: `${baseUrl}/${locale}/services/${service}`,
       images: [
         {
-          url: `/og-${service}.jpg`,
+          url: `/og-${service}.jpg`, // Will be resolved with metadataBase
           width: 1200,
           height: 630,
           alt: serviceData.title,
@@ -174,7 +263,7 @@ export async function generateServiceMetadata({
     twitter: {
       title: serviceData.title,
       description: serviceData.shortDescription || serviceData.description,
-      images: [`/twitter-${service}.jpg`],
+      images: [`/twitter-${service}.jpg`], // Will be resolved with metadataBase
     },
     alternates: {
       canonical: `${baseUrl}/${locale}/services/${service}`,
@@ -186,12 +275,32 @@ export async function generateServiceMetadata({
   };
 }
 
-// Contact Page Metadata
+// Service Page Viewport - NEW
+export async function generateServiceViewport({
+  params,
+}: {
+  params: Promise<{ locale: string; service: string }>;
+}): Promise<Viewport> {
+  return {
+    themeColor: "#ffffff",
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+  };
+}
+
+// =============================================
+// CONTACT PAGE METADATA & VIEWPORT
+// =============================================
+
+// Contact Page Metadata - FIXED
 export async function generateContactMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const isArabic = locale === "ar";
 
   return {
+    metadataBase: new URL(baseUrl), // FIXED: Added metadataBase
     title: isArabic ? "اتصل بنا | احصل على استشارة مجانية - فوكسيو" : "Contact Us | Get Free Consultation - Vooksio",
     description: isArabic
       ? "تواصل مع فريق خبراء هندسة البرمجيات والتعليم التقني لدينا. احصل على استشارة مجانية لمشروعك التقني، أو خدمات التطوير، أو برامج التدريب. نحن هنا لمساعدتك في تحقيق أهدافك التقنية وتطوير حلول برمجية مبتكرة."
@@ -218,7 +327,7 @@ export async function generateContactMetadata({ params }: { params: Promise<{ lo
       url: `${baseUrl}/${locale}/contact-us`,
       images: [
         {
-          url: "/og-contact.jpg",
+          url: "/og-contact.jpg", // Will be resolved with metadataBase
           width: 1200,
           height: 630,
           alt: isArabic ? "تواصل مع فوكسيو" : "Contact Vooksio",
@@ -228,7 +337,7 @@ export async function generateContactMetadata({ params }: { params: Promise<{ lo
     twitter: {
       title: isArabic ? "اتصل بنا - فوكسيو" : "Contact Us - Vooksio",
       description: isArabic ? "احصل على استشارة تقنية مجانية" : "Get your free technical consultation",
-      images: ["/twitter-contact.jpg"],
+      images: ["/twitter-contact.jpg"], // Will be resolved with metadataBase
     },
     alternates: {
       canonical: `${baseUrl}/${locale}/contact-us`,
@@ -237,6 +346,17 @@ export async function generateContactMetadata({ params }: { params: Promise<{ lo
         ar: `${baseUrl}/ar/contact-us`,
       },
     },
+  };
+}
+
+// Contact Page Viewport - NEW
+export async function generateContactViewport({ params }: { params: Promise<{ locale: string }> }): Promise<Viewport> {
+  return {
+    themeColor: "#ffffff",
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
   };
 }
 
