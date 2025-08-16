@@ -4,6 +4,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Badge } from "../ui/badge";
 import { cn } from "@/lib/utils";
 import { ServerActionLink } from "../ui-actions/ServerActionLink";
+import { RefreshLink } from "../ui-actions/RefreshLink";
 
 export function Audience() {
   const t = useTranslations("audience");
@@ -139,13 +140,13 @@ export function Audience() {
                       ))}
                     </ul>
                   </div>
-                  <ServerActionLink
+                  <RefreshLink
                     href={`/${locale}/contact-us`}
                     variant="outline"
                     className="w-full border-dark-navy/20 text-dark-navy hover:bg-dark-navy hover:text-white"
                   >
                     {audience.ctaText}
-                  </ServerActionLink>
+                  </RefreshLink>
                 </CardContent>
               </Card>
             </ServerActionLink>

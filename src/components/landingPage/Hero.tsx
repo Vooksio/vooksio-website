@@ -21,7 +21,7 @@ export function Hero() {
                 {t("headline")}
                 <span className="block vooksio-text-gradient">{t("headlineAccent")}</span>
               </h1>
-              <p className="text-xl text-muted-gray leading-relaxed max-w-xl">{t("description")}</p>
+              <h2 className="text-xl text-muted-gray leading-relaxed max-w-xl">{t("description")}</h2>
             </div>
 
             <div className="flex flex-wrap gap-6">

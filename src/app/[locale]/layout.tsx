@@ -5,84 +5,17 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/components/layouts/Header";
 import { Footer } from "@/components/layouts/Footer";
-import type { Metadata } from "next";
 import { getLayoutConfig } from "@/lib/layout-utils";
 import { Toaster } from "sonner";
+import { generateHomeMetadata } from "@/lib/metadata-configs";
 import "../globals.css";
-import { getBaseUrl } from "@/lib/config";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const cairo = Cairo({ subsets: ["arabic"], variable: "--font-cairo" });
-
+export const generateMetadata = generateHomeMetadata;
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
-const baseUrl = getBaseUrl();
-
-export const metadata: Metadata = {
-  title: {
-    default: "Vooksio - Software Engineering & Technical Education",
-    template: "%s | Vooksio",
-  },
-  description:
-    "Build real apps that matter. Software engineering, technical education, and product consulting for startups and developers.",
-  keywords: ["software engineering", "technical education", "product consulting", "MVP development"],
-  authors: [{ name: "Vooksio Team" }],
-  creator: "Vooksio",
-  publisher: "Vooksio",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  metadataBase: new URL(baseUrl),
-  alternates: {
-    canonical: "/",
-  },
-  icons: {
-    icon: [
-      { url: "/favicon.ico" },
-      { url: "/icon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/icon-32x32.png", sizes: "32x32", type: "image/png" },
-    ],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
-    other: [{ rel: "mask-icon", url: "/safari-pinned-tab.svg", color: "#1E2A38" }],
-  },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://vooksio.com",
-    title: "Vooksio - Software Engineering & Technical Education",
-    description: "Build real apps that matter. Software engineering, technical education, and product consulting.",
-    siteName: "Vooksio",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Vooksio - Build Real Apps That Matter",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Vooksio - Software Engineering & Technical Education",
-    description: "Build real apps that matter.",
-    creator: "@vooksio",
-    images: ["/twitter-image.jpg"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-};
 
 export default async function RootLayout({
   children,

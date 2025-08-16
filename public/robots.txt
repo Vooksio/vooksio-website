@@ -1,0 +1,42 @@
+# robots.txt for Vooksio
+# Place this file in your public/ directory
+
+User-agent: *
+Allow: /
+
+# Disallow private or sensitive areas
+Disallow: /admin
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /dashboard/
+Disallow: /user/
+
+# Allow important resources for all locales
+Allow: /en/
+Allow: /ar/
+Allow: /en/services/
+Allow: /ar/services/
+Allow: /en/contact-us
+Allow: /ar/contact-us
+Allow: /_next/static/
+
+# Sitemap locations
+Sitemap: https://vooksio.com/sitemap.xml
+Sitemap: https://vooksio.com/en/sitemap.xml
+Sitemap: https://vooksio.com/ar/sitemap.xml
+
+# Crawl-delay (optional - be conservative)
+# Crawl-delay: 1
+
+# Specific bot instructions
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Block any abusive bots (add as needed)
+# User-agent: BadBot
+# Disallow: /
