@@ -1,13 +1,73 @@
 import { useLocale, useTranslations } from "next-intl";
 import { Button } from "../ui/button";
-import { Mail, Github, Twitter, Linkedin, ArrowRight, Code2, BookOpen, Users } from "lucide-react";
+import { Mail, Github, Twitter, Linkedin, ArrowRight, Code2, BookOpen, Users, Share2 } from "lucide-react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Input } from "../ui/input";
 import { RefreshLink } from "../ui-actions/RefreshLink";
 
+// Social Share Buttons Component integrated into Footer
+function SocialShareButtons({ 
+  url, 
+  title, 
+  className = "" 
+}: { 
+  url: string; 
+  title: string; 
+  className?: string;
+}) {
+  const t = useTranslations("footer");
+  const encodedUrl = encodeURIComponent(url);
+  const encodedTitle = encodeURIComponent(title);
+  
+  const shareLinks = [
+    {
+      name: 'Twitter',
+      icon: Twitter,
+      url: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
+      color: 'hover:text-[var(--vooksio-cyan)]',
+      ariaLabel: t("ariaLabels.shareTwitter") || "Share on Twitter",
+    },
+    {
+      name: 'LinkedIn',
+      icon: Linkedin,
+      url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+      color: 'hover:text-[var(--vooksio-emerald)]',
+      ariaLabel: t("ariaLabels.shareLinkedIn") || "Share on LinkedIn",
+    },
+  ];
+
+  return (
+    <div className={`flex items-center gap-3 ${className}`}>
+      <Share2 className="w-5 h-5 text-muted-gray" />
+      <span className="text-sm text-muted-gray font-medium">
+        {t("share.text") || "Share:"}
+      </span>
+      {shareLinks.map((social) => (
+        <a
+          key={social.name}
+          href={social.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`text-muted-gray ${social.color} transition-colors p-2 rounded-full hover:bg-white/50`}
+          aria-label={social.ariaLabel}
+        >
+          <social.icon className="w-4 h-4" />
+        </a>
+      ))}
+    </div>
+  );
+}
+
 export function Footer() {
   const t = useTranslations("footer");
+  const locale = useLocale();
+
+  // Get current page URL and title for sharing
+  const currentUrl = typeof window !== 'undefined' 
+    ? window.location.href 
+    : `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}`;
+  const pageTitle = t("share.title") || "Vooksio - Software Engineering & Technical Education";
 
   const links = {
     services: [
@@ -47,7 +107,39 @@ export function Footer() {
       description: t("features.expertMentorship.description"),
     },
   ];
-  const locale = useLocale();
+
+  // Social media links for footer
+  const socialLinks = [
+    {
+      name: "GitHub",
+      icon: Github,
+      href: "https://github.com/vooksio",
+      color: "hover:text-[var(--vooksio-purple)]",
+      ariaLabel: t("ariaLabels.github"),
+    },
+    {
+      name: "Twitter",
+      icon: Twitter,
+      href: "https://twitter.com/vooksio",
+      color: "hover:text-[var(--vooksio-cyan)]",
+      ariaLabel: t("ariaLabels.twitter"),
+    },
+    {
+      name: "LinkedIn",
+      icon: Linkedin,
+      href: "https://linkedin.com/company/vooksio",
+      color: "hover:text-[var(--vooksio-emerald)]",
+      ariaLabel: t("ariaLabels.linkedin"),
+    },
+    {
+      name: "Email",
+      icon: Mail,
+      href: "mailto:hello@vooksio.com",
+      color: "hover:text-[var(--vooksio-orange)]",
+      ariaLabel: t("ariaLabels.email"),
+    },
+  ];
+
   return (
     <footer id="contact" className="relative overflow-hidden">
       {/* Light Background with Subtle Brand Color Accents */}
@@ -123,6 +215,18 @@ export function Footer() {
                       <ArrowRight className={cn("h-4 w-4", locale === "ar" ? "rotate-180" : "")} />
                     </Button>
                   </div>
+                </div>
+
+                {/* Social Share Section - NEW */}
+                <div className="vooksio-card rounded-lg p-6 backdrop-blur-sm border border-switch-background bg-white/80">
+                  <h3 className="font-semibold text-dark-navy mb-4">
+                    {t("share.sectionTitle") || "Share Vooksio"}
+                  </h3>
+                  <SocialShareButtons 
+                    url={currentUrl}
+                    title={pageTitle}
+                    className="justify-start"
+                  />
                 </div>
               </div>
 
@@ -208,36 +312,20 @@ export function Footer() {
               {/* Copyright */}
               <div className="text-muted-gray text-sm">© 2025 Vooksio. {t("copyright")}</div>
 
-              {/* Social Links */}
+              {/* Social Links - Updated for consistency */}
               <div className="flex items-center space-x-4">
-                <a
-                  href="#"
-                  className="text-muted-gray hover:text-[var(--vooksio-purple)] transition-colors"
-                  aria-label={t("ariaLabels.github")}
-                >
-                  <Github className="h-5 w-5" />
-                </a>
-                <a
-                  href="#"
-                  className="text-muted-gray hover:text-[var(--vooksio-cyan)] transition-colors"
-                  aria-label={t("ariaLabels.twitter")}
-                >
-                  <Twitter className="h-5 w-5" />
-                </a>
-                <a
-                  href="#"
-                  className="text-muted-gray hover:text-[var(--vooksio-emerald)] transition-colors"
-                  aria-label={t("ariaLabels.linkedin")}
-                >
-                  <Linkedin className="h-5 w-5" />
-                </a>
-                <a
-                  href="mailto:hello@vooksio.com"
-                  className="text-muted-gray hover:text-[var(--vooksio-orange)] transition-colors"
-                  aria-label={t("ariaLabels.email")}
-                >
-                  <Mail className="h-5 w-5" />
-                </a>
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`text-muted-gray ${social.color} transition-colors`}
+                    aria-label={social.ariaLabel}
+                  >
+                    <social.icon className="h-5 w-5" />
+                  </a>
+                ))}
               </div>
             </div>
           </div>

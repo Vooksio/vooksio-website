@@ -11,12 +11,14 @@ export async function generateHomeMetadata({ params }: { params: Promise<{ local
   const isArabic = locale === "ar";
 
   return {
-    title: isArabic
-      ? "فوكسيو - هندسة البرمجيات والتعليم التقني | استشارات المنتجات"
-      : "Software Engineering & Technical Education | Product Consulting - Vooksio",
+    // 1. FIXED: Shortened titles to under 580 pixels (~60 characters)
+    title: isArabic ? "فوكسيو - هندسة البرمجيات والتعليم التقني" : "Vooksio - Software Engineering & Tech Education",
+
+    // 2. FIXED: Shortened meta description to under 1000 pixels (~155 characters)
     description: isArabic
-      ? "خدمات هندسة البرمجيات المتخصصة، والتعليم التقني الشامل، والاستشارات الاستراتيجية للمنتجات للشركات الناشئة. بناء تطبيقات حقيقية مهمة مع خبرة فوكسيو في هندسة البرمجيات وبرامج التعليم التقني."
-      : "Expert software engineering services, comprehensive technical education, and strategic product consulting for startups. Build real apps that matter with Vooksio's software engineering expertise and technical education programs.",
+      ? "خدمات هندسة البرمجيات المتخصصة والتعليم التقني الشامل. بناء تطبيقات حقيقية مهمة مع فريق فوكسيو المتخصص في التطوير والاستشارات."
+      : "Expert software engineering services and comprehensive technical education. Build real apps that matter with Vooksio's specialized development and consulting team.",
+
     keywords: [
       "software engineering",
       "technical education",
@@ -28,50 +30,117 @@ export async function generateHomeMetadata({ params }: { params: Promise<{ local
       "startup consulting",
       "web development",
       "mobile development",
-      "software engineering services",
-      "technical education programs",
-      "product consulting startups",
+      "vooksio",
+      "tech training",
+      "software services",
     ],
+
     authors: [{ name: "Vooksio Team" }],
     creator: "Vooksio",
     publisher: "Vooksio",
+
+    // 3. FIXED: Added favicon and Apple touch icons
+    icons: {
+      icon: [
+        { url: "/favicon.ico", sizes: "16x16 32x32", type: "image/x-icon" },
+        { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+        { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      ],
+      // 5. FIXED: Apple touch icons
+      apple: [
+        { url: "/apple-touch-icon.png", sizes: "180x180" },
+        { url: "/apple-touch-icon-152x152.png", sizes: "152x152" },
+        { url: "/apple-touch-icon-120x120.png", sizes: "120x120" },
+        { url: "/apple-touch-icon-76x76.png", sizes: "76x76" },
+      ],
+      other: [{ rel: "mask-icon", url: "/safari-pinned-tab.svg", color: "#5bbad5" }],
+    },
+
+    // Web app manifest
+    manifest: "/site.webmanifest",
+
+    // Theme color for mobile browsers
+    themeColor: "#ffffff",
+
     openGraph: {
       type: "website",
       locale: isArabic ? "ar_EG" : "en_US",
-      title: isArabic
-        ? "فوكسيو - هندسة البرمجيات والتعليم التقني"
-        : "Software Engineering & Technical Education - Vooksio",
+      title: isArabic ? "فوكسيو - هندسة البرمجيات والتعليم التقني" : "Vooksio - Software Engineering & Tech Education",
       description: isArabic
-        ? "خدمات هندسة البرمجيات والتعليم التقني واستشارات المنتجات للشركات الناشئة"
-        : "Expert software engineering services, technical education, and product consulting for startups",
+        ? "خدمات هندسة البرمجيات المتخصصة والتعليم التقني الشامل"
+        : "Expert software engineering services and comprehensive technical education",
       url: `${baseUrl}/${locale}`,
       siteName: "Vooksio",
       images: [
         {
-          url: "/og-home.jpg",
+          url: `${baseUrl}/og-home.jpg`,
           width: 1200,
           height: 630,
           alt: isArabic ? "فوكسيو - بناء تطبيقات حقيقية مهمة" : "Vooksio - Build Real Apps That Matter",
         },
       ],
     },
+
     twitter: {
       card: "summary_large_image",
-      title: isArabic
-        ? "فوكسيو - هندسة البرمجيات والتعليم التقني"
-        : "Software Engineering & Technical Education - Vooksio",
+      site: "@vooksio",
+      creator: "@vooksio",
+      title: isArabic ? "فوكسيو - هندسة البرمجيات والتعليم التقني" : "Vooksio - Software Engineering & Tech Education",
       description: isArabic
         ? "بناء تطبيقات حقيقية مهمة مع خبرتنا في هندسة البرمجيات"
         : "Build real apps that matter with our software engineering expertise",
-      creator: "@vooksio",
-      images: ["/twitter-home.jpg"],
+      images: [`${baseUrl}/twitter-home.jpg`],
     },
+
     alternates: {
       canonical: `${baseUrl}/${locale}`,
       languages: {
         en: `${baseUrl}/en`,
         ar: `${baseUrl}/ar`,
       },
+    },
+
+    // 10 & 13. FIXED: Combined other properties
+    other: {
+      "X-Robots-Tag": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "application/ld+json": JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: "Vooksio",
+        url: baseUrl,
+        logo: `${baseUrl}/logo.png`,
+        description: isArabic
+          ? "خدمات هندسة البرمجيات المتخصصة والتعليم التقني الشامل"
+          : "Expert software engineering services and comprehensive technical education",
+        sameAs: ["https://twitter.com/vooksio", "https://linkedin.com/company/vooksio", "https://github.com/vooksio"],
+        contactPoint: {
+          "@type": "ContactPoint",
+          contactType: "customer service",
+          availableLanguage: ["English", "Arabic"],
+        },
+        areaServed: "Worldwide",
+        serviceType: ["Software Engineering", "Technical Education", "Product Consulting", "MVP Development"],
+      }),
+    },
+
+    // Additional SEO optimizations
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+
+    // Verification tags for search engines
+    verification: {
+      google: "your-google-verification-code",
+      yandex: "your-yandex-verification-code",
+      yahoo: "your-yahoo-verification-code",
     },
   };
 }
@@ -100,9 +169,7 @@ export async function generateServicesMetadata({
     description: isArabic
       ? `اكتشف مجموعة شاملة من خدمات هندسة البرمجيات، وبرامج التعليم التقني، واستشارات تطوير المنتجات. خدمات تطوير الويب، والتطبيقات المحمولة، وتطوير MVP للشركات الناشئة والمطورين.`
       : `Discover our comprehensive range of software engineering services, technical education programs, and product development consulting. Web development, mobile apps, and MVP development for startups and developers.`,
-    keywords: [
-      ...keywords,
-    ],
+    keywords,
     openGraph: {
       type: "website",
       locale: locale === "ar" ? "ar_SA" : "en_US",
