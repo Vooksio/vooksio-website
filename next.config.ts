@@ -72,7 +72,5 @@ const nextConfig: NextConfig = {
     ];
   },
 };
-
-module.exports = nextConfig;
 const withNextIntl = createNextIntlPlugin();
 export default withNextIntl(nextConfig);
