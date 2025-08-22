@@ -2,6 +2,7 @@
 import { Metadata, Viewport } from "next";
 import { getBaseUrl } from "@/lib/config";
 import { servicesData } from "./services-data";
+import { headers } from "next/headers";
 
 const baseUrl = getBaseUrl();
 
@@ -244,7 +245,7 @@ export async function generateServiceMetadata({
   return {
     metadataBase: new URL(baseUrl), // FIXED: Added metadataBase
     title: isArabic ? `${serviceData.title} | فوكسيو` : `${serviceData.title} | Vooksio`,
-   
+
     description: serviceData.description,
     keywords: serviceData.keywords,
     openGraph: {
@@ -566,3 +567,212 @@ function getServiceData(service: string, isArabic: boolean) {
   const serviceConfig = services[service as keyof typeof services];
   return isArabic ? serviceConfig?.ar : serviceConfig?.en;
 }
+
+//not found
+
+// Function to get locale from headers
+async function getLocale() {
+  const headersList = await headers();
+  const pathname = headersList.get("x-pathname") || "";
+
+  // Extract locale from pathname (assuming /en or /ar prefix)
+  const localeMatch = pathname.match(/^\/([a-z]{2})/);
+  return localeMatch ? localeMatch[1] : "en";
+}
+
+// Generate metadata for the 404 page
+export async function generate404Metadata(): Promise<Metadata> {
+  const locale = await getLocale();
+
+  const isArabic = locale === "ar";
+
+  // Multilingual content
+  const content = {
+    en: {
+      title: "Page Not Found | Vooksio",
+      description:
+        "Sorry, the page you're looking for doesn't exist. Explore our software development services, technical education, and product consulting solutions.",
+      keywords: "404, page not found, software development, web development, technical education, product consulting",
+      alternateTitle: "404 - Page Not Found | Vooksio",
+    },
+    ar: {
+      title: "الصفحة غير موجودة | Vooksio",
+      description:
+        "عذراً، الصفحة التي تبحث عنها غير موجودة. استكشف خدمات تطوير البرمجيات، التعليم التقني، واستشارات المنتجات لدينا.",
+      keywords: "404, صفحة غير موجودة, تطوير البرمجيات, تطوير المواقع, التعليم التقني, استشارات المنتجات",
+      alternateTitle: "404 - الصفحة غير موجودة | Vooksio",
+    },
+  };
+
+  const currentContent = content[locale as keyof typeof content] || content.en;
+
+  return {
+    title: currentContent.title,
+    description: currentContent.description,
+    keywords: currentContent.keywords,
+
+    // Open Graph metadata
+    openGraph: {
+      title: currentContent.title,
+      description: currentContent.description,
+      type: "website",
+      locale: locale === "ar" ? "ar_EG" : "en_US",
+      siteName: "Vooksio",
+      images: [
+        {
+          url: "/images/og-404.jpg", // You'll need to create this image
+          width: 1200,
+          height: 630,
+          alt: isArabic ? "صفحة غير موجودة - Vooksio" : "Page Not Found - Vooksio",
+        },
+      ],
+    },
+
+    // Twitter Card metadata
+    twitter: {
+      card: "summary_large_image",
+      title: currentContent.title,
+      description: currentContent.description,
+      images: ["/images/twitter-404.jpg"], // You'll need to create this image
+      creator: "@vooksio",
+      site: "@vooksio",
+    },
+
+    // Additional metadata
+    robots: {
+      index: false, // Don't index 404 pages
+      follow: true, // But allow following links
+      noarchive: true,
+      nosnippet: false,
+      noimageindex: true,
+    },
+
+    // Canonical URL (optional, usually not set for 404 pages)
+    // alternates: {
+    //   canonical: `https://vooksio.com/404`
+    // },
+
+    // Language alternatives
+    alternates: {
+      languages: {
+        en: "/en/404",
+        ar: "/ar/404",
+      },
+    },
+
+    // Additional meta tags
+    other: {
+      "theme-color": "#6366f1", // Vooksio purple color
+      "color-scheme": "light",
+      "format-detection": "telephone=no",
+    },
+
+    // Verification (if needed)
+    verification: {
+      google: "your-google-verification-code",
+      // other verification codes as needed
+    },
+
+    // App-specific metadata
+    applicationName: "Vooksio",
+    referrer: "origin-when-cross-origin",
+
+    // Authors and creator info
+    authors: [{ name: "Vooksio Team", url: "https://vooksio.com" }],
+    creator: "Vooksio",
+    publisher: "Vooksio",
+
+    // Category
+    category: "Technology",
+  };
+}
+
+// You can also create a static metadata object if you don't need dynamic content
+export const staticMetadata: Metadata = {
+  title: {
+    default: "Page Not Found | Vooksio",
+    template: "%s | Vooksio",
+  },
+  description:
+    "Sorry, the page you're looking for doesn't exist. Explore our software development services, technical education, and product consulting solutions.",
+  keywords: [
+    "404",
+    "page not found",
+    "software development",
+    "web development",
+    "technical education",
+    "product consulting",
+  ],
+
+  openGraph: {
+    title: "Page Not Found | Vooksio",
+    description:
+      "Sorry, the page you're looking for doesn't exist. Explore our software development services and solutions.",
+    type: "website",
+    siteName: "Vooksio",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Page Not Found | Vooksio",
+    description:
+      "Sorry, the page you're looking for doesn't exist. Explore our software development services and solutions.",
+  },
+
+  robots: {
+    index: false,
+    follow: true,
+    noarchive: true,
+  },
+
+  other: {
+    "theme-color": "#6366f1",
+  },
+};
+
+// JSON-LD structured data for 404 pages
+export const generate404JsonLd = (locale: string) => {
+  const isArabic = locale === "ar";
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: isArabic ? "الصفحة غير موجودة" : "Page Not Found",
+    description: isArabic
+      ? "الصفحة التي تبحث عنها غير موجودة. استكشف خدماتنا الأخرى."
+      : "The page you are looking for does not exist. Explore our other services.",
+    url: `https://vooksio.com/${locale}/404`,
+    inLanguage: locale === "ar" ? "ar-EG" : "en-US",
+    isPartOf: {
+      "@type": "WebSite",
+      name: "Vooksio",
+      url: "https://vooksio.com",
+      description: isArabic
+        ? "حلول تطوير البرمجيات والتعليم التقني"
+        : "Software development and technical education solutions",
+    },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: isArabic ? "الرئيسية" : "Home",
+          item: `https://vooksio.com/${locale}`,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: isArabic ? "صفحة غير موجودة" : "Page Not Found",
+        },
+      ],
+    },
+    mainEntity: {
+      "@type": "Organization",
+      name: "Vooksio",
+      url: "https://vooksio.com",
+      logo: "https://vooksio.com/images/logo.png",
+      sameAs: ["https://twitter.com/vooksio", "https://linkedin.com/company/vooksio", "https://github.com/vooksio"],
+    },
+  };
+};

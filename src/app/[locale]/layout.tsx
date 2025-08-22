@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import { Cairo } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/components/layouts/Header";
 import { Footer } from "@/components/layouts/Footer";
@@ -46,6 +47,7 @@ export default async function RootLayout({
           </div>
         </NextIntlClientProvider>
         <Toaster position="top-right" richColors closeButton expand={false} visibleToasts={3} />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID as string} />
       </body>
     </html>
   );
