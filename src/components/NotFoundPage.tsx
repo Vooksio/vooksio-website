@@ -1,4 +1,3 @@
-import { Button } from "./ui/button";
 import { ArrowLeft, Home, Search, Code, Compass } from "lucide-react";
 import SubPageHeader from "./layouts/SubPageHeader";
 import { useLocale } from "next-intl";

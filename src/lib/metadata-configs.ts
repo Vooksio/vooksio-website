@@ -8,7 +8,7 @@ const baseUrl = getBaseUrl();
 
 // Homepage Metadata
 // Separate viewport configuration
-export async function generateHomeViewport({ params }: { params: Promise<{ locale: string }> }): Promise<Viewport> {
+export async function generateHomeViewport(): Promise<Viewport> {
   return {
     themeColor: "#ffffff",
     width: "device-width",
@@ -277,11 +277,7 @@ export async function generateServiceMetadata({
 }
 
 // Service Page Viewport - NEW
-export async function generateServiceViewport({
-  params,
-}: {
-  params: Promise<{ locale: string; service: string }>;
-}): Promise<Viewport> {
+export async function generateServiceViewport(): Promise<Viewport> {
   return {
     themeColor: "#ffffff",
     width: "device-width",
@@ -351,7 +347,7 @@ export async function generateContactMetadata({ params }: { params: Promise<{ lo
 }
 
 // Contact Page Viewport - NEW
-export async function generateContactViewport({ params }: { params: Promise<{ locale: string }> }): Promise<Viewport> {
+export async function generateContactViewport(): Promise<Viewport> {
   return {
     themeColor: "#ffffff",
     width: "device-width",
