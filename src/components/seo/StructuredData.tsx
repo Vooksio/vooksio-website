@@ -11,7 +11,7 @@ export function OrganizationStructuredData({ locale }: { locale: string }) {
     "@type": "Organization",
     name: "Vooksio",
     url: baseUrl,
-    logo: `${baseUrl}/logo.png`,
+    logo: `${baseUrl}/Vooksio-Logo.png`,
     description: isArabic
       ? "شركة متخصصة في هندسة البرمجيات والتعليم التقني واستشارات المنتجات للشركات الناشئة"
       : "Expert software engineering, technical education, and product consulting for startups",
@@ -89,7 +89,7 @@ export function WebsiteStructuredData({ locale }: { locale: string }) {
       name: "Vooksio",
       logo: {
         "@type": "ImageObject",
-        url: `${baseUrl}/logo.png`,
+        url: `${baseUrl}/Vooksio-Logo.png`,
       },
     },
   };
