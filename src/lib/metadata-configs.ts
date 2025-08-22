@@ -67,7 +67,10 @@ export async function generateHomeMetadata({ params }: { params: Promise<{ local
         { url: "/apple-touch-icon-120x120.png", sizes: "120x120" },
         { url: "/apple-touch-icon-76x76.png", sizes: "76x76" },
       ],
-      other: [{ rel: "mask-icon", url: "/safari-pinned-tab.svg", color: "#5bbad5" }],
+      other: [
+        { rel: "mask-icon", url: "/safari-pinned-tab.svg", color: "#5bbad5" },
+        { rel: "logo", url: "/Vooksio-Logo.png", type: "image/png" },
+      ],
     },
 
     // Web app manifest
@@ -91,6 +94,12 @@ export async function generateHomeMetadata({ params }: { params: Promise<{ local
           height: 630,
           alt: isArabic ? "فوكسيو - بناء تطبيقات حقيقية مهمة" : "Vooksio - Build Real Apps That Matter",
         },
+        {
+          url: `${baseUrl}/Vooksio-Logo.png`,
+          width: 140,
+          height: 50,
+          alt: "Vooksio Logo",
+        },
       ],
     },
 
@@ -102,7 +111,7 @@ export async function generateHomeMetadata({ params }: { params: Promise<{ local
       description: isArabic
         ? "بناء تطبيقات حقيقية مهمة مع خبرتنا في هندسة البرمجيات"
         : "Build real apps that matter with our software engineering expertise",
-      images: [`${baseUrl}/twitter-home.jpg`],
+      images: [`${baseUrl}/twitter-home.jpg`, `${baseUrl}/Vooksio-Logo.png`],
     },
 
     alternates: {
@@ -111,29 +120,6 @@ export async function generateHomeMetadata({ params }: { params: Promise<{ local
         en: `${baseUrl}/en`,
         ar: `${baseUrl}/ar`,
       },
-    },
-
-    // 10 & 13. FIXED: Combined other properties
-    other: {
-      "X-Robots-Tag": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
-      "application/ld+json": JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        name: "Vooksio",
-        url: baseUrl,
-        logo: `${baseUrl}/logo.png`,
-        description: isArabic
-          ? "خدمات هندسة البرمجيات المتخصصة والتعليم التقني الشامل"
-          : "Expert software engineering services and comprehensive technical education",
-        sameAs: ["https://twitter.com/vooksio", "https://linkedin.com/company/vooksio", "https://github.com/vooksio"],
-        contactPoint: {
-          "@type": "ContactPoint",
-          contactType: "customer service",
-          availableLanguage: ["English", "Arabic"],
-        },
-        areaServed: "Worldwide",
-        serviceType: ["Software Engineering", "Technical Education", "Product Consulting", "MVP Development"],
-      }),
     },
 
     // Additional SEO optimizations
@@ -147,6 +133,31 @@ export async function generateHomeMetadata({ params }: { params: Promise<{ local
         "max-image-preview": "large",
         "max-snippet": -1,
       },
+    },
+
+    // Additional meta tags for logo and branding
+    other: {
+      "X-Robots-Tag": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      logo: `${baseUrl}/Vooksio-Logo.png`,
+      "brand-logo": `${baseUrl}/Vooksio-Logo.png`,
+      "application/ld+json": JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: "Vooksio",
+        url: baseUrl,
+        logo: `${baseUrl}/Vooksio-Logo.png`,
+        description: isArabic
+          ? "خدمات هندسة البرمجيات المتخصصة والتعليم التقني الشامل"
+          : "Expert software engineering services and comprehensive technical education",
+        sameAs: ["https://twitter.com/vooksio", "https://linkedin.com/company/vooksio", "https://github.com/vooksio"],
+        contactPoint: {
+          "@type": "ContactPoint",
+          contactType: "customer service",
+          availableLanguage: ["English", "Arabic"],
+        },
+        areaServed: "Worldwide",
+        serviceType: ["Software Engineering", "Technical Education", "Product Consulting", "MVP Development"],
+      }),
     },
 
     // Verification tags for search engines

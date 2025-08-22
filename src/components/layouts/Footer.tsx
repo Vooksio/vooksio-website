@@ -64,12 +64,14 @@ export function Footer() {
   const locale = useLocale();
 
   // Get current page URL and title for sharing
-  const [currentUrl, setCurrentUrl] = React.useState(`${process.env.NEXT_PUBLIC_BASE_URL}/${locale}`);
+  const [mounted, setMounted] = React.useState(false);
   const pageTitle = t("share.title") || "Vooksio - Software Engineering & Technical Education";
 
   React.useEffect(() => {
-    setCurrentUrl(window.location.href);
+    setMounted(true);
   }, []);
+
+  const currentUrl = mounted ? window.location.href : "";
 
   const links = {
     services: [
@@ -236,7 +238,7 @@ export function Footer() {
                 {/* Social Share Section - NEW */}
                 <div className="vooksio-card rounded-lg p-6 backdrop-blur-sm border border-switch-background bg-white/80">
                   <h3 className="font-semibold text-dark-navy mb-4">{t("share.sectionTitle") || "Share Vooksio"}</h3>
-                  <SocialShareButtons url={currentUrl} title={pageTitle} className="justify-start" />
+                  {currentUrl && <SocialShareButtons url={currentUrl} title={pageTitle} className="justify-start" />}
                 </div>
               </div>
 
