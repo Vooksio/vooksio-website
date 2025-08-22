@@ -93,7 +93,7 @@
     ],
     "learnMore": "Learn More",
     "startProject": "Start Your Project",
-    "backToHome": "← Back Home"
+    "backToHome": "Back Home"
   },
   "values": {
     "sectionTitle": "How We Work",
@@ -199,12 +199,7 @@
       {
         "title": "Career Switchers",
         "description": "Master app development through hands-on, structured learning",
-        "needs": [
-          "Clear learning path",
-          "Project-based curriculum",
-          "Live coding sessions",
-          "Job-ready portfolio"
-        ],
+        "needs": ["Clear learning path", "Project-based curriculum", "Live coding sessions", "Job-ready portfolio"],
         "ctaText": "Change Careers"
       },
       {
@@ -289,9 +284,16 @@
     "copyright": "© 2025 Vooksio. Built with purpose, shipped with care.",
     "ariaLabels": {
       "github": "GitHub",
-      "twitter": "Twitter", 
+      "twitter": "Twitter",
       "linkedin": "LinkedIn",
-      "email": "Email"
+      "email": "Email",
+      "shareTwitter": "Share on Twitter",
+      "shareLinkedIn": "Share on LinkedIn"
+    },
+    "share": {
+      "text": "Share:",
+      "title": "Vooksio - Software Engineering & Technical Education",
+      "sectionTitle": "Share Vooksio"
     }
   }
 }

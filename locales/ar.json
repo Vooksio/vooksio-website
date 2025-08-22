@@ -83,7 +83,7 @@
     ],
     "learnMore": "المزيد",
     "startProject": "ابدأ مشروعك",
-    "backToHome": "← الرئيسية"
+    "backToHome": "الرئيسية"
   },
   "values": {
     "sectionTitle": "طريقة عملنا",
@@ -261,7 +261,14 @@
       "github": "جيت هاب",
       "twitter": "تويتر",
       "linkedin": "لينكد إن",
-      "email": "البريد الإلكتروني"
+      "email": "البريد الإلكتروني",
+      "shareTwitter": "شارك على تويتر",
+      "shareLinkedIn": "شارك على لينكد إن"
+    },
+    "share": {
+      "text": "شارك:",
+      "title": "فوكسيو - هندسة البرمجيات والتعليم التقني",
+      "sectionTitle": "شارك فوكسيو"
     }
   }
 }

@@ -1,3 +1,5 @@
+"use client";
+import React from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Button } from "../ui/button";
 import { Mail, Github, Twitter, Linkedin, ArrowRight, Code2, BookOpen, Users, Share2 } from "lucide-react";
@@ -5,69 +7,69 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Input } from "../ui/input";
 import { RefreshLink } from "../ui-actions/RefreshLink";
-
+import { sendGAEvent } from "@next/third-parties/google";
 // Social Share Buttons Component integrated into Footer
-function SocialShareButtons({ 
-  url, 
-  title, 
-  className = "" 
-}: { 
-  url: string; 
-  title: string; 
-  className?: string;
-}) {
+function SocialShareButtons({ url, title, className = "" }: { url: string; title: string; className?: string }) {
   const t = useTranslations("footer");
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
-  
+
   const shareLinks = [
     {
-      name: 'Twitter',
+      name: "Twitter",
       icon: Twitter,
       url: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
-      color: 'hover:text-[var(--vooksio-cyan)]',
-      ariaLabel: t("ariaLabels.shareTwitter") || "Share on Twitter",
+      color: "hover:text-[var(--vooksio-cyan)]",
+      ariaLabel: t("ariaLabels.shareTwitter"),
     },
     {
-      name: 'LinkedIn',
+      name: "LinkedIn",
       icon: Linkedin,
       url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
-      color: 'hover:text-[var(--vooksio-emerald)]',
-      ariaLabel: t("ariaLabels.shareLinkedIn") || "Share on LinkedIn",
+      color: "hover:text-[var(--vooksio-emerald)]",
+      ariaLabel: t("ariaLabels.shareLinkedIn"),
     },
   ];
 
+  const handleShareClick = (platform: string, url: string) => {
+    // Send GA event for social sharing
+    sendGAEvent("event", "social_share", {
+      method: platform.toLowerCase(),
+      content_type: "website",
+      item_id: "vooksio_main_site",
+    });
+
+    // Open the share URL
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
   return (
     <div className={`flex items-center gap-3 ${className}`}>
       <Share2 className="w-5 h-5 text-muted-gray" />
-      <span className="text-sm text-muted-gray font-medium">
-        {t("share.text") || "Share:"}
-      </span>
+      <span className="text-sm text-muted-gray font-medium">{t("share.text")}</span>
       {shareLinks.map((social) => (
-        <a
+        <button
           key={social.name}
-          href={social.url}
-          target="_blank"
-          rel="noopener noreferrer"
+          onClick={() => handleShareClick(social.name, social.url)}
           className={`text-muted-gray ${social.color} transition-colors p-2 rounded-full hover:bg-white/50`}
           aria-label={social.ariaLabel}
         >
           <social.icon className="w-4 h-4" />
-        </a>
+        </button>
       ))}
     </div>
   );
 }
-
 export function Footer() {
   const t = useTranslations("footer");
   const locale = useLocale();
 
   // Get current page URL and title for sharing
-  const currentUrl = typeof window !== 'undefined' 
-    ? window.location.href 
-    : `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}`;
+  const [currentUrl, setCurrentUrl] = React.useState(`${process.env.NEXT_PUBLIC_BASE_URL}/${locale}`);
   const pageTitle = t("share.title") || "Vooksio - Software Engineering & Technical Education";
+
+  React.useEffect(() => {
+    setCurrentUrl(window.location.href);
+  }, []);
 
   const links = {
     services: [
@@ -140,6 +142,20 @@ export function Footer() {
     },
   ];
 
+  const handleSocialClick = (platform: string) => {
+    sendGAEvent("event", "social_follow", {
+      event_category: "social_media",
+      event_label: platform.toLowerCase(),
+      value: 1,
+    });
+  };
+  const handleContactClick = () => {
+    sendGAEvent("event", "contact_cta_click", {
+      event_category: "lead_generation",
+      event_label: "footer_contact_button",
+      value: 1,
+    });
+  };
   return (
     <footer id="contact" className="relative overflow-hidden">
       {/* Light Background with Subtle Brand Color Accents */}
@@ -219,14 +235,8 @@ export function Footer() {
 
                 {/* Social Share Section - NEW */}
                 <div className="vooksio-card rounded-lg p-6 backdrop-blur-sm border border-switch-background bg-white/80">
-                  <h3 className="font-semibold text-dark-navy mb-4">
-                    {t("share.sectionTitle") || "Share Vooksio"}
-                  </h3>
-                  <SocialShareButtons 
-                    url={currentUrl}
-                    title={pageTitle}
-                    className="justify-start"
-                  />
+                  <h3 className="font-semibold text-dark-navy mb-4">{t("share.sectionTitle") || "Share Vooksio"}</h3>
+                  <SocialShareButtons url={currentUrl} title={pageTitle} className="justify-start" />
                 </div>
               </div>
 
@@ -240,7 +250,7 @@ export function Footer() {
                       <li key={index}>
                         <a
                           href={link.href}
-                          className="text-muted-gray hover:text-[var(--vooksio-cyan)] transition-colors text-sm"
+                          className="!text-muted-gray hover:text-[var(--vooksio-cyan)] transition-colors text-sm"
                         >
                           {link.name}
                         </a>
@@ -297,7 +307,10 @@ export function Footer() {
               <div className="flex justify-center">
                 <RefreshLink
                   href={`/${locale}/contact-us`}
+                  onClick={handleContactClick}
                   className="btn-vooksio-primary px-8 py-4 vooksio-hover-shadow"
+                  aria-label="Contact Vooksio for software engineering services"
+                  title="Get in touch with our team"
                 >
                   <Mail className="h-5 w-5" />
                   {t("contact.button")}
@@ -315,16 +328,17 @@ export function Footer() {
               {/* Social Links - Updated for consistency */}
               <div className="flex items-center space-x-4">
                 {socialLinks.map((social) => (
-                  <a
+                  <RefreshLink
                     key={social.name}
                     href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`text-muted-gray ${social.color} transition-colors`}
+                    onClick={() => handleSocialClick(social.name)}
+                    target={social.href.startsWith("http") ? "_blank" : undefined}
+                    className={`text-muted-gray ${social.color} transition-colors p-1 rounded-full hover:bg-white/20`}
                     aria-label={social.ariaLabel}
+                    disableRefresh={true}
                   >
                     <social.icon className="h-5 w-5" />
-                  </a>
+                  </RefreshLink>
                 ))}
               </div>
             </div>

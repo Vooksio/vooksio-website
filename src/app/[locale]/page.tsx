@@ -5,6 +5,7 @@ import { Services } from "@/components/landingPage/Services";
 import { Values } from "@/components/landingPage/Values";
 import { Audience } from "@/components/landingPage/Audience";
 
+
 export default function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = use(params);
   setRequestLocale(locale);
