@@ -12,7 +12,7 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const t = useTranslations("header");
-  const locale=useLocale();
+  const locale = useLocale();
   return (
     <header className="sticky top-0 z-50 bg-gradient-to-r from-white/95 via-input-bg/95 to-white/95 backdrop-blur-sm border-b border-primary-blue/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -65,7 +65,13 @@ export function Header() {
           <div className="md:hidden flex items-center gap-2">
             {/* Mobile Language Switcher */}
             <LocaleSwitcher />
-            <button className="p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <button
+              className="p-2"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? t("closeMenu") : t("openMenu")}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-navigation"
+            >
               {isMenuOpen ? <X className="h-6 w-6 text-dark-navy" /> : <Menu className="h-6 w-6 text-dark-navy" />}
             </button>
           </div>
@@ -73,7 +79,7 @@ export function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-[#E5E7EB] bg-white">
+          <div id="mobile-navigation" className="md:hidden border-t border-[#E5E7EB] bg-white">
             <div className="px-2 pt-2 pb-3 space-y-1">
               <a
                 href="#services"

@@ -40,7 +40,11 @@ export function Hero() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="btn-vooksio-primary px-8 py-4 text-lg vooksio-hover-shadow">
+              <Button
+                size="lg"
+                className="btn-vooksio-primary px-8 py-4 text-lg vooksio-hover-shadow"
+                aria-label={`${t("ctaPrimary")} - Get started with Vooksio services`}
+              >
                 {t("ctaPrimary")} <ArrowRight className={cn("h-5 w-5", locale === "ar" ? "rotate-180" : "")} />
               </Button>
               <Button size="lg" className="btn-vooksio-secondary px-8 py-4 text-lg vooksio-hover-shadow">

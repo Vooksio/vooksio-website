@@ -12,7 +12,9 @@
     "about": "About",
     "whoWeHelp": "Who We Help",
     "contact": "Contact",
-    "getStarted": "Get Started"
+    "getStarted": "Get Started",
+    "closeMenu": "Close Menu",
+    "openMenu": "Open Menu"
   },
   "hero": {
     "badge": "For Developers & Founders",
@@ -251,7 +253,8 @@
     "newsletter": {
       "title": "Stay in the Loop",
       "description": "Get tips on app development, career advice, and industry insights.",
-      "placeholder": "your@email.com"
+      "placeholder": "your@email.com",
+      "subscribeToNewsletter": "Subscribe to Newsletter"
     },
     "links": {
       "services": {
