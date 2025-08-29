@@ -230,7 +230,10 @@ export function Footer() {
                       className="flex-1 px-4 py-2 bg-input-bg border border-switch-background rounded-lg text-dark-navy placeholder-muted-gray focus:outline-none focus:border-[var(--vooksio-cyan)] focus:ring-2 focus:ring-[var(--vooksio-cyan)]/20 transition-all"
                     />
                     <Button size="icon" className="size-9 btn-vooksio-primary">
-                      <ArrowRight className={cn("h-4 w-4", locale === "ar" ? "rotate-180" : "")} />
+                      <ArrowRight
+                        className={cn("h-4 w-4", locale === "ar" ? "rotate-180" : "")}
+                        suppressHydrationWarning
+                      />
                     </Button>
                   </div>
                 </div>

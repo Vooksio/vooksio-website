@@ -1,20 +1,48 @@
+/**
+ * ServicePage Component - SSG Optimized
+ *
+ * This component is designed for static site generation:
+ * - Server component (no "use client" directive)
+ * - Pre-rendered translations (no client-side language switching)
+ * - Static content generation at build time
+ * - Zero JavaScript for content rendering
+ * - Optimized for Core Web Vitals
+ */
+
 import { ArrowLeft, Check } from "lucide-react";
 import Image from "next/image";
 import { Button } from "../ui/button";
-import { useTranslations } from "next-intl";
 import { servicesData } from "@/lib/services-data";
 import { ServerActionLink } from "../ui-actions/ServerActionLink";
 import { RefreshLink } from "../ui-actions/RefreshLink";
 import { cn } from "@/lib/utils";
-import { useSwitchData } from "@/app/hooks/useSwitchData";
+
 interface ServicePageProps {
   currentService?: string;
   language: "ar" | "en";
 }
 
+// Server-side translations for better SSG performance
+function getTranslations(language: "ar" | "en") {
+  return {
+    backToHome: language === "ar" ? "العودة للرئيسية" : "Back to Home",
+    keyFeatures: language === "ar" ? "الميزات الرئيسية" : "Key Features",
+    benefits: language === "ar" ? "الفوائد" : "Benefits",
+    process: language === "ar" ? "عمليتنا" : "Our Process",
+    deliverables: language === "ar" ? "ما ستحصل عليه" : "What You Get",
+    getStarted: language === "ar" ? "ابدأ الآن" : "Get Started",
+    contactUs: language === "ar" ? "اتصل بنا" : "Contact Us",
+    technologies: language === "ar" ? "التقنيات التي نستخدمها" : "Technologies We Use",
+    readyToStart: language === "ar" ? "مستعد للبدء؟" : "Ready to Get Started?",
+    startingAt: language === "ar" ? "يبدأ من " : "Starting at ",
+    getInTouch: language === "ar" ? "تواصل معنا" : "Get in Touch",
+    exploreOtherServices: language === "ar" ? "استكشف خدمات أخرى" : "Explore Other Services",
+  };
+}
+
 export const ServicePage: React.FC<ServicePageProps> = ({ currentService, language }) => {
-  const t = useTranslations("services");
-  const { switchData } = useSwitchData();
+  const t = getTranslations(language);
+
   if (!currentService || !servicesData[currentService]) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -22,7 +50,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ currentService, langua
           <h1 className="text-2xl font-bold text-dark-navy mb-4">Service not found</h1>
           <ServerActionLink href={`/${language}`} className="text-blue-500 hover:underline">
             <ArrowLeft className="h-4 w-4" />
-            {t("backToHome")}
+            {t.backToHome}
           </ServerActionLink>
         </div>
       </div>
@@ -50,7 +78,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ currentService, langua
               </RefreshLink>
             </div>
             <ServerActionLink variant="outline" className="text-card-forground" href={`/${language}`}>
-              {t("backToHome")}
+              {t.backToHome}
               <ArrowLeft
                 className={cn("h-4 w-4", {
                   "rotate-180": language === "en",
@@ -76,7 +104,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ currentService, langua
             </div>
             <p className="text-lg text-muted-gray max-w-4xl mx-auto leading-relaxed">{service.hero[language]}</p>
             <Button size="lg" className="btn-vooksio-primary px-8 py-4 vooksio-hover-shadow">
-              {switchData("ابدأ الآن", "Get Started")}
+              {t.getStarted}
             </Button>
           </div>
         </div>
@@ -86,7 +114,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ currentService, langua
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-dark-navy mb-4">{switchData("الميزات الرئيسية", "Key Features")}</h2>
+            <h2 className="text-3xl font-bold text-dark-navy mb-4">{t.keyFeatures}</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {service.features.map((feature, index) => (
@@ -104,7 +132,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ currentService, langua
       <section className="py-20 bg-input-background/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-dark-navy mb-4">{switchData("الفوائد", "Benefits")}</h2>
+            <h2 className="text-3xl font-bold text-dark-navy mb-4">{t.benefits}</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {service.benefits.map((benefit, index) => (
@@ -124,7 +152,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ currentService, langua
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-dark-navy mb-4">{switchData("عمليتنا", "Our Process")}</h2>
+            <h2 className="text-3xl font-bold text-dark-navy mb-4">{t.process}</h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {service.process.map((step, index) => (
@@ -145,9 +173,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ currentService, langua
         <section className="py-20 bg-input-background/50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-dark-navy mb-4">
-                {switchData("التقنيات التي نستخدمها", "Technologies We Use")}
-              </h2>
+              <h2 className="text-3xl font-bold text-dark-navy mb-4">{t.technologies}</h2>
             </div>
             <div className="flex flex-wrap justify-center gap-4">
               {service.technologies.map((tech, index) => (
@@ -167,7 +193,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ currentService, langua
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-dark-navy mb-4">{switchData("ما ستحصل عليه", "What You Get")}</h2>
+            <h2 className="text-3xl font-bold text-dark-navy mb-4">{t.deliverables}</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {service.deliverables.map((deliverable, index) => (
@@ -183,24 +209,20 @@ export const ServicePage: React.FC<ServicePageProps> = ({ currentService, langua
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-[var(--vooksio-purple)]/5 to-[var(--vooksio-cyan)]/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-dark-navy mb-8">
-            {switchData("مستعد للبدء؟", "Ready to Get Started?")}
-          </h2>
+          <h2 className="text-3xl font-bold text-dark-navy mb-8">{t.readyToStart}</h2>
           {service.pricing && (
             <div className="mb-8">
               <p className="text-2xl font-bold text-[var(--vooksio-purple)] mb-2">
-                {switchData("يبدأ من ", "Starting at ")}
+                {t.startingAt}
                 {service.pricing.starting}
               </p>
               <p className="text-muted-gray">{service.pricing.description[language]}</p>
             </div>
           )}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="btn-vooksio-primary px-8 py-4 vooksio-hover-shadow">
-              {switchData("تواصل معنا", "Get in Touch")}
-            </Button>
+            <Button className="btn-vooksio-primary px-8 py-4 vooksio-hover-shadow">{t.getInTouch}</Button>
             <RefreshLink variant="outline" className="px-8 py-4 text-card-forground" href={`/${language}#services`}>
-              {switchData("استكشف خدمات أخرى", "Explore Other Services")}
+              {t.exploreOtherServices}
             </RefreshLink>
           </div>
         </div>
