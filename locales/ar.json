@@ -12,7 +12,9 @@
     "about": "عن الشركة",
     "whoWeHelp": "من نساعد",
     "contact": "تواصل معنا",
-    "getStarted": "ابدأ الآن"
+    "getStarted": "ابدأ الآن",
+    "closeMenu": "أغلق القائمة",
+    "openMenu": "افتح القائمة"
   },
   "hero": {
     "badge": "للمطورين والمؤسسين",
@@ -226,7 +228,8 @@
     "newsletter": {
       "title": "ابق على اطلاع",
       "description": "احصل على نصائح تطوير التطبيقات، نصائح مهنية، ورؤى الصناعة.",
-      "placeholder": "بريدك@الإلكتروني.com"
+      "placeholder": "بريدك@الإلكتروني.com",
+      "subscribeToNewsletter": "اشترك في النشرة الإخبارية"
     },
     "links": {
       "services": {

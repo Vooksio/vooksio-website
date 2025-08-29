@@ -1,6 +1,9 @@
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import { Header } from "@/components/layouts/Header";
+import { Footer } from "@/components/layouts/Footer";
+import { getLayoutConfig } from "@/lib/layout-utils";
 import { generateHomeMetadata, generateHomeViewport } from "@/lib/metadata-configs";
 
 export const generateViewport = generateHomeViewport;
@@ -24,11 +27,14 @@ export default async function LocaleLayout({
   const isRTL = locale === "ar";
   const direction = isRTL ? "rtl" : "ltr";
 
+  // Get layout configuration using our helper
+  const layoutConfig = await getLayoutConfig();
   return (
     <NextIntlClientProvider>
       <div dir={direction} className="min-h-screen bg-gradient-to-br from-input-bg via-white to-input-bg">
-        {/* Header and Footer will be conditionally rendered by child layouts */}
-        {children}
+        {layoutConfig.isHomePage && <Header />}
+        <main className={layoutConfig.isHomePage ? "min-h-screen" : ""}>{children}</main>
+        {layoutConfig.isHomePage && <Footer />}
       </div>
     </NextIntlClientProvider>
   );

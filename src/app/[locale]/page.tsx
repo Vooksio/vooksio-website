@@ -1,7 +1,5 @@
 import { use } from "react";
 import { setRequestLocale } from "next-intl/server";
-import { Header } from "@/components/layouts/Header";
-import { Footer } from "@/components/layouts/Footer";
 import { Hero } from "@/components/landingPage/Hero";
 import { Services } from "@/components/landingPage/Services";
 import { Values } from "@/components/landingPage/Values";
@@ -13,14 +11,10 @@ export default function HomePage({ params }: { params: Promise<{ locale: string 
 
   return (
     <>
-      <Header />
-      <main className="min-h-screen">
-        <Hero />
-        <Services />
-        <Values />
-        <Audience />
-      </main>
-      <Footer />
+      <Hero />
+      <Services />
+      <Values />
+      <Audience />
     </>
   );
 }

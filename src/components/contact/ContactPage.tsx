@@ -53,6 +53,11 @@ function SubmitButton() {
       )}
       isLoading={pending}
       icon={<Send className={cn("h-5 w-5", language === "ar" && "rotate-180")} />}
+      aria-label={
+        pending
+          ? switchData("جاري إرسال الرسالة...", "Sending message...")
+          : switchData("إرسال رسالة الاتصال", "Send contact message")
+      }
     >
       {pending ? switchData("جاري الإرسال...", "Sending...") : switchData("إرسال الرسالة", "Send Message")}
     </Button>
