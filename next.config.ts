@@ -5,7 +5,7 @@ const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
   env: {
-    GA_MEASUREMENT_ID: process.env.GA_MEASUREMENT_ID,
+    GA_MEASUREMENT_ID: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID,
   },
   // 9. FIXED: Remove X-Powered-By header
   poweredByHeader: false,
