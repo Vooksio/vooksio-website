@@ -8,12 +8,13 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "sw
 const cairo = Cairo({ subsets: ["arabic"], variable: "--font-cairo", display: "swap", preload: true });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
   return (
     <html lang="en" className={`${inter.variable} ${cairo.variable}`}>
       <body>
         <div className="min-h-screen bg-gradient-to-br from-input-bg via-white to-input-bg">{children}</div>
         <Toaster position="top-right" richColors closeButton expand={false} visibleToasts={3} />
-        <GoogleAnalytics gaId={process.env.GA_MEASUREMENT_ID as string} />
+        <GoogleAnalytics gaId={gaId as string} />
       </body>
     </html>
   );
