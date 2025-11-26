@@ -1,0 +1,302 @@
+{
+  "home": {
+    "title": "Welcome to Vooksio",
+    "welcomeMessage": "Ready to build something amazing?",
+    "aboutLink": "About",
+    "contactLink": "Contact",
+    "homeLink": "Home",
+    "signInLink": "Sign In"
+  },
+  "header": {
+    "services": "Services",
+    "about": "About",
+    "whoWeHelp": "Who We Help",
+    "contact": "Contact",
+    "getStarted": "Get Started",
+    "closeMenu": "Close Menu",
+    "openMenu": "Open Menu"
+  },
+  "hero": {
+    "badge": "For Developers & Founders",
+    "headline": "Build Apps That",
+    "headlineAccent": "Actually Matter",
+    "description": "Turn your ideas into real web and mobile apps. No fluff, just results.",
+    "point1": "Modern tech stack",
+    "point2": "Expert mentorship",
+    "point3": "Ship in weeks, not months",
+    "ctaPrimary": "Start Building",
+    "ctaSecondary": "See How It Works",
+    "socialProof": "Trusted by 500+ developers worldwide",
+    "appsBuilt": "Apps Shipped",
+    "devsMentored": "Developers Trained",
+    "successRate": "Success Rate",
+    "buildStatus": "Build Status",
+    "deployment": "Status",
+    "label1": "Build",
+    "value1": "✓ Ready",
+    "label2": "Deploy",
+    "value2": "⚡ Live"
+  },
+  "services": {
+    "sectionTitle": "What We Do",
+    "mainTitle": "From Idea to App Store",
+    "subtitle": "Everything you need to build, learn, and scale your app.",
+    "services": [
+      {
+        "title": "Build Your App",
+        "description": "Full-stack development with modern technologies. We handle the code, you focus on your vision.",
+        "features": [
+          "React & React Native apps",
+          "Backend & API development",
+          "Cloud hosting & deployment",
+          "Ongoing maintenance & updates"
+        ]
+      },
+      {
+        "title": "Learn to Code",
+        "description": "Master development through real projects. Learn by building apps that people actually use.",
+        "features": [
+          "Project-based learning",
+          "Live coding with experts",
+          "Personal mentorship",
+          "Build your portfolio"
+        ]
+      },
+      {
+        "title": "Grow Your Product",
+        "description": "Strategic guidance to validate your idea and scale your app with confidence.",
+        "features": [
+          "MVP strategy & validation",
+          "Technical architecture review",
+          "Market launch planning",
+          "Team building support"
+        ]
+      }
+    ],
+    "specialtiesTitle": "Apps We Build",
+    "specialtiesDescription": "From simple MVPs to complex platforms",
+    "specialties": [
+      {
+        "title": "Web Applications",
+        "description": "Fast, responsive, scalable"
+      },
+      {
+        "title": "Mobile Apps",
+        "description": "iOS, Android, cross-platform"
+      },
+      {
+        "title": "Learning Platforms",
+        "description": "Educational tools & courses"
+      },
+      {
+        "title": "Business Tools",
+        "description": "Productivity & collaboration apps"
+      }
+    ],
+    "learnMore": "Learn More",
+    "startProject": "Start Your Project",
+    "backToHome": "Back Home"
+  },
+  "values": {
+    "sectionTitle": "How We Work",
+    "mainTitle": "Built Different",
+    "subtitle": "Our approach to building apps and growing developers.",
+    "items": [
+      {
+        "title": "Build Real Things",
+        "description": "No theoretical projects. Everything we build solves real problems for real users."
+      },
+      {
+        "title": "Learn by Doing",
+        "description": "The best way to learn coding is by building actual apps, not just tutorials."
+      },
+      {
+        "title": "No BS Communication",
+        "description": "Clear updates, honest timelines, and jargon-free explanations."
+      },
+      {
+        "title": "Your Success = Our Success",
+        "description": "We win when your app succeeds and your skills grow."
+      },
+      {
+        "title": "Ship Fast, Improve Always",
+        "description": "Get your app to users quickly, then make it better based on real feedback."
+      }
+    ],
+    "principles": [
+      "Real apps over practice projects",
+      "Code + communication skills",
+      "Fast shipping with smart planning",
+      "Growing together",
+      "Learning through building"
+    ],
+    "approachTitle": "Our Story",
+    "approachP1": "We're developers who got tired of seeing great ideas stuck in development hell. So we built Vooksio to help founders ship apps faster and help developers learn through real projects.",
+    "approachP2": "Whether you need an app built or want to learn to build them yourself, we're here to help you succeed.",
+    "traits": [
+      {
+        "title": "Results-Focused",
+        "description": "Your app's success is our priority"
+      },
+      {
+        "title": "Easy to Work With",
+        "description": "Clear communication, no drama"
+      },
+      {
+        "title": "Actually Human",
+        "description": "Real people, honest advice"
+      },
+      {
+        "title": "Ship-First Mindset",
+        "description": "Build it, ship it, improve it"
+      }
+    ]
+  },
+  "audience": {
+    "sectionHeader": {
+      "badge": "Who We Help",
+      "title": "For Every Stage",
+      "description": "Whether you're just starting or ready to scale, we've got you covered."
+    },
+    "stats": [
+      {
+        "number": "500+",
+        "label": "Developers Trained",
+        "description": "From beginner to professional"
+      },
+      {
+        "number": "50+",
+        "label": "Apps Shipped",
+        "description": "From MVP to market leader"
+      },
+      {
+        "number": "98%",
+        "label": "On-Time Delivery",
+        "description": "We ship when we say we will"
+      }
+    ],
+    "audiences": [
+      {
+        "title": "Founders & Entrepreneurs",
+        "description": "Turn your vision into a real app that users love",
+        "needs": [
+          "MVP development & testing",
+          "Technical co-founder support",
+          "Product strategy & roadmap",
+          "Launch partnership"
+        ],
+        "ctaText": "Build Your MVP"
+      },
+      {
+        "title": "New Developers",
+        "description": "Learn to code by building real apps with expert guidance",
+        "needs": [
+          "Real project experience",
+          "Code review & mentorship",
+          "Industry best practices",
+          "Portfolio that gets you hired"
+        ],
+        "ctaText": "Start Learning"
+      },
+      {
+        "title": "Career Switchers",
+        "description": "Master app development through hands-on, structured learning",
+        "needs": ["Clear learning path", "Project-based curriculum", "Live coding sessions", "Job-ready portfolio"],
+        "ctaText": "Change Careers"
+      },
+      {
+        "title": "Growing Startups",
+        "description": "Scale your app and team with expert engineering support",
+        "needs": [
+          "Technical architecture review",
+          "Team hiring & training",
+          "Product scaling strategies",
+          "Development partnerships"
+        ],
+        "ctaText": "Scale Your Team"
+      },
+      {
+        "title": "Agency Partners",
+        "description": "White-label development and training services for your clients",
+        "needs": [
+          "White-label development",
+          "Technical consulting",
+          "Developer training programs",
+          "Quality partnerships"
+        ],
+        "ctaText": "Partner With Us"
+      }
+    ],
+    "cta": {
+      "title": "Ready to Start?",
+      "description": "Whatever your goal, we're here to help you build something amazing.",
+      "primary": "Get Started Today",
+      "secondary": "Book a Call"
+    }
+  },
+  "footer": {
+    "description": "We help founders build apps and developers build careers through real projects and expert mentorship.",
+    "features": {
+      "buildFirst": {
+        "title": "Real Projects Only",
+        "description": "No fake assignments"
+      },
+      "learnByDoing": {
+        "title": "Learn by Building",
+        "description": "Hands-on experience"
+      },
+      "expertMentorship": {
+        "title": "Expert Guidance",
+        "description": "Support every step"
+      }
+    },
+    "newsletter": {
+      "title": "Stay in the Loop",
+      "description": "Get tips on app development, career advice, and industry insights.",
+      "placeholder": "your@email.com",
+      "subscribeToNewsletter": "Subscribe to Newsletter"
+    },
+    "links": {
+      "services": {
+        "title": "Services",
+        "softwareEngineering": "App Development",
+        "technicalEducation": "Learn to Code",
+        "productConsulting": "Product Strategy",
+        "mvpDevelopment": "MVP Development"
+      },
+      "company": {
+        "title": "Company",
+        "aboutUs": "About",
+        "ourValues": "How We Work",
+        "caseStudies": "Success Stories",
+        "blog": "Blog"
+      },
+      "resources": {
+        "title": "Resources",
+        "learningPaths": "Learning Paths",
+        "codeExamples": "Code Examples",
+        "documentation": "Docs",
+        "community": "Community"
+      }
+    },
+    "contact": {
+      "title": "Ready to Build?",
+      "description": "Let's chat about your project or learning goals. We're here to help you succeed.",
+      "button": "Get in Touch"
+    },
+    "copyright": "© 2025 Vooksio. Built with purpose, shipped with care.",
+    "ariaLabels": {
+      "github": "GitHub",
+      "twitter": "Twitter",
+      "linkedin": "LinkedIn",
+      "email": "Email",
+      "shareTwitter": "Share on Twitter",
+      "shareLinkedIn": "Share on LinkedIn"
+    },
+    "share": {
+      "text": "Share:",
+      "title": "Vooksio - Software Engineering & Technical Education",
+      "sectionTitle": "Share Vooksio"
+    }
+  }
+}
