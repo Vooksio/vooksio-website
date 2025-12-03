@@ -72,6 +72,9 @@
   --vooksio-cyan: #06b6d4;
   --vooksio-indigo: #6366f1;
   --vooksio-emerald: #10b981;
+  --vooksio-red: #ef4444; 
+  --vooksio-blue: #3b82f6;
+  
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
 

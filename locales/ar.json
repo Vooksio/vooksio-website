@@ -266,7 +266,13 @@
       "linkedin": "لينكد إن",
       "email": "البريد الإلكتروني",
       "shareTwitter": "شارك على تويتر",
-      "shareLinkedIn": "شارك على لينكد إن"
+      "shareLinkedIn": "شارك على لينكد إن",
+      "shareFacebook": "شارك على فيسبوك",
+      "shareInstagram": "شارك على انستقرام",
+      "shareYouTube": "شارك على يوتيوب",
+      "facebook": "فيسبوك",
+      "instagram": "انستقرام",
+      "youtube": "يوتيوب"
     },
     "share": {
       "text": "شارك:",

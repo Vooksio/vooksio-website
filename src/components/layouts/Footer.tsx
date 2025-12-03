@@ -21,33 +21,48 @@ import { cn } from "@/lib/utils";
 import { Input } from "../ui/input";
 import { RefreshLink } from "../ui-actions/RefreshLink";
 import { sendGAEvent } from "@next/third-parties/google";
+import { trackNewsletterSignup, trackContactCTA } from "@/lib/analytics";
 // Social Share Buttons Component integrated into Footer
 function SocialShareButtons({ url, title, className = "" }: { url: string; title: string; className?: string }) {
   const t = useTranslations("footer");
   const encodedUrl = encodeURIComponent(url);
-  const encodedTitle = encodeURIComponent(title);
+  // const encodedTitle = encodeURIComponent(title);
 
   const shareLinks = [
-    {
-      name: "Twitter",
-      icon: Twitter,
-      url: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
-      color: "hover:text-[var(--vooksio-cyan)]",
-      ariaLabel: t("ariaLabels.shareTwitter"),
-    },
-    {
-      name: "LinkedIn",
-      icon: Linkedin,
-      url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
-      color: "hover:text-[var(--vooksio-emerald)]",
-      ariaLabel: t("ariaLabels.shareLinkedIn"),
-    },
+    // {
+    //   name: "Twitter",
+    //   icon: Twitter,
+    //   url: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
+    //   color: "hover:text-[var(--vooksio-cyan)]",
+    //   ariaLabel: t("ariaLabels.shareTwitter"),
+    // },
+    // {
+    //   name: "LinkedIn",
+    //   icon: Linkedin,
+    //   url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+    //   color: "hover:text-[var(--vooksio-emerald)]",
+    //   ariaLabel: t("ariaLabels.shareLinkedIn"),
+    // },
     {
       name: "Facebook",
       icon: Facebook,
       url: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
-      color: "hover:text-[var(--vooksio-orange)]",
+      color: "hover:text-[var(--vooksio-blue)]",
       ariaLabel: t("ariaLabels.shareFacebook"),
+    },
+    {
+      name: "YouTube",
+      icon: Youtube,
+      url: `https://www.youtube.com/share?url=${encodedUrl}`,
+      color: "hover:text-[var(--vooksio-red)]",
+      ariaLabel: t("ariaLabels.shareYouTube"),
+    },
+    {
+      name: "Instagram",
+      icon: Instagram,
+      url: `https://www.instagram.com/?url=${encodedUrl}`,
+      color: "hover:text-[var(--vooksio-pink)]",
+      ariaLabel: t("ariaLabels.shareInstagram"),
     },
   ];
 
@@ -85,6 +100,7 @@ export function Footer() {
 
   // Get current page URL and title for sharing
   const [mounted, setMounted] = React.useState(false);
+  const [newsletterEmail, setNewsletterEmail] = React.useState("");
   const pageTitle = t("share.title") || "Vooksio - Software Engineering & Technical Education";
 
   React.useEffect(() => {
@@ -92,6 +108,16 @@ export function Footer() {
   }, []);
 
   const currentUrl = mounted ? window.location.href : "";
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (newsletterEmail.trim()) {
+      trackNewsletterSignup("footer");
+      // Here you would typically send the email to your newsletter service
+      // For now, we'll just track the event
+      setNewsletterEmail("");
+    }
+  };
 
   const links = {
     services: [
@@ -193,11 +219,7 @@ export function Footer() {
     });
   };
   const handleContactClick = () => {
-    sendGAEvent("event", "contact_cta_click", {
-      event_category: "lead_generation",
-      event_label: "footer_contact_button",
-      value: 1,
-    });
+    trackContactCTA("footer");
   };
   return (
     <footer id="contact" className="relative overflow-hidden">
@@ -264,13 +286,16 @@ export function Footer() {
                 <div className="vooksio-card rounded-lg p-6 backdrop-blur-sm border border-switch-background bg-white/80">
                   <h3 className="font-semibold text-dark-navy mb-2">{t("newsletter.title")}</h3>
                   <p className="text-muted-gray text-sm mb-4">{t("newsletter.description")}</p>
-                  <div className="flex items-center gap-2">
+                  <form onSubmit={handleNewsletterSubmit} className="flex items-center gap-2">
                     <Input
                       type="email"
                       placeholder={t("newsletter.placeholder")}
+                      value={newsletterEmail}
+                      onChange={(e) => setNewsletterEmail(e.target.value)}
                       className="flex-1 px-4 py-2 bg-input-bg border border-switch-background rounded-lg text-dark-navy placeholder-muted-gray focus:outline-none focus:border-[var(--vooksio-cyan)] focus:ring-2 focus:ring-[var(--vooksio-cyan)]/20 transition-all"
                     />
                     <Button
+                      type="submit"
                       size="icon"
                       className="size-9 btn-vooksio-primary"
                       aria-label={t("newsletter.subscribeToNewsletter")}
@@ -280,7 +305,7 @@ export function Footer() {
                         suppressHydrationWarning
                       />
                     </Button>
-                  </div>
+                  </form>
                 </div>
 
                 {/* Social Share Section - NEW */}
@@ -373,7 +398,7 @@ export function Footer() {
           <div className="border-t border-switch-background py-8">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               {/* Copyright */}
-              <div className="!text-muted-gray text-sm">
+              <div className="!text-muted-gray text-sm" suppressHydrationWarning>
                 © {new Date().getFullYear()} Vooksio. {t("copyright")}
               </div>
 
