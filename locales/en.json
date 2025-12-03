@@ -291,7 +291,13 @@
       "linkedin": "LinkedIn",
       "email": "Email",
       "shareTwitter": "Share on Twitter",
-      "shareLinkedIn": "Share on LinkedIn"
+      "shareLinkedIn": "Share on LinkedIn",
+      "shareFacebook": "Share on Facebook",
+      "shareInstagram": "Share on Instagram",
+      "shareYouTube": "Share on YouTube",
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "youtube": "YouTube"
     },
     "share": {
       "text": "Share:",
