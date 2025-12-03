@@ -26,23 +26,23 @@ import { trackNewsletterSignup, trackContactCTA } from "@/lib/analytics";
 function SocialShareButtons({ url, title, className = "" }: { url: string; title: string; className?: string }) {
   const t = useTranslations("footer");
   const encodedUrl = encodeURIComponent(url);
-  // const encodedTitle = encodeURIComponent(title);
+  const encodedTitle = encodeURIComponent(title);
 
   const shareLinks = [
-    // {
-    //   name: "Twitter",
-    //   icon: Twitter,
-    //   url: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
-    //   color: "hover:text-[var(--vooksio-cyan)]",
-    //   ariaLabel: t("ariaLabels.shareTwitter"),
-    // },
-    // {
-    //   name: "LinkedIn",
-    //   icon: Linkedin,
-    //   url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
-    //   color: "hover:text-[var(--vooksio-emerald)]",
-    //   ariaLabel: t("ariaLabels.shareLinkedIn"),
-    // },
+    {
+      name: "Twitter",
+      icon: Twitter,
+      url: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
+      color: "hover:text-[var(--vooksio-cyan)]",
+      ariaLabel: t("ariaLabels.shareTwitter"),
+    },
+    {
+      name: "LinkedIn",
+      icon: Linkedin,
+      url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+      color: "hover:text-[var(--vooksio-emerald)]",
+      ariaLabel: t("ariaLabels.shareLinkedIn"),
+    },
     {
       name: "Facebook",
       icon: Facebook,
