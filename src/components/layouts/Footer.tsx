@@ -2,12 +2,13 @@
 import React from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Button } from "../ui/button";
-import { Mail, Github, Twitter, Linkedin, ArrowRight, Code2, BookOpen, Users, Share2 } from "lucide-react";
+import { Mail, Github, Twitter, Linkedin, ArrowRight, Code2, BookOpen, Users, Share2, Facebook, Instagram } from "lucide-react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Input } from "../ui/input";
 import { RefreshLink } from "../ui-actions/RefreshLink";
 import { sendGAEvent } from "@next/third-parties/google";
+import { ar } from "zod/locales";
 // Social Share Buttons Component integrated into Footer
 function SocialShareButtons({ url, title, className = "" }: { url: string; title: string; className?: string }) {
   const t = useTranslations("footer");
@@ -121,19 +122,33 @@ export function Footer() {
       color: "hover:text-[var(--vooksio-purple)]",
       ariaLabel: t("ariaLabels.github"),
     },
+    // {
+    //   name: "Twitter",
+    //   icon: Twitter,
+    //   href: "https://twitter.com/vooksio",
+    //   color: "hover:text-[var(--vooksio-cyan)]",
+    //   ariaLabel: t("ariaLabels.twitter"),
+    // },
+    // {
+    //   name: "LinkedIn",
+    //   icon: Linkedin,
+    //   href: "https://linkedin.com/company/vooksio",
+    //   color: "hover:text-[var(--vooksio-emerald)]",
+    //   ariaLabel: t("ariaLabels.linkedin"),
+    // },
     {
-      name: "Twitter",
-      icon: Twitter,
-      href: "https://twitter.com/vooksio",
-      color: "hover:text-[var(--vooksio-cyan)]",
-      ariaLabel: t("ariaLabels.twitter"),
+      name:"Facebook",
+      icon:Facebook,
+      href:"https://www.facebook.com/people/Vooksio/61579309577376",
+      color:"hover:text-[var(--vooksio-blue)]",
+      ariaLabel:t("ariaLabels.facebook"),
     },
+    // instagram
     {
-      name: "LinkedIn",
-      icon: Linkedin,
-      href: "https://linkedin.com/company/vooksio",
-      color: "hover:text-[var(--vooksio-emerald)]",
-      ariaLabel: t("ariaLabels.linkedin"),
+      name:"Instagram",
+      icon:Instagram,
+      href:"https://www.instagram.com/vooksio/",
+      
     },
     {
       name: "Email",
