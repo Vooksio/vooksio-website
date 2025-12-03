@@ -2,13 +2,25 @@
 import React from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Button } from "../ui/button";
-import { Mail, Github, Twitter, Linkedin, ArrowRight, Code2, BookOpen, Users, Share2, Facebook, Instagram } from "lucide-react";
+import {
+  Mail,
+  // Github,
+  Twitter,
+  Linkedin,
+  Facebook,
+  Instagram,
+  Youtube,
+  ArrowRight,
+  Code2,
+  BookOpen,
+  Users,
+  Share2,
+} from "lucide-react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Input } from "../ui/input";
 import { RefreshLink } from "../ui-actions/RefreshLink";
 import { sendGAEvent } from "@next/third-parties/google";
-import { ar } from "zod/locales";
 // Social Share Buttons Component integrated into Footer
 function SocialShareButtons({ url, title, className = "" }: { url: string; title: string; className?: string }) {
   const t = useTranslations("footer");
@@ -29,6 +41,13 @@ function SocialShareButtons({ url, title, className = "" }: { url: string; title
       url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
       color: "hover:text-[var(--vooksio-emerald)]",
       ariaLabel: t("ariaLabels.shareLinkedIn"),
+    },
+    {
+      name: "Facebook",
+      icon: Facebook,
+      url: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+      color: "hover:text-[var(--vooksio-orange)]",
+      ariaLabel: t("ariaLabels.shareFacebook"),
     },
   ];
 
@@ -115,13 +134,13 @@ export function Footer() {
 
   // Social media links for footer
   const socialLinks = [
-    {
-      name: "GitHub",
-      icon: Github,
-      href: "https://github.com/vooksio",
-      color: "hover:text-[var(--vooksio-purple)]",
-      ariaLabel: t("ariaLabels.github"),
-    },
+    // {
+    //   name: "GitHub",
+    //   icon: Github,
+    //   href: "https://github.com/vooksio",
+    //   color: "hover:text-[var(--vooksio-purple)]",
+    //   ariaLabel: t("ariaLabels.github"),
+    // },
     // {
     //   name: "Twitter",
     //   icon: Twitter,
@@ -137,18 +156,25 @@ export function Footer() {
     //   ariaLabel: t("ariaLabels.linkedin"),
     // },
     {
-      name:"Facebook",
-      icon:Facebook,
-      href:"https://www.facebook.com/people/Vooksio/61579309577376",
-      color:"hover:text-[var(--vooksio-blue)]",
-      ariaLabel:t("ariaLabels.facebook"),
+      name: "Facebook",
+      icon: Facebook,
+      href: "https://www.facebook.com/people/Vooksio/61579309577376",
+      color: "hover:text-[var(--vooksio-blue)]",
+      ariaLabel: t("ariaLabels.facebook"),
     },
-    // instagram
     {
-      name:"Instagram",
-      icon:Instagram,
-      href:"https://www.instagram.com/vooksio/",
-      
+      name: "Instagram",
+      icon: Instagram,
+      href: "https://www.instagram.com/vooksio/",
+      color: "hover:text-[var(--vooksio-pink)]",
+      ariaLabel: t("ariaLabels.instagram"),
+    },
+    {
+      name: "YouTube",
+      icon: Youtube,
+      href: "https://www.youtube.com/@vooksio",
+      color: "hover:text-[var(--vooksio-red)]",
+      ariaLabel: t("ariaLabels.youtube"),
     },
     {
       name: "Email",
@@ -347,7 +373,9 @@ export function Footer() {
           <div className="border-t border-switch-background py-8">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               {/* Copyright */}
-              <div className="text-muted-gray text-sm">© 2025 Vooksio. {t("copyright")}</div>
+              <div className="!text-muted-gray text-sm">
+                © {new Date().getFullYear()} Vooksio. {t("copyright")}
+              </div>
 
               {/* Social Links - Updated for consistency */}
               <div className="flex items-center space-x-4">
@@ -357,7 +385,7 @@ export function Footer() {
                     href={social.href}
                     onClick={() => handleSocialClick(social.name)}
                     target={social.href.startsWith("http") ? "_blank" : undefined}
-                    className={`text-muted-gray ${social.color} transition-colors p-1 rounded-full hover:bg-white/20`}
+                    className={`!text-muted-gray ${social.color} transition-colors p-1 rounded-full hover:bg-white/20`}
                     aria-label={social.ariaLabel}
                     disableRefresh={true}
                   >
